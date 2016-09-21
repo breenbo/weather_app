@@ -11,3 +11,5 @@
 7. smartphone : search bar under button
 8. choose degres and auto/manual : hide checkboxes with same name behind, in order to have only one choice 
 9. click on future view : flip today view with detailed info
+10. Faire apparapitre les données détaillées en cliquant sur une flêche vers le bas.
+11. Vue par défaut : icone et température actuelle + icone indiquant un click

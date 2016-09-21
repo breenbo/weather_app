@@ -8,7 +8,10 @@
     </head>
     <body>
        <header id="controlBar" class="flexRow">
-           <h1 id="title">Weather App <br>add locality name once found</h1>
+           <div id="titleBox" class="flexColumn">
+               <h1 id="title">Weather App </h1>
+               <h2 id="city">add locality name once found</h2>
+           </div>
            <form class="flexColumn">
                <div id="search" class="containerRow">
                    <div id="auto">auto</div>
@@ -22,19 +25,43 @@
            </form>
        </header>
        <div id="fond" class="flexColumn">
-           <div id="today" class="card containerColumn">Today
-               <div id="generality" class="box containerRow">
+           <div id="current" class="card containerColumn">Current
+               <div class="box containerColumn">
+                  <div class="containerRow">
                           <div class="box picture">
-                              <img src="http://icons.wxug.com/i/c/i/nt_clear.gif">pic</img>
+                              <img id="actualIcon" src="#"></img>
                           </div>
-                  <div class="containerColumn">
-                      <div id="actualTemp" class="box">ActualTemp</div> 
-                      <div id="actualFeelTemp" class="box">ActualFeelTemp</div> 
+                          <p id="actualTemp" class="box"></p>
+                  </div>
+                  <div id="detail" class="containerRow">
+                      <div class="containerColumn">
+                          <p id="actualFeelTemp"></p>
+                          <p id="relativeHumidity"></p>
+                          <p id="dewPoint"></p>
+                      </div>
+                      <div class="containerColumn">
+                          <p id="windDir"></p>
+                          <p id="wind"></p>
+                          <p id="windGust"></p>
+                      </div>
+                      <div class="containerColumn">
+                          <p id="pressureMb"></p>
+                          <p id="uv"></p>
+                      </div>
                   </div>
                </div> 
-               <div id="detail" class="box">Detailed param
-                  <div id="actualWind">ActualWind</div> 
-                  <div id="actualHum">ActualHumidity</div> 
+               <div id="today" class="box">Today forecast
+                  <div class="box containerRow">
+                      <div class="box picture">
+                           <img id="forecastIcon" src="#"></img>
+                      </div>
+                      <div class="containerColumn">
+                          <p id="tempMinMax"></p>
+                          <p id="windMaxAvg"></p>
+                          <p id="humidityMinMax"></p>
+                          <p id="precipTodayMetric"></p>
+                      </div>
+                  </div>
                </div>
                <div id="hourly" class="box flexColumn">Hourly evolution
                   <div class="containerRow">

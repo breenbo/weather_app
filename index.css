@@ -29,7 +29,7 @@ body {
 }
 
 .picture {
-    flex:3;
+    flex:2;
 }
 
 .logo {
@@ -58,6 +58,14 @@ body {
     flex:1;
     font-size:3vh;
     border:solid 1px;
+}
+
+#titleBox {
+    flex:2;
+}
+
+#city {
+    flex:1;
 }
 
 form {
@@ -100,7 +108,6 @@ footer {
     }	
 		
     #fond {
-        height:90vh;
         flex-direction:row;
         justify-content:space-around;
     }
