@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather App</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="index.css" type="text/css" />
+    </head>
+    <body>
+       <header id="controlBar" class="flexRow">
+           <h1 id="title">Weather App <br>add locality name once found</h1>
+           <form class="flexColumn">
+               <div id="search" class="containerRow">
+                   <div id="auto">auto</div>
+                   <div id="manual">manual</div>
+               </div>
+                   <input type="search" name="search" placeholder="city or zip code"/>
+               <div id="mesure" class="containerRow">
+                   <div id="celsius">°C</div>
+                   <div id="fahrenheit">°F</div>
+               </div>
+           </form>
+       </header>
+       <div id="fond" class="flexColumn">
+           <div id="today" class="card containerColumn">Today
+               <div id="generality" class="box containerRow">
+                          <div class="box picture">
+                              <img src="http://icons.wxug.com/i/c/i/nt_clear.gif">pic</img>
+                          </div>
+                  <div class="containerColumn">
+                      <div id="actualTemp" class="box">ActualTemp</div> 
+                      <div id="actualFeelTemp" class="box">ActualFeelTemp</div> 
+                  </div>
+               </div> 
+               <div id="detail" class="box">Detailed param
+                  <div id="actualWind">ActualWind</div> 
+                  <div id="actualHum">ActualHumidity</div> 
+               </div>
+               <div id="hourly" class="box flexColumn">Hourly evolution
+                  <div class="containerRow">
+                      <div id="02" class="box containerColumn">02
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box">temp</div> 
+                      </div>
+                      <div id="06" class="box containerColumn">06
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div>
+                      <div id="10" class="box containerColumn">10
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div>
+                      <div id="14" class="box containerColumn">14
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div>
+                      <div id="22" class="box containerColumn">22
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div>
+                  </div>
+               </div>
+           </div>
+           <div id="future" class="containerColumn">
+               <div id="tomorrow" class="card flexColumn">Tomorrow
+                   <div class="containerRow">
+                      <div class="box containerColumn">
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div>
+                      <div class="box containerColumn">
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div> 
+                      <div class="box containerColumn">
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div> 
+                   </div>
+               </div>
+               <div id="afterTwo" class="card flexColumn">after tomorrow
+                   <div class="containerRow">
+                      <div class="box containerColumn">
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div>
+                      <div class="box containerColumn">
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div> 
+                  </div>
+               </div>
+               <div id="afterThree" class="card flexColumn">end of week
+                  <div class="containerRow">
+                      <div class="box containerColumn">+3
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box minmax">min/max</div> 
+                      </div>
+                      <div class="box containerColumn">+4
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box minmax">min/max</div> 
+                      </div>
+                      <div class="box containerColumn">+5
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box minmax">min/max</div> 
+                      </div>
+                      <div class="box containerColumn">+6
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box minmax">min/max</div> 
+                      </div>
+                      <div class="box containerColumn">+7
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box minmax">min/max</div> 
+                      </div>
+                  </div>
+              </div>
+           </div>
+       </div>
+       <footer><small>Designed and coded by <em>Bruno Berrehuel</em></small>
+            <div id="footSocial">
+                <a href="https://www.freecodecamp.com/breenbo" target="_blank"><img id="fcc" class="logo" src="img/fcc.svg" alt="freecodecamp logo"></a>
+                <a href="https://bitbucket.org/breenbo" target="_blank"><img class="logo" src="img/bitbucket.svg" alt="bitbucket logo"></a>
+                <a href="https://fr.linkedin.com/in/brunoberrehuel" target="_blank"><img class="logo" src="img/in.svg" alt="linkedin logo"></a>
+            </div>
+        </footer>
+        <!-- ========================================  -->
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <script src="script.js" type="text/javascript" charset="utf-8"></script>
+        <!-- ========================================  -->
+    </body>
+</html>
