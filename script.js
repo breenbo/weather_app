@@ -13,19 +13,15 @@
             $("#city").html("City of " + city);
         // boucle if pour choisir ligne en farenheit ou celsius
             var actualTemp_c=json.current_observation.temp_c;
-            $("#actualTemp").html("Temperature : " + actualTemp_c);
+            $("#actualTemp").html(actualTemp_c);
             var actualFeelTemp_c=json.current_observation.feelslike_c;
             $("#actualFeelTemp").html("Feels like : " + actualFeelTemp_c);
             var dewPoint_c=json.current_observation.dewpoint_c;
             $("#dewPoint").html("Dew point : " + dewPoint_c);
-        //change to have https and i icons
-            var actualIcon=json.current_observation.icon_url;
-            var iconUrl=actualIcon.slice(0,4) + "s" + actualIcon.slice(4);
-            var actualIconUrl=iconUrl.replace(/k/i,"i");
-            $("#actualIcon").attr("src", actualIconUrl);
-        //
+            var icon=json.current_observation.icon;
+            $("#actualIcon").attr("class", "wi wi-wu-" + icon);
             var relativeHumidity=json.current_observation.relative_humidity;
-            $("#relativeHumidity").html("Humidity : " + relativeHumidity);
+            $("#relativeHumidity").html(relativeHumidity);
             var windDir=json.current_observation.wind_dir;
             $("#windDir").html("Wind direction : " + windDir);
         // boucle if si farenheit -> basculer en mph
@@ -35,7 +31,7 @@
             $("#windGust").html("Wind gust : " + windGust + " kph");
         // boucle if si farenheit -> basculer en psi
             var pressureMb=json.current_observation.pressure_mb;
-            $("#pressureMb").html("Atmospheric pressure : " + pressureMb + " mb");
+            $("#pressureMb").html(pressureMb + " mb");
             var pressureTrend=json.current_observation.pressure_trend;
             $("#pressureTrend").html("Pressure trend : " + pressureTrend + " mb");
             var uv=json.current_observation.UV;
@@ -50,6 +46,7 @@
             var windDir=[];
             var humidity=[];
             var iconUrl=[];
+            var icon=[];
             var precip=[];
             var text=[];
             for (var i=0; i<8; i++) {
@@ -76,12 +73,15 @@
                 iconUrl[i]=json.forecast.txt_forecast.forecastday[i].icon_url;
                 iconUrl[i]=iconUrl[i].slice(0,4) + "s" + iconUrl[i].slice(4);
                 iconUrl[i]=iconUrl[i].replace(/k/i, "i");
-                $("#picDay" + [i]).attr("src",iconUrl[i]);
+                
+                icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
+                $("#picDay" + [i]).attr("class", "wi wi-wu-" + icon[i]);
             //
             //boucle if si farenheit -> basculer sur fctext
             text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
             $("#text"+[i]).html(text[i]);
             }
+            console.log(icon);
           })
           // display hourly evolution for today
         var hourlyUrl="https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + maLatitude + "," + maLongitude + ".json";
@@ -93,13 +93,3 @@
     } else {
         alert("webbrowser incompatible with html5 geolocation");
     }
-
-// $.ajax({
-    // url : "http://api.wunderground.com/api/b8bcc556b7a1fd8c/conditions/q/" + maLatitude + "," + maLongitude + ".json",
-    // datatype : "jsonp",
-    // success : function (parsed_json) {
-        // var city = parsed_json['current_observation']['display_location']['city'];
-        // var temp_c = parsed_json['current_observation']['temp_c'];
-        // alert('current temperature in' + city + 'is ' + temp_c);
-    // }
-// })

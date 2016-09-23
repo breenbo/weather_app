@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="index.css" type="text/css" />
+        <link rel="stylesheet" href="weather-icons.min.css" type="text/css" />
     </head>
     <body>
        <header id="controlBar" class="flexRow">
@@ -29,14 +30,14 @@
                <div class="box containerColumn">
                   <div class="containerRow">
                           <div class="box picture">
-                              <img id="actualIcon" src="#"></img>
+                              <i id="actualIcon" class=""></i>
                           </div>
-                          <p id="actualTemp" class="box"></p>
+                          <p id="actualTemp" class="box wi wi-thermometer"></p>
+                          <p id="actualFeelTemp"></p>
                   </div>
                   <div id="detail" class="containerRow">
                       <div class="containerColumn">
-                          <p id="actualFeelTemp"></p>
-                          <p id="relativeHumidity"></p>
+                          <p id="relativeHumidity" class="wi wi-humidity"></p>
                           <p id="dewPoint"></p>
                       </div>
                       <div class="containerColumn">
@@ -45,7 +46,7 @@
                           <p id="windGust"></p>
                       </div>
                       <div class="containerColumn">
-                          <p id="pressureMb"></p>
+                          <p id="pressureMb" class="wi wi-barometer"></p>
                           <p id="pressureTrend"></p>
                           <p id="uv"></p>
                       </div>
@@ -55,18 +56,18 @@
                   <div class="box containerColumn">
                       <div class="box containerRow">
                           <div class="box picture">
-                               <img id="picDay0" src="#"></img>
+                               <i id="picDay0" class=""></i>
                                <p id="text0"></p>
                           </div>
                           <div class="box picture">
-                               <img id="picDay1" src="#"></img>
+                               <i id="picDay1" class=""></i>
                                <p id="text1"></p>
                           </div>
                       </div>
                       <div class="containerRow">
                           <div class="containerColumn">
-                              <p id="min0"></p>
-                              <p id="max0"></p>
+                              <p id="min0" class="wi wi-thermometer-exterior"></p>
+                              <p id="max0" class="wi wi-thermometer"></p>
                           </div>
                           <div class="containerColumn">
                               <p id="wind0"></p>
@@ -105,6 +106,12 @@
                           </div>
                           <div class="box smallTemp">temp</div> 
                       </div>
+                      <div id="18" class="box containerColumn">18
+                          <div class="box picture">
+                              <img src="#">pic</img>
+                          </div>
+                          <div class="box smallTemp">temp</div> 
+                      </div>
                       <div id="22" class="box containerColumn">22
                           <div class="box picture">
                               <img src="#">pic</img>
@@ -118,11 +125,11 @@
                <div id="tomorrow" class="card flexColumn">Tomorrow
                    <div class="containerRow">
                         <div class="box picture">
-                            <img id="picDay2" src="#"></img>
+                            <i id="picDay2"></i>
                             <p id="text2"></p>
                         </div>
                         <div class="box picture">
-                            <img id="picDay3" src="#"></img>
+                            <i id="picDay3"></i>
                             <p id="text3"></p>
                         </div>
                     </div>
@@ -144,11 +151,11 @@
                <div id="afterTwo" class="card flexColumn"><span id="day2">day2</span>
                    <div class="containerRow">
                         <div class="box picture">
-                            <img id="picDay4" src="#"></img>
+                            <i id="picDay4"></i>
                             <p id="text4"></p>
                         </div>
                         <div class="box picture">
-                            <img id="picDay5" src="#"></img>
+                            <i id="picDay5"></i>
                             <p id="text5"></p>
                         </div>
                     </div>
@@ -171,36 +178,36 @@
                   <div class="containerRow">
                       <div class="box containerColumn"><span id="day3">day3</span>
                           <div class="containerColumn">
-                              <img id="picDay6" src="#"></img>
-                              <img id="picDay7" src="#"></img>
+                              <i id="picDay6"></i>
+                              <i id="picDay7"></i>
                           </div>
                           <div class="box minmax"><span id="min3"></span> / <span id="max3"></span></div> 
                       </div>
                       <div class="box containerColumn"><span id="day4">day4</span>
                           <div class="containerColumn">
-                              <img id="picDay8" src="#"></img>
-                              <img id="picDay9" src="#"></img>
+                              <i id="picDay8"></i>
+                              <i id="picDay9"></i>
                           </div>
                           <div class="box minmax"><span id="min4"></span> / <span id="max4"></div> 
                       </div>
                       <div class="box containerColumn"><span id="day5">day5</span>
                           <div class="containerColumn">
-                              <img id="picDay10" src="#"></img>
-                              <img id="picDay11" src="#"></img>
+                              <i id="picDay10"></i>
+                              <i id="picDay11"></i>
                           </div>
                           <div class="box minmax"><span id="min5"></span> / <span id="max5"></div> 
                       </div>
                       <div class="box containerColumn"><span id="day6">day6</span>
                           <div class="containerColumn">
-                              <img id="picDay12" src="#"></img>
-                              <img id="picDay13" src="#"></img>
+                              <i id="picDay12"></i>
+                              <i id="picDay13"></i>
                           </div>
                           <div class="box minmax"><span id="min6"></span> / <span id="max6"></div> 
                       </div>
                       <div class="box containerColumn"><span id="day7">day7</span>
                           <div class="containerColumn">
-                              <img id="picDay14" src="#"></img>
-                              <img id="picDay15" src="#"></img>
+                              <i id="picDay14"></i>
+                              <i id="picDay15"></i>
                           </div>
                           <div class="box minmax"><span id="min7"></span> / <span id="max7"></div> 
                       </div>
