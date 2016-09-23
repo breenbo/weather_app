@@ -1,0 +1,344 @@
+/*!
+ *  Weather Icons 2.0.8
+ *  Updated September 19, 2015
+ *  Weather themed icons for Bootstrap
+ *  Author - Erik Flowers - erik@helloerik.com
+ *  Email: erik@helloerik.com
+ *  Twitter: http://twitter.com/Erik_UX
+ *  ------------------------------------------------------------------------------
+ *  Maintained at http://erikflowers.github.io/weather-icons
+ *
+ *  License
+ *  ------------------------------------------------------------------------------
+ *  - Font licensed under SIL OFL 1.1 -
+ *    http://scripts.sil.org/OFL
+ *  - CSS, SCSS and LESS are licensed under MIT License -
+ *    http://opensource.org/licenses/mit-license.html
+ *  - Documentation licensed under CC BY 3.0 -
+ *    http://creativecommons.org/licenses/by/3.0/
+ *  - Inspired by and works great as a companion with Font Awesome
+ *    "Font Awesome by Dave Gandy - http://fontawesome.io"
+ */
+@font-face {
+  font-family: 'weathericons';
+  src: url('font/weathericons-regular-webfont.eot');
+  src: url('font/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('font/weathericons-regular-webfont.woff2') format('woff2'), url('font/weathericons-regular-webfont.woff') format('woff'), url('font/weathericons-regular-webfont.ttf') format('truetype'), url('font/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.wi {
+  display: inline-block;
+  font-family: 'weathericons';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.wi-fw {
+  text-align: center;
+  width: 1.4em;
+}
+.wi-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.wi-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.wi-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.wi-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.wi-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+.wi-alien:before {
+  content: "\f075";
+}
+.wi-celsius:before {
+  content: "\f03c";
+}
+.wi-fahrenheit:before {
+  content: "\f045";
+}
+.wi-degrees:before {
+  content: "\f042";
+}
+.wi-thermometer:before {
+  content: "\f055";
+}
+.wi-thermometer-exterior:before {
+  content: "\f053";
+}
+.wi-thermometer-internal:before {
+  content: "\f054";
+}
+.wi-cloud-down:before {
+  content: "\f03d";
+}
+.wi-cloud-up:before {
+  content: "\f040";
+}
+.wi-cloud-refresh:before {
+  content: "\f03e";
+}
+.wi-horizon:before {
+  content: "\f047";
+}
+.wi-horizon-alt:before {
+  content: "\f046";
+}
+.wi-sunrise:before {
+  content: "\f051";
+}
+.wi-sunset:before {
+  content: "\f052";
+}
+.wi-moonrise:before {
+  content: "\f0c9";
+}
+.wi-moonset:before {
+  content: "\f0ca";
+}
+.wi-refresh:before {
+  content: "\f04c";
+}
+.wi-refresh-alt:before {
+  content: "\f04b";
+}
+.wi-umbrella:before {
+  content: "\f084";
+}
+.wi-barometer:before {
+  content: "\f079";
+}
+.wi-humidity:before {
+  content: "\f07a";
+}
+.wi-na:before {
+  content: "\f07b";
+}
+.wi-time-1:before {
+  content: "\f08a";
+}
+.wi-time-2:before {
+  content: "\f08b";
+}
+.wi-time-3:before {
+  content: "\f08c";
+}
+.wi-time-4:before {
+  content: "\f08d";
+}
+.wi-time-5:before {
+  content: "\f08e";
+}
+.wi-time-6:before {
+  content: "\f08f";
+}
+.wi-time-7:before {
+  content: "\f090";
+}
+.wi-time-8:before {
+  content: "\f091";
+}
+.wi-time-9:before {
+  content: "\f092";
+}
+.wi-time-10:before {
+  content: "\f093";
+}
+.wi-time-11:before {
+  content: "\f094";
+}
+.wi-time-12:before {
+  content: "\f089";
+}
+.wi-direction-up:before {
+  content: "\f058";
+}
+.wi-direction-up-right:before {
+  content: "\f057";
+}
+.wi-direction-right:before {
+  content: "\f04d";
+}
+.wi-direction-down-right:before {
+  content: "\f088";
+}
+.wi-direction-down:before {
+  content: "\f044";
+}
+.wi-direction-down-left:before {
+  content: "\f043";
+}
+.wi-direction-left:before {
+  content: "\f048";
+}
+.wi-direction-up-left:before {
+  content: "\f087";
+}
+.wi-wind-beaufort-0:before {
+  content: "\f0b7";
+}
+.wi-wind-beaufort-1:before {
+  content: "\f0b8";
+}
+.wi-wind-beaufort-2:before {
+  content: "\f0b9";
+}
+.wi-wind-beaufort-3:before {
+  content: "\f0ba";
+}
+.wi-wind-beaufort-4:before {
+  content: "\f0bb";
+}
+.wi-wind-beaufort-5:before {
+  content: "\f0bc";
+}
+.wi-wind-beaufort-6:before {
+  content: "\f0bd";
+}
+.wi-wind-beaufort-7:before {
+  content: "\f0be";
+}
+.wi-wind-beaufort-8:before {
+  content: "\f0bf";
+}
+.wi-wind-beaufort-9:before {
+  content: "\f0c0";
+}
+.wi-wind-beaufort-10:before {
+  content: "\f0c1";
+}
+.wi-wind-beaufort-11:before {
+  content: "\f0c2";
+}
+.wi-wind-beaufort-12:before {
+  content: "\f0c3";
+}
+.wi-wu-chanceflurries:before {
+  content: "\f064";
+}
+.wi-wu-nt_chanceflurries:before {
+  content: "\f064";
+}
+.wi-wu-chancerain:before {
+  content: "\f019";
+}
+.wi-wu-nt_chancerain:before {
+  content: "\f019";
+}
+.wi-wu-chancesleet:before {
+  content: "\f0b5";
+}
+.wi-wu-nt_chancesleet:before {
+  content: "\f0b5";
+}
+.wi-wu-chancesnow:before {
+  content: "\f01b";
+}
+.wi-wu-nt_chancesnow:before {
+  content: "\f01b";
+}
+.wi-wu-chancetstorms:before {
+  content: "\f01e";
+}
+.wi-wu-nt_chancetstorms:before {
+  content: "\f01e";
+}
+.wi-wu-clear:before {
+  content: "\f00d";
+}
+.wi-wu-nt_clear:before {
+  content: "\f02e";
+}
+.wi-wu-cloudy:before {
+  content: "\f002";
+}
+.wi-wu-nt_cloudy:before {
+  content: "\f086";
+}
+.wi-wu-flurries:before {
+  content: "\f064";
+}
+.wi-wu-nt_flurries:before {
+  content: "\f064";
+}
+.wi-wu-hazy:before {
+  content: "\f0b6";
+}
+.wi-wu-nt_hazy:before {
+  content: "\f04a";
+}
+.wi-wu-mostlycloudy:before {
+  content: "\f002";
+}
+.wi-wu-nt_mostlycloudy:before {
+  content: "\f086";
+}
+.wi-wu-mostlysunny:before {
+  content: "\f00d";
+}
+.wi-wu-nt_mostlysunny:before {
+  content: "\f02e";
+}
+.wi-wu-partlycloudy:before {
+  content: "\f002";
+}
+.wi-wu-nt_partlycloudy:before {
+  content: "\f081";
+}
+.wi-wu-partlysunny:before {
+  content: "\f00d";
+}
+.wi-wu-nt_partlysunny:before {
+  content: "\f02e";
+}
+.wi-wu-rain:before {
+  content: "\f01a";
+}
+.wi-wu-nt_rain:before {
+  content: "\f028";
+}
+.wi-wu-sleet:before {
+  content: "\f0b5";
+}
+.wi-wu-nt_sleet:before {
+  content: "\f0b5";
+}
+.wi-wu-snow:before {
+  content: "\f01b";
+}
+.wi-wu-nt_snow:before {
+  content: "\f01b";
+}
+.wi-wu-sunny:before {
+  content: "\f00d";
+}
+.wi-wu-tstorms:before {
+  content: "\f01e";
+}
+.wi-wu-nt_tstorms:before {
+  content: "\f01e";
+}
+.wi-wu-unknown:before {
+  content: "\f07b";
+}

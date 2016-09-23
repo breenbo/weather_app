@@ -78,8 +78,9 @@
                 $("#picDay" + [i]).attr("class", "wi wi-wu-" + icon[i]);
             //
             //boucle if si farenheit -> basculer sur fctext
-            text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
-            $("#text"+[i]).html(text[i]);
+                text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
+                text[i]=text[i].replace(/\./gi, ".<br>")
+                $("#text"+[i]).html(text[i]);
             }
             console.log(icon);
           })
