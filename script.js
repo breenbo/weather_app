@@ -19,7 +19,21 @@
             var dewPoint_c=json.current_observation.dewpoint_c;
             $("#dewPoint").html("Dew point : " + dewPoint_c);
             var icon=json.current_observation.icon;
-            $("#actualIcon").attr("class", "wi wi-wu-" + icon);
+            //
+            // $("#actualIcon").attr("class", "wi wi-wu-" + icon);
+            //
+            // test of skycons
+            //
+            var skycons = new Skycons({
+                "monochrome":false,
+                "colors" : {
+                    "cloud" : "lightgray",
+                    "sun" : "orange"
+                }
+            });
+            skycons.add("testIcon", Skycons.PARTLY_CLOUDY_DAY);
+            skycons.play();
+
             var relativeHumidity=json.current_observation.relative_humidity;
             $("#relativeHumidity").html(relativeHumidity);
             var windDir=json.current_observation.wind_dir;
@@ -69,13 +83,8 @@
                 $("#precip"+[i]).html(precip[i]);
             }
             for (i=0; i<16; i++) {
-            //change to have https url and i icons
-                iconUrl[i]=json.forecast.txt_forecast.forecastday[i].icon_url;
-                iconUrl[i]=iconUrl[i].slice(0,4) + "s" + iconUrl[i].slice(4);
-                iconUrl[i]=iconUrl[i].replace(/k/i, "i");
-                
-                icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
-                $("#picDay" + [i]).attr("class", "wi wi-wu-" + icon[i]);
+                // icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
+                // $("#picDay" + [i]).attr("class", "wi wi-wu-" + icon[i]);
             //
             //boucle if si farenheit -> basculer sur fctext
                 text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
