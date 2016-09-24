@@ -10,6 +10,10 @@ img {
     height: 100px;
 }
 
+.small {
+    height:60px;
+}
+    
 .wi {
     margin-top:5px;
     font-size:50px;
@@ -105,6 +109,9 @@ input[type=search]:focus {
     flex:2;
 }
 
+#hourly {
+    display:none;
+}
 footer {
     text-align: center;
 }
@@ -123,6 +130,9 @@ footer {
         justify-content:space-around;
     }
     
+    #hourly {
+        display:block;
+    }
     .card {
         border-radius: 5px;
         margin:1vh;

@@ -10,5 +10,5 @@
 9. click on future view : flip today view with detailed info ?
 10. Faire apparaitre les données détaillées en cliquant sur une flêche vers le bas.
 11. Vue par défaut : icone et température actuelle + icone indiquant un click
-12. do night weather icons in css
 13. use wind weather icons for wind direction
+14. prévisions horaires pour les 6 prochaines heures dans le hourly

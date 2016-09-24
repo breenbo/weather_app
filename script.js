@@ -19,21 +19,19 @@
             var dewPoint_c=json.current_observation.dewpoint_c;
             $("#dewPoint").html("Dew point : " + dewPoint_c);
             var icon=json.current_observation.icon;
-            //
-            // $("#actualIcon").attr("class", "wi wi-wu-" + icon);
-            //
-            // test of skycons
-            //
+        // skycons : change the color !!!!!!!!!!!!!
             var skycons = new Skycons({
                 "monochrome":false,
                 "colors" : {
                     "cloud" : "lightgray",
-                    "sun" : "orange"
+                    "sun" : "orange",
+                    "rain" : "blue",
+                    "leaf" : "green"
                 }
             });
-            skycons.add("testIcon", Skycons.PARTLY_CLOUDY_DAY);
+            skycons.add("actualIcon", Skycons[icon]);
             skycons.play();
-
+        //
             var relativeHumidity=json.current_observation.relative_humidity;
             $("#relativeHumidity").html(relativeHumidity);
             var windDir=json.current_observation.wind_dir;
@@ -69,8 +67,10 @@
             // boucle if pour choisir ligne en farenheit ou celsius
                 high[i]=json.forecast.simpleforecast.forecastday[i].high.celsius;
                 $("#max"+[i]).html(high[i]);
+                $("#max"+[i]).css("color", "red");
                 low[i]=json.forecast.simpleforecast.forecastday[i].low.celsius;
                 $("#min"+[i]).html(low[i]);
+                $("#min"+[i]).css("color", "blue");
             // boucle if si farenheit -> basculer en mph
                 wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
                 $("#wind"+[i]).html(wind[i]);
@@ -83,15 +83,15 @@
                 $("#precip"+[i]).html(precip[i]);
             }
             for (i=0; i<16; i++) {
-                // icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
-                // $("#picDay" + [i]).attr("class", "wi wi-wu-" + icon[i]);
-            //
+                icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
+                skycons.add("picDay" + [i], Skycons[icon[i]]);
+                console.log(icon[i]);
+                skycons.play();
             //boucle if si farenheit -> basculer sur fctext
                 text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
                 text[i]=text[i].replace(/\./gi, ".<br>")
                 $("#text"+[i]).html(text[i]);
             }
-            console.log(icon);
           })
           // display hourly evolution for today
         var hourlyUrl="https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + maLatitude + "," + maLongitude + ".json";
