@@ -44,10 +44,6 @@
         // boucle if si farenheit -> basculer en psi
             var pressureMb=json.current_observation.pressure_mb;
             $("#pressureMb").html(pressureMb + " mb");
-            var pressureTrend=json.current_observation.pressure_trend;
-            $("#pressureTrend").html("Pressure trend : " + pressureTrend + " mb");
-            var uv=json.current_observation.UV;
-            $("#uv").html("UV indice : " + uv);
         // display forecast
         var forecastUrl="https://api.wunderground.com/api/" + apiKey + "/forecast10day/q/" + maLatitude + "," + maLongitude + ".json";
         $.getJSON(forecastUrl, function(json) {
@@ -100,7 +96,8 @@
             var hourTemp=[];
             for (var i=0; i<6; i++) {
                 hour[i]=json.hourly_forecast[i].FCTTIME.civil;
-                $("#hourly" + [i]).html(hour[i]);
+                hour[i]=hour[i].split(/\b/)[0];
+                $("#hourly" + [i]).attr("class", "wi wi-time-" + hour[i]);
                 hourTemp[i]=json.hourly_forecast[i].temp.metric;
                 $("#hourlyTemp" + [i]).html(hourTemp[i]);
                 hourIcon[i]=json.hourly_forecast[i].icon;

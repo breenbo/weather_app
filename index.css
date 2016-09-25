@@ -5,24 +5,22 @@ body {
     background-color: lightgray;
 }
 
-img {
-    width: 100px;
-    height: 100px;
+.big {
+    width:128px;
 }
 
 .small {
-    height:60px;
+    width:100px;
 }
     
 .wi {
     margin-top:5px;
-    font-size:50px;
+    font-size:30px;
 }
 
 .containerRow {
     flex:1;
     display:flex;
-    justify-content:space-around;
 }
 
 .containerColumn {
@@ -109,9 +107,6 @@ input[type=search]:focus {
     flex:2;
 }
 
-#hourly {
-    display:none;
-}
 footer {
     text-align: center;
 }
@@ -130,9 +125,6 @@ footer {
         justify-content:space-around;
     }
     
-    #hourly {
-        display:block;
-    }
     .card {
         border-radius: 5px;
         margin:1vh;
