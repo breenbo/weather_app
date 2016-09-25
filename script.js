@@ -19,7 +19,7 @@
             var dewPoint_c=json.current_observation.dewpoint_c;
             $("#dewPoint").html("Dew point : " + dewPoint_c);
             var icon=json.current_observation.icon;
-        // skycons : change the color !!!!!!!!!!!!!
+        // skycons : change for pastel colors !!!!!!!!!!!!!
             var skycons = new Skycons({
                 "monochrome":false,
                 "colors" : {
@@ -85,7 +85,6 @@
             for (i=0; i<16; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
                 skycons.add("picDay" + [i], Skycons[icon[i]]);
-                console.log(icon[i]);
                 skycons.play();
             //boucle if si farenheit -> basculer sur fctext
                 text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
@@ -95,6 +94,19 @@
           })
           // display hourly evolution for today
         var hourlyUrl="https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + maLatitude + "," + maLongitude + ".json";
+        $.getJSON(hourlyUrl, function(json) {
+            var hour=[];
+            var hourIcon=[];
+            var hourTemp=[];
+            for (var i=0; i<6; i++) {
+                hour[i]=json.hourly_forecast[i].FCTTIME.civil;
+                $("#hourly" + [i]).html(hour[i]);
+                hourTemp[i]=json.hourly_forecast[i].temp.metric;
+                $("#hourlyTemp" + [i]).html(hourTemp[i]);
+                hourIcon[i]=json.hourly_forecast[i].icon;
+                skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
+            }
+        })
     }); 
     }
 
