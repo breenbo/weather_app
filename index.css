@@ -5,12 +5,24 @@ body {
     background-color: lightgray;
 }
 
+.text {
+    display:none;
+}
+
 .big {
-    width:128px;
+    width:20vw;
+}
+
+.bigscreen {
+    display:none;
+}
+
+.smallText {
+    font-size:4vw;
 }
 
 .small {
-    width:100px;
+    width:8vw;
 }
     
 .wi {
@@ -21,6 +33,7 @@ body {
 .containerRow {
     flex:1;
     display:flex;
+    justify-content:center;
 }
 
 .containerColumn {
@@ -43,6 +56,8 @@ body {
 
 .picture {
     flex:2;
+    display:flex;
+    justify-content:center;
 }
 
 .logo {
@@ -130,4 +145,11 @@ footer {
         margin:1vh;
         box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.2), 4px 4px 3px 0 rgba(0, 0, 0, 0.19);
     }
-}
+
+    .bigscreen {
+        display:block;
+    }
+
+    .text {
+        display:block;
+    }

@@ -20,8 +20,8 @@
                </div>
                    <input type="search" name="search" placeholder="city or zip code"/>
                <div id="mesure" class="containerRow">
-                   <div id="celsius">°C</div>
-                   <div id="fahrenheit">°F</div>
+                   <div id="celsius" class="wi wi-celsius">°C</div>
+                   <div id="fahrenheit" class="wi wi-fahrenheit">°F</div>
                </div>
            </form>
        </header>
@@ -29,11 +29,11 @@
            <div id="current" class="card containerColumn">Current
                <div class="box containerColumn">
                   <div class="containerRow">
-                          <div class="box picture">
-                              <canvas id="actualIcon" class="big"></canvas>
-                          </div>
-                          <p id="actualTemp" class="box wi wi-thermometer"></p>
-                          <p id="actualFeelTemp"></p>
+                      <div class="box picture">
+                          <canvas id="actualIcon" class="big" width="128" height="128"></canvas>
+                      </div>
+                      <p id="actualTemp" class="box wi wi-thermometer"></p>
+                      <p id="actualFeelTemp"></p>
                   </div>
                   <div id="detail" class="containerRow">
                       <div class="containerColumn">
@@ -54,12 +54,12 @@
                   <div class="box containerColumn">
                       <div class="box containerRow">
                           <div class="box picture">
-                               <canvas id="picDay0" class="big"></canvas>
-                               <p id="text0"></p>
+                               <canvas id="picDay0" class="big" width="128" height="128"></canvas>
+                               <p id="text0" class="text"></p>
                           </div>
                           <div class="box picture">
-                               <canvas id="picDay1" class="big"></canvas>
-                               <p id="text1"></p>
+                               <canvas id="picDay1" class="big" width="128" height="128"></canvas>
+                               <p id="text1" class="text"></p>
                           </div>
                       </div>
                       <div class="containerRow">
@@ -76,8 +76,8 @@
                               <p id="precip0"></p>
                           </div>
                           <div class="containerColumn">
-                              <p id="sunrise0">sunrise</p>
-                              <p id="sunset0">sunset</p>
+                              <p id="sunrise0" class="wi wi-sunrise">sunrise</p>
+                              <p id="sunset0" class="wi wi-sunset">sunset</p>
                           </div>
                       </div>
                   </div>
@@ -86,37 +86,37 @@
                   <div class="containerRow">
                       <div class="box containerColumn"><span id="hourly0" class=""></span>
                           <div class="box picture">
-                               <canvas id="hourlyPic0" class="small"></canvas>
+                               <canvas id="hourlyPic0" class="small" width="128" height="128"></canvas>
                           </div>
                           <div id="hourlyTemp0" class="box">temp</div> 
                       </div>
                       <div class="box containerColumn"><span id="hourly1" class=""></span>
                           <div class="box picture">
-                               <canvas id="hourlyPic1" class="small"></canvas>
+                               <canvas id="hourlyPic1" class="small" width="128" height="128"></canvas>
                           </div>
                           <div id="hourlyTemp1" class="box smallTemp">temp</div> 
                       </div>
                       <div class="box containerColumn"><span id="hourly2" class=""></span>
                           <div class="box picture">
-                               <canvas id="hourlyPic2" class="small"></canvas>
+                               <canvas id="hourlyPic2" class="small" width="128" height="128"></canvas>
                           </div>
                           <div id="hourlyTemp2" class="box smallTemp">temp</div> 
                       </div>
                       <div class="box containerColumn"><span id="hourly3" class=""></span>
                           <div class="box picture">
-                               <canvas id="hourlyPic3" class="small"></canvas>
+                               <canvas id="hourlyPic3" class="small" width="128" height="128"></canvas>
                           </div>
                           <div id="hourlyTemp3" class="box smallTemp">temp</div> 
                       </div>
                       <div class="box containerColumn"><span id="hourly4" class=""></span>
                           <div class="box picture">
-                               <canvas id="hourlyPic4" class="small"></canvas>
+                               <canvas id="hourlyPic4" class="small" width="128" height="128"></canvas>
                           </div>
                           <div id="hourlyTemp4" class="box smallTemp">temp</div> 
                       </div>
                       <div class="box containerColumn"><span id="hourly5" class=""></span>
                           <div class="box picture">
-                               <canvas id="hourlyPic5" class="small"></canvas>
+                               <canvas id="hourlyPic5" class="small" width="128" height="128"></canvas>
                           </div>
                           <div id="hourlyTemp5" class="box smallTemp">temp</div> 
                       </div>
@@ -127,12 +127,12 @@
                <div id="tomorrow" class="card flexColumn">Tomorrow
                    <div class="containerRow">
                         <div class="box picture">
-                            <canvas id="picDay2" class="big"></canvas>
-                            <p id="text2"></p>
+                            <canvas id="picDay2" class="big" width="128" height="128"></canvas>
+                            <p id="text2" class="text"></p>
                         </div>
                         <div class="box picture">
-                            <canvas id="picDay3" class="big"></canvas>
-                            <p id="text3"></p>
+                            <canvas id="picDay3" class="big" width="128" height="128"></canvas>
+                            <p id="text3" class="text"></p>
                         </div>
                     </div>
                     <div class="containerRow">
@@ -149,20 +149,20 @@
                             <p id="precip1"></p>
                         </div>
                           <div class="containerColumn">
-                              <p id="sunrise1">sunrise</p>
-                              <p id="sunset1">sunset</p>
+                              <p id="sunrise1" class="wi wi-sunrise">sunrise</p>
+                              <p id="sunset1" class="wi wi-sunset">sunset</p>
                           </div>
                     </div>
                </div>
                <div id="afterTwo" class="card flexColumn"><span id="day2">day2</span>
                    <div class="containerRow">
                         <div class="box picture">
-                            <canvas id="picDay4" class="big"></canvas>
-                            <p id="text4"></p>
+                            <canvas id="picDay4" class="big" width="128" height="128"></canvas>
+                            <p id="text4" class="text"></p>
                         </div>
                         <div class="box picture">
-                            <canvas id="picDay5" class="big"></canvas>
-                            <p id="text5"></p>
+                            <canvas id="picDay5" class="big" width="128" height="128"></canvas>
+                            <p id="text5" class="text"></p>
                         </div>
                     </div>
                     <div class="containerRow">
@@ -179,47 +179,47 @@
                             <p id="precip2"></p>
                         </div>
                           <div class="containerColumn">
-                              <p id="sunrise2">sunrise</p>
-                              <p id="sunset2">sunset</p>
+                              <p id="sunrise2" class="wi wi-sunrise">sunrise</p>
+                              <p id="sunset2" class="wi wi-sunset">sunset</p>
                           </div>
                     </div>
                </div>
                <div id="afterThree" class="card flexColumn">end of week
                   <div class="containerRow">
-                      <div class="box containerColumn"><span id="day3">day3</span>
+                      <div class="box containerColumn"><span id="day3" class="smallText">day3</span>
                           <div class="containerRow">
-                                <canvas id="picDay6" class="small"></canvas>
-                                <canvas id="picDay7" class="small"></canvas>
+                                <canvas id="picDay6" class="small" width="128" height="128"></canvas>
+                                <canvas id="picDay7" class="small bigscreen" width="128" height="128"></canvas>
                           </div>
-                          <div class="box minmax"><span id="min3"></span> / <span id="max3"></span></div> 
+                          <div class="box minmax"><span id="min3" class="smallText"></span> <span id="max3" class="smallText"></span></div> 
                       </div>
-                      <div class="box containerColumn"><span id="day4">day4</span>
+                      <div class="box containerColumn"><span id="day4" class="smallText">day4</span>
                           <div class="containerRow">
-                                <canvas id="picDay8" class="small"></canvas>
-                                <canvas id="picDay9" class="small"></canvas>
+                                <canvas id="picDay8" class="small" width="128" height="128"></canvas>
+                                <canvas id="picDay9" class="small bigscreen" width="128" height="128"></canvas>
                           </div>
-                          <div class="box minmax"><span id="min4"></span> / <span id="max4"></div> 
+                          <div class="box minmax"><span id="min4" class="smallText"></span> <span id="max4" class="smallText"></div> 
                       </div>
-                      <div class="box containerColumn"><span id="day5">day5</span>
+                      <div class="box containerColumn"><span id="day5" class="smallText">day5</span>
                           <div class="containerRow">
-                                <canvas id="picDay10" class="small"></canvas>
-                                <canvas id="picDay11" class="small"></canvas>
+                                <canvas id="picDay10" class="small" width="128" height="128"></canvas>
+                                <canvas id="picDay11" class="small bigscreen" width="128" height="128"></canvas>
                           </div>
-                          <div class="box minmax"><span id="min5"></span> / <span id="max5"></div> 
+                          <div class="box minmax"><span id="min5" class="smallText"></span> <span id="max5" class="smallText"></div> 
                       </div>
-                      <div class="box containerColumn"><span id="day6">day6</span>
+                      <div class="box containerColumn"><span id="day6" class="smallText">day6</span>
                           <div class="containerRow">
-                                <canvas id="picDay12" class="small"></canvas>
-                                <canvas id="picDay13" class="small"></canvas>
+                                <canvas id="picDay12" class="small" width="128" height="128"></canvas>
+                                <canvas id="picDay13" class="small bigscreen" width="128" height="128"></canvas>
                           </div>
-                          <div class="box minmax"><span id="min6"></span> / <span id="max6"></div> 
+                          <div class="box minmax"><span id="min6" class="smallText"></span> <span id="max6" class="smallText"></div> 
                       </div>
-                      <div class="box containerColumn"><span id="day7">day7</span>
+                      <div class="box containerColumn"><span id="day7" class="smallText">day7</span>
                           <div class="containerRow">
-                                <canvas id="picDay14" class="small"></canvas>
-                                <canvas id="picDay15" class="small"></canvas>
+                                <canvas id="picDay14" class="small" width="128" height="128"></canvas>
+                                <canvas id="picDay15" class="small bigscreen" width="128" height="128"></canvas>
                           </div>
-                          <div class="box minmax"><span id="min7"></span> / <span id="max7"></div> 
+                          <div class="box minmax"><span id="min7" class="smallText"></span> <span id="max7" class="smallText"></div> 
                       </div>
                   </div>
               </div>

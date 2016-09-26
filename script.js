@@ -13,11 +13,9 @@
             $("#city").html("City of " + city);
         // boucle if pour choisir ligne en farenheit ou celsius
             var actualTemp_c=json.current_observation.temp_c;
-            $("#actualTemp").html(actualTemp_c);
+            $("#actualTemp").html(actualTemp_c + "°");
             var actualFeelTemp_c=json.current_observation.feelslike_c;
-            $("#actualFeelTemp").html("Feels like : " + actualFeelTemp_c);
-            var dewPoint_c=json.current_observation.dewpoint_c;
-            $("#dewPoint").html("Dew point : " + dewPoint_c);
+            $("#actualFeelTemp").html("Feels like : " + actualFeelTemp_c + "°");
             var icon=json.current_observation.icon;
         // skycons : change for pastel colors !!!!!!!!!!!!!
             var skycons = new Skycons({
@@ -62,10 +60,10 @@
                 $("#day" + [i]).html(day[i]);
             // boucle if pour choisir ligne en farenheit ou celsius
                 high[i]=json.forecast.simpleforecast.forecastday[i].high.celsius;
-                $("#max"+[i]).html(high[i]);
+                $("#max"+[i]).html(high[i] + "°");
                 $("#max"+[i]).css("color", "red");
                 low[i]=json.forecast.simpleforecast.forecastday[i].low.celsius;
-                $("#min"+[i]).html(low[i]);
+                $("#min"+[i]).html(low[i] + "°");
                 $("#min"+[i]).css("color", "blue");
             // boucle if si farenheit -> basculer en mph
                 wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
@@ -76,7 +74,7 @@
                 $("#humidity"+[i]).html(humidity[i]);
             // boucle if si farenheit -> basculer en in
                 precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.mm;
-                $("#precip"+[i]).html(precip[i]);
+                $("#precip"+[i]).html(precip[i] + "mm");
             }
             for (i=0; i<16; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
@@ -99,7 +97,7 @@
                 hour[i]=hour[i].split(/\b/)[0];
                 $("#hourly" + [i]).attr("class", "wi wi-time-" + hour[i]);
                 hourTemp[i]=json.hourly_forecast[i].temp.metric;
-                $("#hourlyTemp" + [i]).html(hourTemp[i]);
+                $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
                 hourIcon[i]=json.hourly_forecast[i].icon;
                 skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
             }
