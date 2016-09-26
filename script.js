@@ -6,9 +6,9 @@
         maLatitude=position.coords.latitude;
         maLongitude=position.coords.longitude;
         
-        var conditionUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/q/" + maLatitude + "," + maLongitude + ".json";
+        var wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + maLatitude + "," + maLongitude + ".json";
         // display current conditions
-        $.getJSON(conditionUrl, function (json) {
+        $.getJSON(wundergroundUrl, function (json) {
             var city=json.current_observation.display_location.city;
             $("#city").html("City of " + city);
         // boucle if pour choisir ligne en farenheit ou celsius
@@ -33,18 +33,17 @@
             var relativeHumidity=json.current_observation.relative_humidity;
             $("#relativeHumidity").html(relativeHumidity);
             var windDir=json.current_observation.wind_dir;
-            $("#windDir").html("Wind direction : " + windDir);
+            $("#windDir").html(windDir);
         // boucle if si farenheit -> basculer en mph
             var wind=json.current_observation.wind_kph;
-            $("#wind").html("Wind speed : " + wind + " kph");
+            $("#wind").html(wind + " kph");
             var windGust=json.current_observation.wind_gust_kph;
             $("#windGust").html("Wind gust : " + windGust + " kph");
         // boucle if si farenheit -> basculer en psi
             var pressureMb=json.current_observation.pressure_mb;
             $("#pressureMb").html(pressureMb + " mb");
+        //
         // display forecast
-        var forecastUrl="https://api.wunderground.com/api/" + apiKey + "/forecast10day/q/" + maLatitude + "," + maLongitude + ".json";
-        $.getJSON(forecastUrl, function(json) {
             var day=[];
             var high=[];
             var low=[];
@@ -69,7 +68,7 @@
                 wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
                 $("#wind"+[i]).html(wind[i]);
                 windDir[i]=json.forecast.simpleforecast.forecastday[i].avewind.dir;
-                $("#windDir"+[i]).html(windDir[i]);
+                $("#windDir" + [i]).html(windDir[i]);
                 humidity[i]=json.forecast.simpleforecast.forecastday[i].avehumidity;
                 $("#humidity"+[i]).html(humidity[i]);
             // boucle if si farenheit -> basculer en in
@@ -85,10 +84,16 @@
                 text[i]=text[i].replace(/\./gi, ".<br>")
                 $("#text"+[i]).html(text[i]);
             }
-          })
+          //
+          // display sunset and sunrise
+            var sunriseHour=json.moon_phase.sunrise.hour;
+            var sunriseMinute=json.moon_phase.sunrise.minute;
+            var sunsetHour=json.moon_phase.sunset.hour;
+            var sunsetMinute=json.moon_phase.sunset.minute;
+            $("#sunset").html(sunsetHour + " : " + sunsetMinute);
+            $("#sunrise").html(sunriseHour + " : " + sunriseMinute);
+          //
           // display hourly evolution for today
-        var hourlyUrl="https://api.wunderground.com/api/" + apiKey + "/hourly/q/" + maLatitude + "," + maLongitude + ".json";
-        $.getJSON(hourlyUrl, function(json) {
             var hour=[];
             var hourIcon=[];
             var hourTemp=[];
@@ -99,10 +104,11 @@
                 hourTemp[i]=json.hourly_forecast[i].temp.metric;
                 $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
                 hourIcon[i]=json.hourly_forecast[i].icon;
-                skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
+                if (hour[i] >= 8 && hour[i] <= 20) {
+                    skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
+                } skycons.add("hourlyPic" + [i], Skycons["nt_" + hourIcon[i]]);
             }
         })
-    }); 
     }
 
     if (navigator.geolocation) {

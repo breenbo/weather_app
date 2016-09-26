@@ -46,6 +46,9 @@
 .wi-degrees:before {
   content: "\f042";
 }
+.wi-strong-wind:before {
+  content: "\f050";
+}
 .wi-thermometer:before {
   content: "\f055";
 }
