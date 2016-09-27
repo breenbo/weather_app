@@ -9,8 +9,8 @@ body {
     display:none;
 }
 
-.big {
-    width:20vw;
+.bigPicture {
+    width:35vw;
 }
 
 .bigscreen {
@@ -18,13 +18,19 @@ body {
 }
 
 .smallText {
-    font-size:4vw;
+    width:35vw;
+    font-size:6vw;
+    margin-left:5vw;
 }
 
-.small {
-    width:8vw;
+.smallPicture {
+    width:20vw;
 }
     
+.tinyPicture {
+    width:15vw;
+}
+
 .wi {
     margin-top:5px;
     font-size:20px;
@@ -34,6 +40,7 @@ body {
     flex:1;
     display:flex;
     justify-content:center;
+    align-items:center;
 }
 
 .containerColumn {
@@ -44,12 +51,12 @@ body {
 
 .box {
     flex:1;
-    border:solid 1px;
 }
 
 .card {
     flex:1;
-    margin-top:1.5vh;
+    margin-top:4vw;
+    padding:5vw;
     background-color: #FAFAFA;
     box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.2), 0px 4px 3px 0 rgba(0, 0, 0, 0.19);
 }
@@ -74,6 +81,10 @@ body {
 .flexColumn {
     display:flex;
     flex-direction:column;
+}
+
+#endWeek {
+    padding-left:0;
 }
 
 #controlBar {
@@ -142,7 +153,7 @@ footer {
     
     .card {
         border-radius: 5px;
-        margin:1vh;
+        margin:1vw;
         box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.2), 4px 4px 3px 0 rgba(0, 0, 0, 0.19);
     }
 
@@ -153,4 +164,35 @@ footer {
     .text {
         display:block;
     }
+
+    #afterThree {
+        flex:1;
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+    }
+
+    #three, #four, #five, #six, #seven {
+        flex:1;
+        display: flex;
+        flex-direction:column;
+    }
+    
+.bigPicture {
+    width:5vw;
+}
+
+.smallText {
+    width:5vw;
+    font-size:6vw;
+    margin-left:5vw;
+}
+
+.smallPicture {
+    width:2vw;
+}
+    
+.tinyPicture {
+    width:5vw;
+}
 }

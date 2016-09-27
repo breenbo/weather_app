@@ -27,7 +27,11 @@
                     "leaf" : "green"
                 }
             });
-            skycons.add("actualIcon", Skycons[icon]);
+            var d = new Date();
+            var h = d.getHours();
+            if (h >= 7 && h <= 20) {
+                skycons.add("actualIcon", Skycons[icon]);
+            } skycons.add("actualIcon", Skycons["nt_" + icon]);
         //
             var relativeHumidity=json.current_observation.relative_humidity;
             $("#relativeHumidity").html(relativeHumidity);
@@ -89,8 +93,8 @@
             var sunriseMinute=json.moon_phase.sunrise.minute;
             var sunsetHour=json.moon_phase.sunset.hour;
             var sunsetMinute=json.moon_phase.sunset.minute;
-            $("#sunset").html(sunsetHour + " : " + sunsetMinute);
-            $("#sunrise").html(sunriseHour + " : " + sunriseMinute);
+            $("#sunrise").html("0" + sunriseHour + ":" + sunriseMinute);
+            $("#sunset").html(sunsetHour + ":" + sunsetMinute);
           //
           // display hourly evolution for today
             var hour=[];
@@ -105,7 +109,7 @@
                 $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
                 hourIcon[i]=json.hourly_forecast[i].icon;
                hourFr[i]=json.hourly_forecast[i].FCTTIME.hour; 
-               if (hourFr[i] >= 8 && hourFr[i] <= 20) {
+               if (hourFr[i] >= 7 && hourFr[i] <= 20) {
                     skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
                } skycons.add("hourlyPic" + [i], Skycons["nt_" + hourIcon[i]]);
             }
