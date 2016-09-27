@@ -14,8 +14,8 @@
         // boucle if pour choisir ligne en farenheit ou celsius
             var actualTemp_c=json.current_observation.temp_c;
             $("#actualTemp").html(actualTemp_c + "°");
-            var actualFeelTemp_c=json.current_observation.feelslike_c;
-            $("#actualFeelTemp").html("Feels like : " + actualFeelTemp_c + "°");
+            // var actualFeelTemp_c=json.current_observation.feelslike_c;
+            // $("#actualFeelTemp").html("Feels like : " + actualFeelTemp_c + "°");
             var icon=json.current_observation.icon;
         // skycons : change for pastel colors !!!!!!!!!!!!!
             var skycons = new Skycons({
@@ -28,7 +28,6 @@
                 }
             });
             skycons.add("actualIcon", Skycons[icon]);
-            skycons.play();
         //
             var relativeHumidity=json.current_observation.relative_humidity;
             $("#relativeHumidity").html(relativeHumidity);
@@ -37,8 +36,8 @@
         // boucle if si farenheit -> basculer en mph
             var wind=json.current_observation.wind_kph;
             $("#wind").html(wind + " kph");
-            var windGust=json.current_observation.wind_gust_kph;
-            $("#windGust").html("Wind gust : " + windGust + " kph");
+            // var windGust=json.current_observation.wind_gust_kph;
+            // $("#windGust").html("Wind gust : " + windGust + " kph");
         // boucle if si farenheit -> basculer en psi
             var pressureMb=json.current_observation.pressure_mb;
             $("#pressureMb").html(pressureMb + " mb");
@@ -97,6 +96,7 @@
             var hour=[];
             var hourIcon=[];
             var hourTemp=[];
+            var hourFr=[];
             for (var i=0; i<6; i++) {
                 hour[i]=json.hourly_forecast[i].FCTTIME.civil;
                 hour[i]=hour[i].split(/\b/)[0];
@@ -104,9 +104,10 @@
                 hourTemp[i]=json.hourly_forecast[i].temp.metric;
                 $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
                 hourIcon[i]=json.hourly_forecast[i].icon;
-                if (hour[i] >= 8 && hour[i] <= 20) {
+               hourFr[i]=json.hourly_forecast[i].FCTTIME.hour; 
+               if (hourFr[i] >= 8 && hourFr[i] <= 20) {
                     skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
-                } skycons.add("hourlyPic" + [i], Skycons["nt_" + hourIcon[i]]);
+               } skycons.add("hourlyPic" + [i], Skycons["nt_" + hourIcon[i]]);
             }
         })
     }
