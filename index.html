@@ -29,65 +29,71 @@
            <div id="current" class="card containerColumn"><h3>Current</h3>
                
            <!-- test flip card -->
-               <section class="container">
-                   <div id="carte">
-                       <figure class="front"></figure>
-                       <figure class="back"></figure>
+               <div class="f1_container">
+                   <div class="f1_card">
+                       <div class="front face">
+                          <div class="containerRow">
+                              <div class="box picture">
+                                  <canvas id="actualIcon" class="bigPicture" width="128" height="128"></canvas>
+                              </div>
+                              <p id="actualTemp" class="box wi wi-thermometer"></p>
+                          </div>
+                       </div>
+                       <div class="back face">
+                          <div id="detail" class="containerRow">
+                              <div class="containerColumn">
+                                  <p id="relativeHumidity" class="wi wi-humidity"></p>
+                                  <p id="pressureMb" class="wi wi-barometer"></p>
+                              </div>
+                              <div class="containerColumn">
+                                  <p id="windDir" class="wi wi-wind-direction"></p> 
+                                  <p id="wind" class="wi wi-strong-wind"></p>
+                                  <p id="windGust"></p>
+                              </div>
+                          </div>
+                       </div>
                    </div>
-               </section>
+               </div>
            <!-- fin test flip card -->
 
-               <div class="box containerColumn">
-                  <div class="containerRow">
-                      <div class="box picture">
-                          <canvas id="actualIcon" class="bigPicture" width="128" height="128"></canvas>
-                      </div>
-                      <p id="actualTemp" class="box wi wi-thermometer"></p>
-                  </div>
-                  <div id="detail" class="containerRow">
-                      <div class="containerColumn">
-                          <p id="relativeHumidity" class="wi wi-humidity"></p>
-                          <p id="pressureMb" class="wi wi-barometer"></p>
-                      </div>
-                      <div class="containerColumn">
-                          <p id="windDir" class="wi wi-wind-direction"></p> 
-                          <p id="wind" class="wi wi-strong-wind"></p>
-                          <p id="windGust"></p>
-                      </div>
-                  </div>
-               </div> 
                <div id="today" class="box"><h3 class="title">Today forecast</h3>
-                  <div class="box containerColumn">
-                      <div class="box containerRow">
-                          <div class="box picture">
-                               <canvas id="picDay0" class="bigPicture" width="128" height="128"></canvas>
-                          </div>
-                          <div class="box picture">
-                               <canvas id="picDay1" class="bigPicture" width="128" height="128"></canvas>
-                          </div>
-                               <p id="text0" class="text"></p>
-                               <p id="text1" class="text"></p>
-                      </div>
-                      <div class="containerRow">
-                          <div class="containerColumn">
-                              <p id="min0" class="wi wi-thermometer-exterior"></p>
-                              <p id="max0" class="wi wi-thermometer"></p>
-                          </div>
-                          <div class="containerColumn">
-                              <p id="windDir0" class=""></p>
-                              <p id="wind0" class=""></p>
-                          </div>
-                          <div class="containerColumn">
-                              <p id="humidity0"></p>
-                              <p id="precip0"></p>
-                          </div>
-                          <div class="containerColumn">
-                              <p id="sunrise" class="wi wi-sunrise">sunrise</p>
-                              <p id="sunset" class="wi wi-sunset">sunset</p>
+                      <div class="f1_container">
+                          <div class="f1_card">
+                              <div class="front face">
+                                  <div class="box containerRow">
+                                      <div class="box picture">
+                                           <canvas id="picDay0" class="bigPicture" width="128" height="128"></canvas>
+                                      </div>
+                                      <div class="box picture">
+                                           <canvas id="picDay1" class="bigPicture" width="128" height="128"></canvas>
+                                      </div>
+                                          <p id="min0" class="wi wi-thermometer-exterior"></p>
+                                          <p id="max0" class="wi wi-thermometer"></p>
+                                  </div>
+                              </div>
+                              <div class="back face">
+                                  <div class="containerRow">
+                                      <div class="containerColumn">
+                                          <p id="text0" class="text"></p>
+                                          <p id="text1" class="text"></p>
+                                      </div>
+                                      <div class="containerColumn">
+                                          <p id="windDir0" class=""></p>
+                                          <p id="wind0" class=""></p>
+                                      </div>
+                                      <div class="containerColumn">
+                                          <p id="humidity0"></p>
+                                          <p id="precip0"></p>
+                                      </div>
+                                      <div class="containerColumn">
+                                          <p id="sunrise" class="wi wi-sunrise">sunrise</p>
+                                          <p id="sunset" class="wi wi-sunset">sunset</p>
+                                      </div>
+                                  </div>
+                              </div>
                           </div>
                       </div>
                   </div>
-               </div>
                <div id="hourly" class="box flexColumn"><h3 class="title">Hourly evolution</h3>
                   <div class="containerRow">
                       <div class="box containerColumn"><span id="hourly0" class=""></span>

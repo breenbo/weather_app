@@ -22,7 +22,6 @@ input[type=search]:focus {
 }
 .box {
     flex:1;
-    border:solid 0.5px;
 }
 .card {
     flex:1;
@@ -112,41 +111,35 @@ input[type=search]:focus {
 }
 
 /* flip card */
-#carte .back {
-    background-color:blue;
-    transform:rotateY(180deg);
+.f1_container {
+  position: relative;
+  width: 90vw;
+  height: 30vw;
+  z-index: 1;
+  perspective: 500px;
 }
-#carte .front {
-    background-color:red;
+.f1_card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 0.5s linear;
+  border:solid 1px lightgray;
 }
-#carte {
-    width:100%;
-    height:100%;
-    position:absolute;
-    transform-style:preserve-3d;
-    transition:transform 1s;
+.f1_container:hover .f1_card {
+  transform: rotateX(180deg);
 }
-#carte figure {
-    margin:0;
-    display:block;
-    position:absolute;
-    width:100%;
-    height:100%;
-    backface-visibility:hidden;
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
 }
-#carte.flipped {
-    transform:rotateY(180deg);
+.face.back {
+  display: block;
+  transform: rotateX(180deg);
+  box-sizing: border-box;
+  background-color: #aaa;
 }
-.container {
-    width:200px;
-    height:200px;
-    position : relative;
-    perspective:800px;
-}
-.container:hover #carte {
-    transform:rotateY(180def);
-}
-
 /* ============================================================ */
 
 @media all and (min-device-width:500px) {
