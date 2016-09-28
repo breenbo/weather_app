@@ -1,3 +1,15 @@
+// card flip test
+var init = function() {
+  var card = document.getElementById('carte');
+  
+  document.getElementById('carte').addEventListener( 'click', function(){
+    card.toggleClassName('flipped');
+  }, false);
+};
+
+window.addEventListener('DOMContentLoaded', init, false);
+//-----------------------------
+//
     var maLatitude=48.847;
     var maLongitude=2.208;
     var apiKey="b8bcc556b7a1fd8c";
