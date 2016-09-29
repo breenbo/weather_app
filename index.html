@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
-        <title>Weather App</title>
+        <title>weather app</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="index.css" type="text/css" />
@@ -9,8 +9,8 @@
     </head>
     <body>
        <header id="controlBar" class="flexRow">
-           <div id="titleBox" class="flexColumn">
-               <h1 id="title">Weather App</h1>
+           <div id="titlebox" class="flexColumn">
+               <h1 id="title">weather app</h1>
                <h2 id="city"></h2>
            </div>
            <form class="flexColumn">
@@ -26,115 +26,114 @@
            </form>
        </header>
        <div id="fond" class="flexColumn">
-           <div id="current" class="card containerColumn"><h3>Current</h3>
+           <div id="current" class="containerColumn">
                
-           <!-- test flip card -->
+           <!-- today flip card -->
                <div class="f1_container">
                    <div class="f1_card">
-                       <div class="front face">
+                       <div class="card front face">
+                          <h3>Today</h3>
+                          <h4>Current</h4>
                           <div class="containerRow">
                               <div class="box picture">
                                   <canvas id="actualIcon" class="bigPicture" width="128" height="128"></canvas>
                               </div>
                               <p id="actualTemp" class="box wi wi-thermometer"></p>
                           </div>
-                       </div>
-                       <div class="back face">
-                          <div id="detail" class="containerRow">
-                              <div class="containerColumn">
-                                  <p id="relativeHumidity" class="wi wi-humidity"></p>
-                                  <p id="pressureMb" class="wi wi-barometer"></p>
+                          <h4>Forecast</h4>
+                          <div class="containerRow">
+                              <div class="box picture">
+                                   <canvas id="picDay0" class="bigPicture" width="128" height="128"></canvas>
+                              </div>
+                              <div class="box picture">
+                                   <canvas id="picDay1" class="bigPicture" width="128" height="128"></canvas>
                               </div>
                               <div class="containerColumn">
-                                  <p id="windDir" class="wi wi-wind-direction"></p> 
-                                  <p id="wind" class="wi wi-strong-wind"></p>
-                                  <p id="windGust"></p>
+                                  <p id="min0" class="wi wi-thermometer-exterior"></p>
+                                  <p id="max0" class="wi wi-thermometer"></p>
+                              </div>
+                          </div>
+                          <h4>Hourly forecast</h4>
+                          <div class="containerRow">
+                              <div class="box containerColumn"><span id="hourly0" class=""></span>
+                                  <div class="box picture">
+                                       <canvas id="hourlyPic0" class="tinyPicture" width="128" height="128"></canvas>
+                                  </div>
+                                  <div id="hourlyTemp0" class="box">temp</div> 
+                              </div>
+                              <div class="box containerColumn"><span id="hourly1" class=""></span>
+                                  <div class="box picture">
+                                       <canvas id="hourlyPic1" class="tinyPicture" width="128" height="128"></canvas>
+                                  </div>
+                                  <div id="hourlyTemp1" class="box smallTemp">temp</div> 
+                              </div>
+                              <div class="box containerColumn"><span id="hourly2" class=""></span>
+                                  <div class="box picture">
+                                       <canvas id="hourlyPic2" class="tinyPicture" width="128" height="128"></canvas>
+                                  </div>
+                                  <div id="hourlyTemp2" class="box smallTemp">temp</div> 
+                              </div>
+                              <div class="box containerColumn"><span id="hourly3" class=""></span>
+                                  <div class="box picture">
+                                       <canvas id="hourlyPic3" class="tinyPicture" width="128" height="128"></canvas>
+                                  </div>
+                                  <div id="hourlyTemp3" class="box smallTemp">temp</div> 
+                              </div>
+                              <div class="box containerColumn"><span id="hourly4" class=""></span>
+                                  <div class="box picture">
+                                       <canvas id="hourlyPic4" class="tinyPicture" width="128" height="128"></canvas>
+                                  </div>
+                                  <div id="hourlyTemp4" class="box smallTemp">temp</div> 
+                              </div>
+                              <div class="box containerColumn"><span id="hourly5" class=""></span>
+                                  <div class="box picture">
+                                       <canvas id="hourlyPic5" class="tinyPicture" width="128" height="128"></canvas>
+                                  </div>
+                                  <div id="hourlyTemp5" class="box smallTemp">temp</div> 
+                              </div>
+                          </div>
+                       </div>
+                       <div class="card back face">
+                          <div id="detail" class="containerColumn">
+                              <div class="containerRow">
+                              <h4>Current</h4>
+                                  <div class="containerColumn">
+                                      <p id="relativeHumidity" class="wi wi-humidity"></p>
+                                      <p id="pressureMb" class="wi wi-barometer"></p>
+                                  </div>
+                                  <div class="containerColumn">
+                                      <p id="windDir" class="wi wi-wind-direction"></p> 
+                                      <p id="wind" class="wi wi-strong-wind"></p>
+                                      <p id="windGust"></p>
+                                  </div>
+                              </div>
+                              <h4>Forecast</h4>
+                              <div class="containerRow">
+                                  <p id="text0" class="text">Text0</p>
+                                  <p id="text1" class="text">Text1</p>
+                              </div>
+                              <div class="containerRow">
+                                  <div class="containerColumn">
+                                      <p id="windDir0" class=""></p>
+                                      <p id="wind0" class=""></p>
+                                  </div>
+                                  <div class="containerColumn">
+                                      <p id="humidity0"></p>
+                                      <p id="precip0"></p>
+                                  </div>
+                                  <div class="containerColumn">
+                                      <p id="sunrise" class="wi wi-sunrise">sunrise</p>
+                                      <p id="sunset" class="wi wi-sunset">sunset</p>
+                                  </div>
                               </div>
                           </div>
                        </div>
                    </div>
                </div>
-           <!-- fin test flip card -->
+           <!-- end today flip card -->
 
-               <div id="today" class="box"><h3 class="title">Today forecast</h3>
-                      <div class="f1_container">
-                          <div class="f1_card">
-                              <div class="front face">
-                                  <div class="box containerRow">
-                                      <div class="box picture">
-                                           <canvas id="picDay0" class="bigPicture" width="128" height="128"></canvas>
-                                      </div>
-                                      <div class="box picture">
-                                           <canvas id="picDay1" class="bigPicture" width="128" height="128"></canvas>
-                                      </div>
-                                          <p id="min0" class="wi wi-thermometer-exterior"></p>
-                                          <p id="max0" class="wi wi-thermometer"></p>
-                                  </div>
-                              </div>
-                              <div class="back face">
-                                  <div class="containerRow">
-                                      <div class="containerColumn">
-                                          <p id="text0" class="text"></p>
-                                          <p id="text1" class="text"></p>
-                                      </div>
-                                      <div class="containerColumn">
-                                          <p id="windDir0" class=""></p>
-                                          <p id="wind0" class=""></p>
-                                      </div>
-                                      <div class="containerColumn">
-                                          <p id="humidity0"></p>
-                                          <p id="precip0"></p>
-                                      </div>
-                                      <div class="containerColumn">
-                                          <p id="sunrise" class="wi wi-sunrise">sunrise</p>
-                                          <p id="sunset" class="wi wi-sunset">sunset</p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-               <div id="hourly" class="box flexColumn"><h3 class="title">Hourly evolution</h3>
-                  <div class="containerRow">
-                      <div class="box containerColumn"><span id="hourly0" class=""></span>
-                          <div class="box picture">
-                               <canvas id="hourlyPic0" class="tinyPicture" width="128" height="128"></canvas>
-                          </div>
-                          <div id="hourlyTemp0" class="box">temp</div> 
-                      </div>
-                      <div class="box containerColumn"><span id="hourly1" class=""></span>
-                          <div class="box picture">
-                               <canvas id="hourlyPic1" class="tinyPicture" width="128" height="128"></canvas>
-                          </div>
-                          <div id="hourlyTemp1" class="box smallTemp">temp</div> 
-                      </div>
-                      <div class="box containerColumn"><span id="hourly2" class=""></span>
-                          <div class="box picture">
-                               <canvas id="hourlyPic2" class="tinyPicture" width="128" height="128"></canvas>
-                          </div>
-                          <div id="hourlyTemp2" class="box smallTemp">temp</div> 
-                      </div>
-                      <div class="box containerColumn"><span id="hourly3" class=""></span>
-                          <div class="box picture">
-                               <canvas id="hourlyPic3" class="tinyPicture" width="128" height="128"></canvas>
-                          </div>
-                          <div id="hourlyTemp3" class="box smallTemp">temp</div> 
-                      </div>
-                      <div class="box containerColumn"><span id="hourly4" class=""></span>
-                          <div class="box picture">
-                               <canvas id="hourlyPic4" class="tinyPicture" width="128" height="128"></canvas>
-                          </div>
-                          <div id="hourlyTemp4" class="box smallTemp">temp</div> 
-                      </div>
-                      <div class="box containerColumn"><span id="hourly5" class=""></span>
-                          <div class="box picture">
-                               <canvas id="hourlyPic5" class="tinyPicture" width="128" height="128"></canvas>
-                          </div>
-                          <div id="hourlyTemp5" class="box smallTemp">temp</div> 
-                      </div>
-                  </div>
-               </div>
            </div>
+
            <div id="future" class="containerColumn">
                <div id="tomorrow" class="card flexColumn"><h3 class="title">Tomorrow</h3>
                    <div class="containerRow">
