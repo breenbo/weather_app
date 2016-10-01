@@ -72,6 +72,7 @@ input[type=search]:focus {
 }
 .tinyPicture {
     width:8vw;
+    height:8vw;
 }
 .wi {
     margin-top:5px;
@@ -86,6 +87,7 @@ input[type=search]:focus {
     background-color:magenta;
 }
 #endWeek {
+    margin-top:4vw;
     padding-left:0;
 }
 #fond {
@@ -117,7 +119,7 @@ input[type=search]:focus {
     height: 150vw;
     margin-top:4vw;
     z-index: 1;
-    perspective: 500px;
+    perspective: 1000px;
     border:solid green;
 }
 .f1_card {

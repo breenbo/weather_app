@@ -26,9 +26,8 @@
            </form>
        </header>
        <div id="fond" class="flexColumn">
-           <div id="current" class="containerColumn">
-               
            <!-- today flip card -->
+           <div id="current" class="containerColumn">
                <div class="f1_container">
                    <div class="f1_card">
                        <div class="card front face">
@@ -130,67 +129,73 @@
                        </div>
                    </div>
                </div>
+           </div>
            <!-- end today flip card -->
 
-           </div>
-
+           <!-- tomorrow flip card -->
            <div id="future" class="containerColumn">
-               <div id="tomorrow" class="card flexColumn"><h3 class="title">Tomorrow</h3>
-                   <div class="containerRow">
-                        <div class="box picture">
-                            <canvas id="picDay2" class="bigPicture" width="128" height="128"></canvas>
+               <div class="f1_container">
+                   <div class="f1_card">
+                       <div class="front face card">
+                       <h3>Tomorrow</h3>
+                           <div class="containerRow">
+                                <div class="box picture">
+                                    <canvas id="picDay2" class="bigPicture" width="128" height="128"></canvas>
+                                </div>
+                                <div class="box picture">
+                                    <canvas id="picDay3" class="bigPicture" width="128" height="128"></canvas>
+                                </div>
+                            </div>
+                       </div>
+                       <div class="back face card">
                             <p id="text2" class="text"></p>
-                        </div>
-                        <div class="box picture">
-                            <canvas id="picDay3" class="bigPicture" width="128" height="128"></canvas>
                             <p id="text3" class="text"></p>
-                        </div>
-                    </div>
-                    <div class="containerRow">
-                        <div class="containerColumn">
-                            <p id="min1" class="wi wi-thermometer-exterior"></p>
-                            <p id="max1" class="wi wi-thermometer"></p>
-                        </div>
-                        <div class="containerColumn">
-                            <p id="windDir1" class=""></p>
-                            <p id="wind1"></p>
-                        </div>
-                        <div class="containerColumn">
-                            <p id="humidity1"></p>
-                            <p id="precip1"></p>
-                        </div>
-                          <div class="containerColumn">
-                          </div>
+                            <div class="containerColumn">
+                                <p id="windDir1" class=""></p>
+                                <p id="wind1"></p>
+                            </div>
+                            <div class="containerColumn">
+                                <p id="humidity1"></p>
+                                <p id="precip1"></p>
+                            </div>
+                       </div>
                     </div>
                </div>
-               <div id="afterTwo" class="card flexColumn"><h3 id="day2" class="title">day2</h3>
-                   <div class="containerRow">
-                        <div class="box picture">
-                            <canvas id="picDay4" class="bigPicture" width="128" height="128"></canvas>
+           <!-- end tomorrow flip card -->
+
+           <!-- after-tomorrow flip card -->
+               <div class="f1_container">
+                   <div class="f1_card">
+                       <div class="front face card"><h3 id="day2" class="title">day2</h3>
+                           <div class="containerRow">
+                                <div class="box picture">
+                                    <canvas id="picDay4" class="bigPicture" width="128" height="128"></canvas>
+                                </div>
+                                <div class="box picture">
+                                    <canvas id="picDay5" class="bigPicture" width="128" height="128"></canvas>
+                                </div>
+                                <div class="containerColumn">
+                                    <p id="min2" class="wi wi-thermometer-exterior"></p>
+                                    <p id="max2" class="wi wi-thermometer"></p>
+                                </div>
+                            </div>
+                       </div>
+                       <div class="back face card">
                             <p id="text4" class="text"></p>
-                        </div>
-                        <div class="box picture">
-                            <canvas id="picDay5" class="bigPicture" width="128" height="128"></canvas>
                             <p id="text5" class="text"></p>
-                        </div>
-                    </div>
-                    <div class="containerRow">
-                        <div class="containerColumn">
-                            <p id="min2" class="wi wi-thermometer-exterior"></p>
-                            <p id="max2" class="wi wi-thermometer"></p>
-                        </div>
-                        <div class="containerColumn">
-                            <p id="windDir2" class=""></p>
-                            <p id="wind2"></p>
-                        </div>
-                        <div class="containerColumn">
-                            <p id="humidity2"></p>
-                            <p id="precip2"></p>
-                        </div>
-                          <div class="containerColumn">
-                          </div>
-                    </div>
+                            <div class="containerColumn">
+                                <p id="windDir2" class=""></p>
+                                <p id="wind2"></p>
+                            </div>
+                            <div class="containerColumn">
+                                <p id="humidity2"></p>
+                                <p id="precip2"></p>
+                            </div>
+                       </div>
+                   </div>
                </div>
+           <!-- end after-tomorrow flip card -->
+
                <div id="endWeek" class="card flexColumn"><h3 class="title">end of the week</h3>
                   <div id="afterThree" class="containerColumn">
                       <div id="three" class="containerRow"><span id="day3" class="smallText">day3</span>
