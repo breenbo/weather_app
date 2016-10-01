@@ -29,7 +29,7 @@
            <!-- today flip card -->
            <div id="current" class="containerColumn">
                <div class="f1_container">
-                   <div class="f1_card">
+                   <div class="carte">
                        <div class="card front face">
                           <h3>Today</h3>
                           <h4>Current</h4>
@@ -94,8 +94,8 @@
                        </div>
                        <div class="card back face">
                           <div id="detail" class="containerColumn">
-                              <div class="containerRow">
                               <h4>Current</h4>
+                              <div class="containerRow">
                                   <div class="containerColumn">
                                       <p id="relativeHumidity" class="wi wi-humidity"></p>
                                       <p id="pressureMb" class="wi wi-barometer"></p>
@@ -134,8 +134,8 @@
 
            <!-- tomorrow flip card -->
            <div id="future" class="containerColumn">
-               <div class="f1_container">
-                   <div class="f1_card">
+               <div class="f2_container">
+                   <div class="carte">
                        <div class="front face card">
                        <h3>Tomorrow</h3>
                            <div class="containerRow">
@@ -144,6 +144,10 @@
                                 </div>
                                 <div class="box picture">
                                     <canvas id="picDay3" class="bigPicture" width="128" height="128"></canvas>
+                                </div>
+                                <div class="containerColumn">
+                                    <p id="min1" class="wi wi-thermometer-exterior"></p>
+                                    <p id="max1" class="wi wi-thermometer"></p>
                                 </div>
                             </div>
                        </div>
@@ -164,8 +168,8 @@
            <!-- end tomorrow flip card -->
 
            <!-- after-tomorrow flip card -->
-               <div class="f1_container">
-                   <div class="f1_card">
+               <div class="f2_container">
+                   <div class="carte">
                        <div class="front face card"><h3 id="day2" class="title">day2</h3>
                            <div class="containerRow">
                                 <div class="box picture">
