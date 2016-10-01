@@ -16,9 +16,9 @@
             $("#city").html("City of " + city);
         // boucle if pour choisir ligne en farenheit ou celsius
             var actualTemp_c=json.current_observation.temp_c;
-            $("#actualTemp").html(actualTemp_c + "°");
-            // var actualFeelTemp_c=json.current_observation.feelslike_c;
-            // $("#actualFeelTemp").html("Feels like : " + actualFeelTemp_c + "°");
+            $("#actualTemp").html(" " + actualTemp_c + "°");
+            var actualFeelTemp_c=json.current_observation.feelslike_c;
+            $("#actualFeelTemp").html("Feels like : " + actualFeelTemp_c + "°");
             var icon=json.current_observation.icon;
         // skycons : change for pastel colors !!!!!!!!!!!!!
             var skycons = new Skycons({
@@ -42,7 +42,7 @@
             $("#windDir").html(windDir);
         // boucle if si farenheit -> basculer en mph
             var wind=json.current_observation.wind_kph;
-            $("#wind").html(wind + " kph");
+            $("#wind").html(" " + wind + " kph");
             // var windGust=json.current_observation.wind_gust_kph;
             // $("#windGust").html("Wind gust : " + windGust + " kph");
         // boucle if si farenheit -> basculer en psi
@@ -65,14 +65,14 @@
                 $("#day" + [i]).html(day[i]);
             // boucle if pour choisir ligne en farenheit ou celsius
                 high[i]=json.forecast.simpleforecast.forecastday[i].high.celsius;
-                $("#max"+[i]).html(high[i] + "°");
+                $("#max"+[i]).html(" " + high[i] + "°");
                 $("#max"+[i]).css("color", "red");
                 low[i]=json.forecast.simpleforecast.forecastday[i].low.celsius;
-                $("#min"+[i]).html(low[i] + "°");
+                $("#min"+[i]).html(" " + low[i] + "°");
                 $("#min"+[i]).css("color", "blue");
             // boucle if si farenheit -> basculer en mph
                 wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
-                $("#wind"+[i]).html(wind[i]);
+                $("#wind"+[i]).html(" " + wind[i] + " kph");
                 windDir[i]=json.forecast.simpleforecast.forecastday[i].avewind.dir;
                 $("#windDir" + [i]).html(windDir[i]);
                 humidity[i]=json.forecast.simpleforecast.forecastday[i].avehumidity;
@@ -107,7 +107,8 @@
             for (var i=0; i<6; i++) {
                 hour[i]=json.hourly_forecast[i].FCTTIME.civil;
                 hour[i]=hour[i].split(/\b/)[0];
-                $("#hourly" + [i]).attr("class", "wi wi-time-" + hour[i]);
+                // $("#hourly" + [i]).attr("class", "wi wi-time-" + hour[i]);
+                $("#hourly" + [i]).addClass("wi wi-time-" + hour[i]);
                 hourTemp[i]=json.hourly_forecast[i].temp.metric;
                 $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
                 hourIcon[i]=json.hourly_forecast[i].icon;
