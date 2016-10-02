@@ -27,10 +27,20 @@ h4 {
     padding:2vw 4vw;
     color:black;
     border-top:solid 1px lightgray;
-    /* background-color:gray; */
+}
+h5 {
+    margin:0 0 2vw 0;
+    padding-left:4vw;
 }
 input[type=search]:focus {
     width:300px;
+}
+p {
+    margin:2vw 0;
+    padding-left:4vw;
+}
+.alignCenter {
+    align-items:center;
 }
 .bigPicture {
     width:25vw;
@@ -42,6 +52,11 @@ input[type=search]:focus {
 .bigTemp {
     flex:1;
     font-size:7vw;
+    padding:0;
+    margin-bottom:6vw;
+}
+.blockDatas {
+    margin-top:2vw;
 }
 .box {
     flex:1;
@@ -60,7 +75,10 @@ input[type=search]:focus {
     flex:1;
     display:flex;
     justify-content:center;
-    align-items:center;
+    /* align-items:center; */
+}
+.endWeek {
+    margin:5vw 0;
 }
 .flexColumn {
     display:flex;
@@ -98,8 +116,19 @@ input[type=search]:focus {
     font-size:6vw;
     text-align:center;
 }
+.subCarte {
+    margin-top:12vw;
+    margin-bottom:12vw;
+}
+.subDay {
+    margin-top:2vw;
+    align-items:center;
+}
 .text {
+    flex:1;
     display:block;
+    margin:0;
+    padding-left:4vw;
 }
 .tinyPicture {
     width:13vw;

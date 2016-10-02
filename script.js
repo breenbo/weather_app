@@ -37,17 +37,16 @@
             } skycons.add("actualIcon", Skycons["nt_" + icon]);
         //
             var relativeHumidity=json.current_observation.relative_humidity;
-            $("#relativeHumidity").html(relativeHumidity);
+            $("#relativeHumidity").html(" " + relativeHumidity);
             var windDir=json.current_observation.wind_dir;
-            $("#windDir").html(windDir);
+            $("#windDir").html(" " + windDir);
         // boucle if si farenheit -> basculer en mph
             var wind=json.current_observation.wind_kph;
-            $("#wind").html(" " + wind + " kph");
-            // var windGust=json.current_observation.wind_gust_kph;
-            // $("#windGust").html("Wind gust : " + windGust + " kph");
+            var windGust=json.current_observation.wind_gust_kph;
+            $("#wind").html(" " + wind + " kph" + " (" + windGust + " kph)");
         // boucle if si farenheit -> basculer en psi
             var pressureMb=json.current_observation.pressure_mb;
-            $("#pressureMb").html(pressureMb + " mb");
+            $("#pressureMb").html(" " + pressureMb + " mb");
         //
         // display forecast
             var day=[];
@@ -74,12 +73,12 @@
                 wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
                 $("#wind"+[i]).html(" " + wind[i] + " kph");
                 windDir[i]=json.forecast.simpleforecast.forecastday[i].avewind.dir;
-                $("#windDir" + [i]).html(windDir[i]);
+                $("#windDir" + [i]).html(" " + windDir[i]);
                 humidity[i]=json.forecast.simpleforecast.forecastday[i].avehumidity;
-                $("#humidity"+[i]).html(humidity[i]);
+                $("#humidity"+[i]).html(" " + humidity[i] + " %");
             // boucle if si farenheit -> basculer en in
                 precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.mm;
-                $("#precip"+[i]).html(precip[i] + "mm");
+                $("#precip"+[i]).html(" " + precip[i] + "mm");
             }
             for (i=0; i<16; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
@@ -96,15 +95,15 @@
             var sunriseMinute=json.moon_phase.sunrise.minute;
             var sunsetHour=json.moon_phase.sunset.hour;
             var sunsetMinute=json.moon_phase.sunset.minute;
-            $("#sunrise").html("0" + sunriseHour + ":" + sunriseMinute);
-            $("#sunset").html(sunsetHour + ":" + sunsetMinute);
+            $("#sunrise").html(" " + "0" + sunriseHour + ":" + sunriseMinute);
+            $("#sunset").html(" " + sunsetHour + ":" + sunsetMinute);
           //
           // display hourly evolution for today
             var hour=[];
             var hourIcon=[];
             var hourTemp=[];
             var hourFr=[];
-            for (var i=0; i<6; i++) {
+            for (var i=0; i<24; i+=2) {
                 hour[i]=json.hourly_forecast[i].FCTTIME.civil;
                 hour[i]=hour[i].split(/\b/)[0];
                 // $("#hourly" + [i]).attr("class", "wi wi-time-" + hour[i]);
