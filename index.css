@@ -18,8 +18,8 @@ h3 {
     padding:2vw;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
-    color:white;
-    background-color:black;
+    color:black;
+    background-color:green;
 }
 h4 {
     font-size:6vw;
@@ -29,6 +29,7 @@ h4 {
     border-top:solid 1px lightgray;
 }
 h5 {
+    font-size:5vw;
     margin:0 0 2vw 0;
     padding-left:4vw;
 }
@@ -36,7 +37,7 @@ input[type=search]:focus {
     width:300px;
 }
 p {
-    margin:2vw 0;
+    margin:0;
     padding-left:4vw;
 }
 .alignCenter {
@@ -56,7 +57,7 @@ p {
     margin-bottom:6vw;
 }
 .blockDatas {
-    margin-top:2vw;
+    padding-bottom:2vw;
 }
 .box {
     flex:1;
@@ -70,12 +71,12 @@ p {
     flex:1;
     display: flex;
     flex-direction:column;
+    align-items:stretch;
 }
 .containerRow {
     flex:1;
     display:flex;
     justify-content:center;
-    /* align-items:center; */
 }
 .endWeek {
     margin:5vw 0;
@@ -113,6 +114,7 @@ p {
     height:20vw;
 }
 .smallTemp {
+    margin-top:1vw;
     font-size:6vw;
     text-align:center;
 }
@@ -129,6 +131,7 @@ p {
     display:block;
     margin:0;
     padding-left:4vw;
+    font-size:4.5vw;
 }
 .tinyPicture {
     width:13vw;
@@ -137,7 +140,6 @@ p {
 .wi {
     margin-top:2vw;
     margin-right:1vw;
-    /* font-size:8vw; */
 }
 #city {
     flex:1;
@@ -145,7 +147,8 @@ p {
 #controlBar {
     min-height:8vh;
     text-align: left;
-    background-color:magenta;
+    color:black;
+    background-color:red;
 }
 #endWeek {
     margin:4vw 2vw;
@@ -194,12 +197,6 @@ p {
   transform-style: preserve-3d;
   transition: all 0.5s linear;
 }
-.f1_container:hover .carte {
-  transform: rotateY(180deg);
-}
-.f2_container:hover .carte {
-    transform:rotateY(180deg);
-}
 .face {
   position: absolute;
   width: 100%;
@@ -210,6 +207,9 @@ p {
   display: block;
   transform: rotateY(180deg);
   box-sizing: border-box;
+}
+.flipped {
+    transform:rotateY(180deg);
 }
 /* ============================================================ */
 

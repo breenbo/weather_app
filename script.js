@@ -1,5 +1,3 @@
-// card flip test
-//-----------------------------
 //
     var maLatitude=48.847;
     var maLongitude=2.208;
@@ -9,6 +7,7 @@
         maLatitude=position.coords.latitude;
         maLongitude=position.coords.longitude;
         
+        // if loop for auto or manual setting : change var wundergroundUrl
         var wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + maLatitude + "," + maLongitude + ".json";
         // display current conditions
         $.getJSON(wundergroundUrl, function (json) {
@@ -17,8 +16,13 @@
         // boucle if pour choisir ligne en farenheit ou celsius
             var actualTemp_c=json.current_observation.temp_c;
             $("#actualTemp").html(" " + actualTemp_c + "°");
-            var actualFeelTemp_c=json.current_observation.feelslike_c;
-            $("#actualFeelTemp").html("Feels like : " + actualFeelTemp_c + "°");
+        // boucle if si farenheit -> basculer en mph
+            var wind=json.current_observation.wind_kph;
+            $("#wind").html(" " + wind + " kph");
+        // boucle if si farenheit -> basculer en psi
+            var pressureMb=json.current_observation.pressure_mb;
+            $("#pressureMb").html(" " + pressureMb + " mb");
+        // end if loop
             var icon=json.current_observation.icon;
         // skycons : change for pastel colors !!!!!!!!!!!!!
             var skycons = new Skycons({
@@ -40,13 +44,6 @@
             $("#relativeHumidity").html(" " + relativeHumidity);
             var windDir=json.current_observation.wind_dir;
             $("#windDir").html(" " + windDir);
-        // boucle if si farenheit -> basculer en mph
-            var wind=json.current_observation.wind_kph;
-            var windGust=json.current_observation.wind_gust_kph;
-            $("#wind").html(" " + wind + " kph" + " (" + windGust + " kph)");
-        // boucle if si farenheit -> basculer en psi
-            var pressureMb=json.current_observation.pressure_mb;
-            $("#pressureMb").html(" " + pressureMb + " mb");
         //
         // display forecast
             var day=[];
@@ -103,10 +100,9 @@
             var hourIcon=[];
             var hourTemp=[];
             var hourFr=[];
-            for (var i=0; i<24; i+=2) {
+            for (i=0; i<24; i+=2) {
                 hour[i]=json.hourly_forecast[i].FCTTIME.civil;
                 hour[i]=hour[i].split(/\b/)[0];
-                // $("#hourly" + [i]).attr("class", "wi wi-time-" + hour[i]);
                 $("#hourly" + [i]).addClass("wi wi-time-" + hour[i]);
                 hourTemp[i]=json.hourly_forecast[i].temp.metric;
                 $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
@@ -116,6 +112,19 @@
                     skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
                } skycons.add("hourlyPic" + [i], Skycons["nt_" + hourIcon[i]]);
             }
+        // display background color depend on temperature
+        // if loop for imperial unity
+            var tmax=35;
+            var tmin=0;
+            var hot=0;
+            var cold=250;
+            var temp=20;
+            var index=0;
+            var indexComp=180;
+            index=1/(tmax-tmin)*((actualTemp_c-tmin)*hot - (actualTemp_c-tmax)*cold);
+            indexComp=index+120;
+            $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
+            $("#controlBar").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
         })
     }
 
@@ -124,3 +133,9 @@
     } else {
         alert("webbrowser incompatible with html5 geolocation");
     }
+
+// card flip on click
+$(".carte").click(function() {
+    $(this).toggleClass("flipped");
+});
+//-----------------------------
