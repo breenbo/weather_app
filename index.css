@@ -65,17 +65,17 @@ p {
 .boite {
     display:flex;
     flex-direction:column;
-    height:80%;
+    min-height:80%;
 }
 .box {
     flex:1;
 }
 .boxBack {
-    /* flex:1; */
-    /* display:flex; */
-    /* flex-direction:row; */
-    /* align-items:stretch; */
-    /* border:solid 1px; */
+    flex:1;
+    display:flex;
+    flex-direction:row;
+    align-items:stretch;
+    border:solid 1px;
 }
 .card {
     display:flex;
