@@ -71,11 +71,11 @@ p {
     flex:1;
 }
 .boxBack {
-    flex:1;
-    display:flex;
-    flex-direction:row;
-    align-items:stretch;
-    border:solid 1px;
+    /* flex:1; */
+    /* display:flex; */
+    /* flex-direction:row; */
+    /* align-items:stretch; */
+    /* border:solid 1px; */
 }
 .card {
     display:flex;
