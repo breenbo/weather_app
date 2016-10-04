@@ -13,6 +13,8 @@ form {
     border:solid 1px;
 }
 h3 {
+    display:flex;
+    justify-content:space-between;
     font-size:8vw;
     margin:0;
     padding:2vw;
@@ -24,14 +26,14 @@ h3 {
 h4 {
     font-size:6vw;
     margin:0;
-    padding:2vw 4vw;
+    padding:2vw 2vw;
     color:black;
     border-top:solid 1px lightgray;
 }
 h5 {
     font-size:5vw;
     margin:0 0 2vw 0;
-    padding-left:4vw;
+    padding-left:2vw;
 }
 input[type=search]:focus {
     width:300px;
@@ -59,24 +61,42 @@ p {
 .blockDatas {
     padding-bottom:2vw;
 }
+.boite {
+    display:flex;
+    flex-direction:column;
+    height:80%;
+}
 .box {
     flex:1;
 }
+.boxBack {
+    flex:1;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
 .card {
+    display:flex;
+    flex-direction:column;
     background-color: #FAFAFA;
     border-radius:5px;
     box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.2), 0px 4px 3px 0 rgba(0, 0, 0, 0.19);
+}
+.cold {
+    margin-left:10vw;
 }
 .containerColumn {
     flex:1;
     display: flex;
     flex-direction:column;
-    align-items:stretch;
 }
 .containerRow {
     flex:1;
     display:flex;
     justify-content:center;
+}
+.day {
+    margin-left:5vw;
 }
 .endWeek {
     margin:5vw 0;
@@ -99,6 +119,10 @@ p {
     margin:0 5vw;
     border-radius:5%;
 }
+.more {
+    text-align:right;
+    color:white;
+}
 .picture {
     flex:1.5;
     display:flex;
@@ -107,7 +131,6 @@ p {
 .smallText {
     width:35vw;
     font-size:6vw;
-    margin-left:5vw;
 }
 .smallPicture {
     width:20vw;
@@ -119,8 +142,9 @@ p {
     text-align:center;
 }
 .subCarte {
-    margin-top:12vw;
-    margin-bottom:12vw;
+    flex-direction:row;
+    align-items:center;
+    height:80%;
 }
 .subDay {
     margin-top:2vw;
@@ -130,7 +154,7 @@ p {
     flex:1;
     display:block;
     margin:0;
-    padding-left:4vw;
+    padding:0 2vw;
     font-size:4.5vw;
 }
 .tinyPicture {
@@ -159,7 +183,7 @@ p {
 }
 #title {
     flex:1;
-    font-size:3vh;
+    font-size:6vw;
     border:solid 1px;
 }
 #titleBox {
@@ -186,7 +210,7 @@ p {
 }
 .f2_container {
     position: relative;
-    height : 65vw;
+    height : 75vw;
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;

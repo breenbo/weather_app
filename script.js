@@ -58,7 +58,7 @@
             var text=[];
             for (var i=0; i<8; i++) {
                 day[i]=json.forecast.simpleforecast.forecastday[i].date.weekday;
-                $("#day" + [i]).html(day[i]);
+                $("#day" + [i]).html(day[i] + '<span class="more">...</span>');
             // boucle if pour choisir ligne en farenheit ou celsius
                 high[i]=json.forecast.simpleforecast.forecastday[i].high.celsius;
                 $("#max"+[i]).html(" " + high[i] + "°");
