@@ -16,13 +16,21 @@
            </div>
            <form class="flexColumn">
                <div id="search" class="containerRow">
-                   <div id="auto">auto</div>
-                   <div id="manual">manual</div>
+                   <select name="geo">
+                       <option value="auto">Auto</option>
+                       <option value="manual">Manual</option>
+                       <div id="auto">auto</div>
+                       <div id="manual">manual</div>
+                   </select>
                </div>
-                   <input type="search" name="search" placeholder="city or zip code"/>
+                   <input type="text" name="country" placeholder="country name"/>
+                   <input type="text" name="city" placeholder="city"/>
+                   <input type="submit" value="Submit">
                <div id="mesure" class="containerRow">
-                   <div id="celsius" class="wi wi-celsius"></div>
-                   <div id="fahrenheit" class="wi wi-fahrenheit"></div>
+                   <input type="radio" name="degre" id="celsius" name="celsius"/>
+                   <div id="celsius" class="button wi wi-celsius"></div>
+                   <input type="radio" name="degre" id="fahrenheit" name="fahrenheit" />
+                   <div id="fahrenheit" class="button wi wi-fahrenheit"></div>
                </div>
            </form>
        </header>

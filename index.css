@@ -60,6 +60,7 @@ p {
 }
 .blockDatas {
     padding-bottom:2vw;
+    margin-left:6vw;
     margin-bottom:2vw;
 }
 .boite {
@@ -75,7 +76,15 @@ p {
     display:flex;
     flex-direction:row;
     align-items:stretch;
+}
+.button {
+    font-size:15vw;
+    width:15vw;
+    height:15vw;
+    text-align:center;
+    margin:2vw 0;
     border:solid 1px;
+    box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.2), 4px 4px 3px 0 rgba(0, 0, 0, 0.19);
 }
 .card {
     display:flex;
@@ -95,7 +104,6 @@ p {
 .containerRow {
     flex:1;
     display:flex;
-    justify-content:center;
 }
 .day {
     margin-left:5vw;
@@ -182,21 +190,22 @@ p {
 #fond {
     min-height:90vh;
 }
+#mesure {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+}
 #title {
     flex:1;
     font-size:6vw;
-    border:solid 1px;
 }
 #titleBox {
     flex:2;
 }
-#search, #mesure {
-    border:solid 1px;
-}
-#search > div, #mesure > div {
-    border:solid 1px;
-    flex:1;
-}
+/* #search > div, #mesure > div { */
+    /* border:solid 1px; */
+/* } */
 #tomorrow {
     flex:2;
 }
@@ -211,7 +220,7 @@ p {
 }
 .f2_container {
     position: relative;
-    height : 75vw;
+    min-height : 80vw;
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;

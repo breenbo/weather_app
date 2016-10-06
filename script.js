@@ -80,12 +80,12 @@
             for (i=0; i<16; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
                 skycons.add("picDay" + [i], Skycons[icon[i]]);
-                skycons.play();
             //boucle if si farenheit -> basculer sur fctext
                 text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
                 text[i]=text[i].replace(/\./gi, ".<br>")
                 $("#text"+[i]).html(text[i]);
             }
+            skycons.play();
           //
           // display sunset and sunrise
             var sunriseHour=json.moon_phase.sunrise.hour;
@@ -139,3 +139,5 @@ $(".carte").click(function() {
     $(this).toggleClass("flipped");
 });
 //-----------------------------
+// manual country and city
+
