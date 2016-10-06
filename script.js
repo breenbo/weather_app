@@ -140,4 +140,9 @@ $(".carte").click(function() {
 });
 //-----------------------------
 // manual country and city
-
+$("#celsius").click(function() {
+    var country=$("#country").val();
+    var city=$("#ville").val();
+    var wundergroundUrl2="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + country + "/" + city + ".json";
+    console.log(wundergroundUrl2);
+});

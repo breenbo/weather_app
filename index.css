@@ -220,7 +220,7 @@ p {
 }
 .f2_container {
     position: relative;
-    min-height : 80vw;
+    height : 80vw;
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;
