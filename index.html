@@ -16,15 +16,17 @@
            </div>
            <form class="flexColumn">
                <div id="search" class="containerRow">
-                   <div id="auto">auto</div>
-                   <div id="manual">manual</div>
+                   <input value="auto" type="radio" name="search" id="searchAuto">Auto
+                   <input value="manual" type="radio" name="search" id="searchManual">Manual
+                   <!-- <div id="auto">auto</div> -->
+                   <!-- <div id="manual">manual</div> -->
                </div>
-                   <input id="country" type="text" name="country" placeholder="country name"/>
-                   <input id="ville" type="text" name="city" placeholder="city"/>
+                   <input id="country" type="text" name="country" placeholder="country name">
+                   <input id="ville" type="text" name="city" placeholder="city">
                <div id="mesure" class="containerRow">
-                   <!-- <input type="radio" name="degre" id="celsius" name="celsius"/> -->
+                   <input type="radio" name="degre" id="celsius" name="celsius"/>
                    <div id="celsius" class="button wi wi-celsius"></div>
-                   <!-- <input type="radio" name="degre" id="fahrenheit" name="fahrenheit" /> -->
+                   <input type="radio" name="degre" id="fahrenheit" name="fahrenheit" />
                    <div id="fahrenheit" class="button wi wi-fahrenheit"></div>
                </div>
            </form>

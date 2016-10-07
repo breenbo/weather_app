@@ -144,5 +144,28 @@ $("#celsius").click(function() {
     var country=$("#country").val();
     var city=$("#ville").val();
     var wundergroundUrl2="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + country + "/" + city + ".json";
-    console.log(wundergroundUrl2);
+});
+
+$("#country").blur(function() {
+    var country=$("#country").val();
+    alert(country);
+});
+
+$("#ville").keydown(function() {
+    var key=event.which;
+    var city=$("#ville").val();
+    if (key==13) {
+        if (city=="") {
+            alert("Please enter a city or choose auto");
+        } else {alert(city);}
+    }
+});
+
+$("input:radio").click(function() {
+    if ($("#searchManual").is(":checked")) {
+        // alert("Manual Mode Dude !");
+    }
+    if ($("#celsius").is(":checked")) {
+        // alert("Metric Mode Dude !");
+    }
 });
