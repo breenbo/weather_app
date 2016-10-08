@@ -36,7 +36,6 @@ h5 {
     padding-left:2vw;
 }
 input[type=text], #send {
-    /* width:300px; */
     display:none;
 }
 p {
@@ -204,9 +203,6 @@ p {
 #titleBox {
     flex:2;
 }
-/* #search > div, #mesure > div { */
-    /* border:solid 1px; */
-/* } */
 #tomorrow {
     flex:2;
 }
@@ -214,7 +210,7 @@ p {
 /* flip card */
 .f1_container {
     position: relative;
-    height: 145vw;
+    height: 160vw;
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;

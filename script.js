@@ -2,13 +2,17 @@
     var maLatitude=48.847;
     var maLongitude=2.208;
     var apiKey="b8bcc556b7a1fd8c";
+    var wundergroundUrl="";
 
-    function showPosition (position) {
+function showPosition (position) {
         maLatitude=position.coords.latitude;
         maLongitude=position.coords.longitude;
-        
         // if loop for auto or manual setting : change var wundergroundUrl
-        var wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + maLatitude + "," + maLongitude + ".json";
+        wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + maLatitude + "," + maLongitude + ".json";
+        getAndDisplay(wundergroundUrl);
+        }
+
+function getAndDisplay (wundergroundUrl) {
         // display current conditions
         $.getJSON(wundergroundUrl, function (json) {
             var city=json.current_observation.display_location.city;
@@ -85,7 +89,7 @@
                 text[i]=text[i].replace(/\./gi, ".<br>")
                 $("#text"+[i]).html(text[i]);
             }
-            skycons.play();
+            // skycons.play();
           //
           // display sunset and sunrise
             var sunriseHour=json.moon_phase.sunrise.hour;
@@ -126,35 +130,27 @@
             $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
             $("#controlBar").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
         })
-    }
+}
 
-
-// card flip on click
-$(".carte").click(function() {
-    $(this).toggleClass("flipped");
-});
-//-----------------------------
 // manual country and city
 function manual() {
     var country=$("#country").val();
     var city=$("#ville").val();
-    var wundergroundUrl2="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + country + "/" + city + ".json";
+    wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + country + "/" + city + ".json";
     if (country=="") {
-        alert("Please enter a country or use auto mode");
+        alert("Please enter a country or an US state, or use auto mode");
     } else if (city=="") {
         alert("Please enter a city or use auto mode");
-    } else {
-        alert(country + "/" + city);
     }
 };
 
-
-$("input:radio").click(function() {
+function autoManual() {
     if ($("#searchManual").is(":checked")) {
         $("input:text").css("display", "block");
         $("#send").css("display", "block");
         $("#send").click(function() {
             manual();
+            getAndDisplay(wundergroundUrl);
         });
     } else if ($("#searchAuto").is(":checked")) {
         $("input:text").css("display", "none");
@@ -165,7 +161,17 @@ $("input:radio").click(function() {
             alert("webbrowser incompatible with html5 geolocation");
         }
     }
-    if ($("#celsius").is(":checked")) {
-        // alert("Metric Mode Dude !");
-    }
+};
+
+// card flip on click
+$(".carte").click(function() {
+    $(this).toggleClass("flipped");
 });
+
+// use auto or manual mode
+$("input:radio").click(function() {
+    autoManual();
+});
+
+// mode on refresh : depend of the radio checked, so call autoManual fct
+autoManual();
