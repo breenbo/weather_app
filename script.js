@@ -17,15 +17,22 @@ function getAndDisplay (wundergroundUrl) {
         $.getJSON(wundergroundUrl, function (json) {
             var city=json.current_observation.display_location.city;
             $("#city").html("City of " + city);
-        // boucle if pour choisir ligne en farenheit ou celsius
-            var actualTemp_c=json.current_observation.temp_c;
-            $("#actualTemp").html(" " + actualTemp_c + "°");
-        // boucle if si farenheit -> basculer en mph
-            var wind=json.current_observation.wind_kph;
-            $("#wind").html(" " + wind + " kph");
-        // boucle if si farenheit -> basculer en psi
-            var pressureMb=json.current_observation.pressure_mb;
-            $("#pressureMb").html(" " + pressureMb + " mb");
+        // if loop for celsius or fahrenheit
+            if ($("#celsius").is(":checked")) {
+                var actualTemp_c=json.current_observation.temp_c;
+                $("#actualTemp").html(" " + actualTemp_c + "°");
+                var wind=json.current_observation.wind_kph;
+                $("#wind").html(" " + wind + " kph");
+                var pressureMb=json.current_observation.pressure_mb;
+                $("#pressureMb").html(" " + pressureMb + " mb");
+            } else {
+                var actualTemp_f=json.current_observation.temp_f;
+                $("#actualTemp").html(" " + actualTemp_f + "°");
+                var wind=json.current_observation.wind_mph;
+                $("#wind").html(" " + wind + " mph");
+                var pressureIn=json.current_observation.pressure_in;
+                $("#pressureMb").html(" " + pressureIn + " in");
+            }
         // end if loop
             var icon=json.current_observation.icon;
         // skycons : change for pastel colors !!!!!!!!!!!!!
@@ -63,29 +70,44 @@ function getAndDisplay (wundergroundUrl) {
             for (var i=0; i<8; i++) {
                 day[i]=json.forecast.simpleforecast.forecastday[i].date.weekday;
                 $("#day" + [i]).html(day[i] + '<span class="more">...</span>');
-            // boucle if pour choisir ligne en farenheit ou celsius
+        // if loop for metric or imperial units
+            if ($("#celsius").is(":checked")) {
                 high[i]=json.forecast.simpleforecast.forecastday[i].high.celsius;
                 $("#max"+[i]).html(" " + high[i] + "°");
                 $("#max"+[i]).css("color", "red");
                 low[i]=json.forecast.simpleforecast.forecastday[i].low.celsius;
                 $("#min"+[i]).html(" " + low[i] + "°");
                 $("#min"+[i]).css("color", "blue");
-            // boucle if si farenheit -> basculer en mph
                 wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
                 $("#wind"+[i]).html(" " + wind[i] + " kph");
+                precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.mm;
+                $("#precip"+[i]).html(" " + precip[i] + " mm");
+            } else {
+                high[i]=json.forecast.simpleforecast.forecastday[i].high.fahrenheit;
+                $("#max"+[i]).html(" " + high[i] + "°");
+                $("#max"+[i]).css("color", "red");
+                low[i]=json.forecast.simpleforecast.forecastday[i].low.fahrenheit;
+                $("#min"+[i]).html(" " + low[i] + "°");
+                $("#min"+[i]).css("color", "blue");
+                wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.mph;
+                $("#wind"+[i]).html(" " + wind[i] + " mph");
+                precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.in;
+                $("#precip"+[i]).html(" " + precip[i] + " in");
+            }
                 windDir[i]=json.forecast.simpleforecast.forecastday[i].avewind.dir;
                 $("#windDir" + [i]).html(" " + windDir[i]);
                 humidity[i]=json.forecast.simpleforecast.forecastday[i].avehumidity;
                 $("#humidity"+[i]).html(" " + humidity[i] + " %");
-            // boucle if si farenheit -> basculer en in
-                precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.mm;
-                $("#precip"+[i]).html(" " + precip[i] + "mm");
             }
             for (i=0; i<16; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
                 skycons.add("picDay" + [i], Skycons[icon[i]]);
-            //boucle if si farenheit -> basculer sur fctext
-                text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
+            // if loop for metric or imperial units
+                if ($("#celsius").is(":checked")) {
+                    text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
+                } else {
+                    text[i]=json.forecast.txt_forecast.forecastday[i].fcttext;
+                }
                 text[i]=text[i].replace(/\./gi, ".<br>")
                 $("#text"+[i]).html(text[i]);
             }
@@ -108,24 +130,37 @@ function getAndDisplay (wundergroundUrl) {
                 hour[i]=json.hourly_forecast[i].FCTTIME.civil;
                 hour[i]=hour[i].split(/\b/)[0];
                 $("#hourly" + [i]).addClass("wi wi-time-" + hour[i]);
-                hourTemp[i]=json.hourly_forecast[i].temp.metric;
+            // if loop for metric or imperial units
+                if ($("#celsius").is(":checked")) {
+                    hourTemp[i]=json.hourly_forecast[i].temp.metric;
+                } else {
+                    hourTemp[i]=json.hourly_forecast[i].temp.english;
+                }
                 $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
                 hourIcon[i]=json.hourly_forecast[i].icon;
-               hourFr[i]=json.hourly_forecast[i].FCTTIME.hour; 
-               if (hourFr[i] >= 7 && hourFr[i] <= 20) {
+                hourFr[i]=json.hourly_forecast[i].FCTTIME.hour; 
+                if (hourFr[i] >= 7 && hourFr[i] <= 20) {
                     skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
-               } skycons.add("hourlyPic" + [i], Skycons["nt_" + hourIcon[i]]);
+                } else {
+                    skycons.add("hourlyPic" + [i], Skycons["nt_" + hourIcon[i]]);
+                }
             }
         // display background color depend on temperature
-        // if loop for imperial unity
-            var tmax=35;
-            var tmin=0;
+            // if loop for metric or imperial units
             var hot=0;
             var cold=250;
             var temp=20;
             var index=0;
             var indexComp=180;
-            index=1/(tmax-tmin)*((actualTemp_c-tmin)*hot - (actualTemp_c-tmax)*cold);
+            if ($("#celsius").is(":checked")) {
+                var tmax=35;
+                var tmin=0;
+                index=1/(tmax-tmin)*((actualTemp_c-tmin)*hot - (actualTemp_c-tmax)*cold);
+            } else {
+                var tmax=95;
+                var tmin=32;
+                index=1/(tmax-tmin)*((actualTemp_f-tmin)*hot - (actualTemp_f-tmax)*cold);
+            }
             indexComp=index+120;
             $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
             $("#controlBar").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
@@ -168,9 +203,17 @@ $(".carte").click(function() {
     $(this).toggleClass("flipped");
 });
 
-// use auto or manual mode
-$("input:radio").click(function() {
+// select auto or manual mode
+$("input[name=search]").click(function() {
+    $("#auto, #manual").toggleClass("shadow");
     autoManual();
+});
+
+// select metric or imperial units
+$("input[name=degre]").click(function(){
+    $("#celsiusButton, #fahrenheitButton").toggleClass("shadow");
+    autoManual();
+    getAndDisplay(wundergroundUrl);
 });
 
 // mode on refresh : depend of the radio checked, so call autoManual fct

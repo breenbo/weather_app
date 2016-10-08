@@ -15,20 +15,26 @@
                <h2 id="city"></h2>
            </div>
            <form class="flexColumn">
-               <div id="search" class="containerRow">
-                   <input id="searchAuto" type="radio" name="search" value="auto" checked="checked" >Auto
-                   <input id="searchManual" type="radio" name="search" value="manual" >Manual
-                   <!-- <div id="auto">auto</div> -->
-                   <!-- <div id="manual">manual</div> -->
+               <div class="containerRow">
+                   <div id="search" class="containerRow">
+                       <label id="auto" for="searchAuto" class="button">A
+                           <input id="searchAuto" type="radio" name="search" value="auto" checked="checked" >
+                       </label>
+                       <label id="manual" for="searchManual" class="button shadow">M
+                           <input id="searchManual" type="radio" name="search" value="manual" >
+                       </label>
+                   </div>
                </div>
                    <input id="country" type="text" name="country" placeholder="country name or US state">
                    <input id="ville" type="text" name="city" placeholder="city">
-                   <div id="send" class="">send</div>
+                   <div id="send" class="button shadow">S</div>
                <div id="mesure" class="containerRow">
-                   <input type="radio" name="degre" id="celsius" name="celsius" checked="checked"/>
-                   <div id="celsius" class="button wi wi-celsius"></div>
-                   <input type="radio" name="degre" id="fahrenheit" name="fahrenheit" />
-                   <div id="fahrenheit" class="button wi wi-fahrenheit"></div>
+                   <label for="celsius" id="celsiusButton" class="button wi wi-celsius">
+                       <input id="celsius" type="radio" name="degre" checked="checked"/>
+                   </label>
+                   <label for="fahrenheit" id="fahrenheitButton" class="button shadow wi wi-fahrenheit">
+                       <input id="fahrenheit" type="radio" name="degre" />
+                   </label>
                </div>
            </form>
        </header>

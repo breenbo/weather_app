@@ -38,6 +38,9 @@ h5 {
 input[type=text], #send {
     display:none;
 }
+input[type=radio] {
+    display:none;
+}
 p {
     margin:0;
     padding-left:4vw;
@@ -84,7 +87,6 @@ p {
     text-align:center;
     margin:2vw 0;
     border:solid 1px;
-    box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.2), 4px 4px 3px 0 rgba(0, 0, 0, 0.19);
 }
 .card {
     display:flex;
@@ -138,6 +140,9 @@ p {
     display:flex;
     justify-content:center;
 }
+.shadow {
+    box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.2), 4px 4px 3px 0 rgba(0, 0, 0, 0.19);
+}
 .smallText {
     width:35vw;
     font-size:6vw;
@@ -190,7 +195,7 @@ p {
 #fond {
     min-height:90vh;
 }
-#mesure {
+#mesure, #search {
     display:flex;
     flex-direction:row;
     justify-content:space-around;
