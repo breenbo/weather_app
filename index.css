@@ -35,8 +35,9 @@ h5 {
     margin:0 0 2vw 0;
     padding-left:2vw;
 }
-input[type=search]:focus {
-    width:300px;
+input[type=text], #send {
+    /* width:300px; */
+    display:none;
 }
 p {
     margin:0;

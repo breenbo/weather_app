@@ -128,11 +128,6 @@
         })
     }
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        alert("webbrowser incompatible with html5 geolocation");
-    }
 
 // card flip on click
 $(".carte").click(function() {
@@ -140,30 +135,35 @@ $(".carte").click(function() {
 });
 //-----------------------------
 // manual country and city
-$("#celsius").click(function() {
+function manual() {
     var country=$("#country").val();
     var city=$("#ville").val();
     var wundergroundUrl2="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + country + "/" + city + ".json";
-});
-
-$("#country").blur(function() {
-    var country=$("#country").val();
-    alert(country);
-});
-
-$("#ville").keydown(function() {
-    var key=event.which;
-    var city=$("#ville").val();
-    if (key==13) {
-        if (city=="") {
-            alert("Please enter a city or choose auto");
-        } else {alert(city);}
+    if (country=="") {
+        alert("Please enter a country or use auto mode");
+    } else if (city=="") {
+        alert("Please enter a city or use auto mode");
+    } else {
+        alert(country + "/" + city);
     }
-});
+};
+
 
 $("input:radio").click(function() {
     if ($("#searchManual").is(":checked")) {
-        // alert("Manual Mode Dude !");
+        $("input:text").css("display", "block");
+        $("#send").css("display", "block");
+        $("#send").click(function() {
+            manual();
+        });
+    } else if ($("#searchAuto").is(":checked")) {
+        $("input:text").css("display", "none");
+        $("#send").css("display", "none");
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("webbrowser incompatible with html5 geolocation");
+        }
     }
     if ($("#celsius").is(":checked")) {
         // alert("Metric Mode Dude !");
