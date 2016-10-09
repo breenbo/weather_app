@@ -129,7 +129,8 @@ function getAndDisplay (wundergroundUrl) {
             for (i=0; i<24; i+=2) {
                 hour[i]=json.hourly_forecast[i].FCTTIME.civil;
                 hour[i]=hour[i].split(/\b/)[0];
-                $("#hourly" + [i]).addClass("wi wi-time-" + hour[i]);
+                $("#hourly" + [i]).removeClass(); // remove former class to avoid interference
+                $("#hourly" + [i]).addClass("hourly wi wi-time-" + hour[i]);
             // if loop for metric or imperial units
                 if ($("#celsius").is(":checked")) {
                     hourTemp[i]=json.hourly_forecast[i].temp.metric;
@@ -138,7 +139,7 @@ function getAndDisplay (wundergroundUrl) {
                 }
                 $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
                 hourIcon[i]=json.hourly_forecast[i].icon;
-                hourFr[i]=json.hourly_forecast[i].FCTTIME.hour; 
+                hourFr[i]=json.hourly_forecast[i].FCTTIME.hour;
                 if (hourFr[i] >= 7 && hourFr[i] <= 20) {
                     skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
                 } else {
@@ -179,6 +180,7 @@ function manual() {
     }
 };
 
+// use manual or auto mode
 function autoManual() {
     if ($("#searchManual").is(":checked")) {
         $("input:text").css("display", "block");
@@ -198,21 +200,26 @@ function autoManual() {
     }
 };
 
-// card flip on click
-$(".carte").click(function() {
-    $(this).toggleClass("flipped");
-});
+// clean hourly added class for new request
+function cleanHourlyClass() {
+    for (i=0; i<24; i++) {
+    }
+};
 
-// select auto or manual mode
+// display select auto or manual mode with shadow on button
 $("input[name=search]").click(function() {
     $("#auto, #manual").toggleClass("shadow");
     autoManual();
 });
 
+// card flip on click
+$(".carte").click(function() {
+    $(this).toggleClass("flipped");
+});
+
 // select metric or imperial units
 $("input[name=degre]").click(function(){
     $("#celsiusButton, #fahrenheitButton").toggleClass("shadow");
-    autoManual();
     getAndDisplay(wundergroundUrl);
 });
 
