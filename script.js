@@ -7,16 +7,19 @@
 function showPosition (position) {
         maLatitude=position.coords.latitude;
         maLongitude=position.coords.longitude;
-        // if loop for auto or manual setting : change var wundergroundUrl
         wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + maLatitude + "," + maLongitude + ".json";
         getAndDisplay(wundergroundUrl);
-        }
+}
 
 function getAndDisplay (wundergroundUrl) {
         // display current conditions
         $.getJSON(wundergroundUrl, function (json) {
-            var city=json.current_observation.display_location.city;
-            $("#city").html("City of " + city);
+            if (typeof json.current_observation === "undefined") {
+                alert("Sorry, unable to find the city...");
+            } else {
+                var city=json.current_observation.display_location.city;
+                $("#city").html(city);
+            }
         // if loop for celsius or fahrenheit
             if ($("#celsius").is(":checked")) {
                 var actualTemp_c=json.current_observation.temp_c;
@@ -178,33 +181,29 @@ function manual() {
     } else if (city=="") {
         alert("Please enter a city or use auto mode");
     }
-};
+}
 
 // use manual or auto mode
 function autoManual() {
     if ($("#searchManual").is(":checked")) {
-        $("input:text").css("display", "block");
-        $("#send").css("display", "block");
+        // $("input:text").css("display", "block");
+        // $("#send").css("display", "block");
+        // $("#formulaire").css("display", "block");
         $("#send").click(function() {
             manual();
             getAndDisplay(wundergroundUrl);
         });
     } else if ($("#searchAuto").is(":checked")) {
-        $("input:text").css("display", "none");
-        $("#send").css("display", "none");
+        // $("input:text").css("display", "none");
+        // $("#send").css("display", "none");
+        // $("#formulaire").css("display", "none");
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
             alert("webbrowser incompatible with html5 geolocation");
         }
     }
-};
-
-// clean hourly added class for new request
-function cleanHourlyClass() {
-    for (i=0; i<24; i++) {
-    }
-};
+}
 
 // display select auto or manual mode with shadow on button
 $("input[name=search]").click(function() {

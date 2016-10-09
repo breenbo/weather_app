@@ -8,10 +8,6 @@ body {
 footer {
     text-align: center;
 }
-form {
-    flex:1;
-    border:solid 1px;
-}
 h3 {
     display:flex;
     justify-content:space-between;
@@ -35,8 +31,11 @@ h5 {
     margin:0 0 2vw 0;
     padding-left:2vw;
 }
-input[type=text], #send {
-    display:none;
+/* input[type=text], #send, #formulaire { */
+    /* display:none; */
+/* } */
+input[type=text] {
+    width:30vw;
 }
 input[type=radio] {
     display:none;
@@ -179,12 +178,9 @@ p {
     margin-top:2vw;
     margin-right:1vw;
 }
-#city {
-    flex:1;
-}
 #controlBar {
-    min-height:8vh;
-    text-align: left;
+    /* min-height:8vh; */
+    text-align: center;
     color:black;
     background-color:red;
 }
@@ -200,13 +196,10 @@ p {
     flex-direction:row;
     justify-content:space-around;
     align-items:center;
+    border:solid 1px;
 }
 #title {
-    flex:1;
     font-size:6vw;
-}
-#titleBox {
-    flex:2;
 }
 #tomorrow {
     flex:2;
@@ -222,21 +215,28 @@ p {
 }
 .f2_container {
     position: relative;
-    height : 80vw;
+    height : 75vw;
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;
 }
+.f3_container {
+    position: relative;
+    height : 20vw;
+    z-index: 1;
+    perspective: 2000px;
+}
 .carte {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: all 0.5s linear;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.5s linear;
 }
 .face {
   position: absolute;
   width: 100%;
   height: 100%;
+  overflow:auto;
   backface-visibility: hidden;
 }
 .face.back {
