@@ -167,7 +167,8 @@ function getAndDisplay (wundergroundUrl) {
             }
             indexComp=index+120;
             $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
-            $("#controlBar").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
+            $("#controlBarFront").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
+            $("#controlBarBack").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
         })
 }
 
@@ -216,9 +217,14 @@ $(".carte").click(function() {
     $(this).toggleClass("flipped");
 });
 
+$("#menu, #send, #controlBarBack").click(function() {
+    $(".carte2").toggleClass("flipped");
+});
+
 // select metric or imperial units
 $("input[name=degre]").click(function(){
     $("#celsiusButton, #fahrenheitButton").toggleClass("shadow");
+    $(".carte2").toggleClass("flipped");
     getAndDisplay(wundergroundUrl);
 });
 

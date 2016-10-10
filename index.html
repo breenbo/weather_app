@@ -10,41 +10,46 @@
     </head>
     <body>
            <div class="f3_container">
-               <div class="carte">
-                   <div class="front face">
-                       <header id="controlBar" class="flexRow">
-                           <div id="titleBox" class="box flexRow">
-                               <h1 id="title" class="box">weather app</h1>
-                               <h2 id="city" class="box"></h2>
+               <div class="carte2">
+                   <div id="controlBarFront" class="fond front face">
+                       <header>
+                           <div id="titleBox" class="containerRow">
+                               <div class="containerColumn">
+                                   <h1 id="title" class="box">weather app</h1>
+                                   <h2 id="city" class="box"></h2>
+                               </div>
+                               <div id="menu" class="box button">Menu</div>
                            </div>
                        </header>
                    </div>
-                   <div class="card back face">
+                   <div id="controlBarBack" class="fond back face">
                        <form class="box flexColumn">
                            <div class="containerRow">
                                <div id="search" class="containerRow">
-                                   <label id="auto" for="searchAuto" class="button">A
-                                       <input id="searchAuto" type="radio" name="search" value="auto" checked="checked" >
-                                   </label>
-                                   <label id="manual" for="searchManual" class="button shadow">M
-                                       <input id="searchManual" type="radio" name="search" value="manual" >
-                                   </label>
-                                   <!-- <div id="formulaire" class="containerRow"> -->
-                                       <div class="containerColumn">
-                                           <input id="country" class="box" type="text" name="country" placeholder="country name or US state">
-                                           <input id="ville" class="box" type="text" name="city" placeholder="city">
+                                   <div id="send" class="button shadow">S</div>
+                                   <div class="containerColumn">
+                                       <input id="country" class="box" type="text" name="country" placeholder="country or US state">
+                                       <input id="ville" class="box" type="text" name="city" placeholder="city">
+                                   </div>
+                                   <div class="containerColumn">
+                                       <div class="alignButton containerRow">
+                                           <label id="auto" for="searchAuto" class="button">A
+                                               <input id="searchAuto" type="radio" name="search" value="auto" checked="checked" >
+                                           </label>
+                                           <label id="manual" for="searchManual" class="button shadow">M
+                                               <input id="searchManual" type="radio" name="search" value="manual" >
+                                           </label>
                                        </div>
-                                       <div id="send" class="button shadow">S</div>
-                                   <!-- </div> -->
+                                       <div class="alignButton containerRow">
+                                           <label for="celsius" id="celsiusButton" class="button wi wi-celsius">
+                                               <input id="celsius" type="radio" name="degre" checked="checked"/>
+                                           </label>
+                                           <label for="fahrenheit" id="fahrenheitButton" class="button shadow wi wi-fahrenheit">
+                                               <input id="fahrenheit" type="radio" name="degre" />
+                                           </label>
+                                       </div>
+                                   </div>
                                </div>
-                           </div>
-                           <div id="mesure" class="containerRow">
-                               <label for="celsius" id="celsiusButton" class="button wi wi-celsius">
-                                   <input id="celsius" type="radio" name="degre" checked="checked"/>
-                               </label>
-                               <label for="fahrenheit" id="fahrenheitButton" class="button shadow wi wi-fahrenheit">
-                                   <input id="fahrenheit" type="radio" name="degre" />
-                               </label>
                            </div>
                        </form>
                    </div>
