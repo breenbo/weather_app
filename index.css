@@ -31,9 +31,9 @@ h5 {
     margin:0 0 2vw 0;
     padding-left:2vw;
 }
-/* input[type=text], #send, #formulaire { */
-    /* display:none; */
-/* } */
+input[type=text], #send, #formulaire {
+    display:none;
+}
 input[type=text] {
     width:30vw;
 }
@@ -222,7 +222,7 @@ p {
 }
 .f3_container {
     position: relative;
-    height : 20vw;
+    height : 30vw;
     z-index: 1;
     perspective: 2000px;
 }

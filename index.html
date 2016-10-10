@@ -9,15 +9,18 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     </head>
     <body>
-       <header id="controlBar" class="flexRow">
-           <div id="titleBox" class="box flexColumn">
-               <h1 id="title" class="box">weather app</h1>
-               <h2 id="city" class="box"></h2>
-           </div>
-           <form class="box flexColumn">
-               <div class="f3_container">
-                   <div class="carte">
-                       <div class="front face">
+           <div class="f3_container">
+               <div class="carte">
+                   <div class="front face">
+                       <header id="controlBar" class="flexRow">
+                           <div id="titleBox" class="box flexRow">
+                               <h1 id="title" class="box">weather app</h1>
+                               <h2 id="city" class="box"></h2>
+                           </div>
+                       </header>
+                   </div>
+                   <div class="card back face">
+                       <form class="box flexColumn">
                            <div class="containerRow">
                                <div id="search" class="containerRow">
                                    <label id="auto" for="searchAuto" class="button">A
@@ -26,30 +29,27 @@
                                    <label id="manual" for="searchManual" class="button shadow">M
                                        <input id="searchManual" type="radio" name="search" value="manual" >
                                    </label>
+                                   <!-- <div id="formulaire" class="containerRow"> -->
+                                       <div class="containerColumn">
+                                           <input id="country" class="box" type="text" name="country" placeholder="country name or US state">
+                                           <input id="ville" class="box" type="text" name="city" placeholder="city">
+                                       </div>
+                                       <div id="send" class="button shadow">S</div>
+                                   <!-- </div> -->
                                </div>
                            </div>
-                       </div>
-                       <div class="back face">
-                           <div id="formulaire" class="containerRow">
-                               <div class="containerColumn">
-                                   <input id="country" class="box" type="text" name="country" placeholder="country name or US state">
-                                   <input id="ville" class="box" type="text" name="city" placeholder="city">
-                               </div>
-                               <div id="send" class="box button shadow">S</div>
+                           <div id="mesure" class="containerRow">
+                               <label for="celsius" id="celsiusButton" class="button wi wi-celsius">
+                                   <input id="celsius" type="radio" name="degre" checked="checked"/>
+                               </label>
+                               <label for="fahrenheit" id="fahrenheitButton" class="button shadow wi wi-fahrenheit">
+                                   <input id="fahrenheit" type="radio" name="degre" />
+                               </label>
                            </div>
-                       </div>
+                       </form>
                    </div>
                </div>
-               <div id="mesure" class="containerRow">
-                   <label for="celsius" id="celsiusButton" class="button wi wi-celsius">
-                       <input id="celsius" type="radio" name="degre" checked="checked"/>
-                   </label>
-                   <label for="fahrenheit" id="fahrenheitButton" class="button shadow wi wi-fahrenheit">
-                       <input id="fahrenheit" type="radio" name="degre" />
-                   </label>
-               </div>
-           </form>
-       </header>
+           </div>
        <div id="fond" class="flexColumn">
            <!-- today flip card -->
            <div id="current" class="containerColumn">

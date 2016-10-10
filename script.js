@@ -186,17 +186,17 @@ function manual() {
 // use manual or auto mode
 function autoManual() {
     if ($("#searchManual").is(":checked")) {
-        // $("input:text").css("display", "block");
-        // $("#send").css("display", "block");
-        // $("#formulaire").css("display", "block");
+        $("input:text").css("display", "block");
+        $("#send").css("display", "block");
+        $("#formulaire").css("display", "block");
         $("#send").click(function() {
             manual();
             getAndDisplay(wundergroundUrl);
         });
     } else if ($("#searchAuto").is(":checked")) {
-        // $("input:text").css("display", "none");
-        // $("#send").css("display", "none");
-        // $("#formulaire").css("display", "none");
+        $("input:text").css("display", "none");
+        $("#send").css("display", "none");
+        $("#formulaire").css("display", "none");
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
