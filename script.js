@@ -190,7 +190,10 @@ function autoManual() {
         $("input:text").css("display", "block");
         $("#send").css("display", "block");
         $("#formulaire").css("display", "block");
+        $("#manual").removeClass("shadow");
+        $("#auto").addClass("shadow");
         $("#send").click(function() {
+            $(".carte2").toggleClass("flipped");
             manual();
             getAndDisplay(wundergroundUrl);
         });
@@ -198,6 +201,8 @@ function autoManual() {
         $("input:text").css("display", "none");
         $("#send").css("display", "none");
         $("#formulaire").css("display", "none");
+        $("#auto").removeClass("shadow");
+        $("#manual").addClass("shadow");
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -206,9 +211,17 @@ function autoManual() {
     }
 }
 
+function celsiusFahrenheit() {
+    if ($("#celsius").is(":checked")) {
+        $("#celsiusButton").removeClass("shadow");
+        $("#fahrenheitButton").addClass("shadow");
+    } else if ($("#fahrenheit").is(":checked")) {
+        $("#celsiusButton").addClass("shadow");
+        $("#fahrenheitButton").removeClass("shadow");
+    }
+}
 // display select auto or manual mode with shadow on button
 $("input[name=search]").click(function() {
-    $("#auto, #manual").toggleClass("shadow");
     autoManual();
 });
 
@@ -217,14 +230,14 @@ $(".carte").click(function() {
     $(this).toggleClass("flipped");
 });
 
-$("#menu, #send").click(function() {
+$("#menu").click(function() {
     $(".carte2").toggleClass("flipped");
 });
 
 // select metric or imperial units
 $("input[name=degre]").click(function(){
-    $("#celsiusButton, #fahrenheitButton").toggleClass("shadow");
     $(".carte2").toggleClass("flipped");
+    celsiusFahrenheit();
     getAndDisplay(wundergroundUrl);
 });
 
