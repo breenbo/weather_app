@@ -217,7 +217,7 @@ $(".carte").click(function() {
     $(this).toggleClass("flipped");
 });
 
-$("#menu, #send, #controlBarBack").click(function() {
+$("#menu, #send").click(function() {
     $(".carte2").toggleClass("flipped");
 });
 
