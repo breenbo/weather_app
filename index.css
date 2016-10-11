@@ -38,7 +38,7 @@ input[type=text], #send, #formulaire {
     display:none;
 }
 input[type=text] {
-    width:40vw;
+    width:30vw;
 }
 input[type=radio] {
     display:none;
@@ -46,6 +46,9 @@ input[type=radio] {
 p {
     margin:0;
     padding-left:4vw;
+}
+.alignButton {
+    justify-content:space-around;
 }
 .alignCenter {
     align-items:center;
@@ -84,10 +87,12 @@ p {
 }
 .button {
     font-size:12vw;
-    width:12vw;
-    height:12vw;
+    width:15vw;
+    height:15vw;
     text-align:center;
-    border:solid 1px;
+    border:solid 1px rgba(0, 0, 0, 0.2);
+    border-radius:50%;
+    background-color:green;
 }
 .card {
     display:flex;
@@ -145,7 +150,7 @@ p {
     justify-content:center;
 }
 .shadow {
-    box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.2), 4px 4px 3px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.2), 5px 5px 3px 0 rgba(0, 0, 0, 0.19);
 }
 .smallText {
     width:35vw;
@@ -168,9 +173,6 @@ p {
 .subDay {
     margin-top:2vw;
     align-items:center;
-}
-.alignButton {
-    justify-content:space-around;
 }
 .text {
     flex:1;
@@ -202,7 +204,6 @@ p {
     flex-direction:row;
     justify-content:space-around;
     align-items:center;
-    border:solid 1px;
 }
 #title {
     font-size:6vw;

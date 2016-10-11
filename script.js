@@ -170,8 +170,9 @@ function tempColor(tmaxC,tminC,tmaxF,tminF) {
             }
             indexComp=index+120;
             $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
-            $("#controlBarFront").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
-            $("#controlBarBack").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
+            $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%,50%)");
+            $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%,35%)");
+            $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%,35%)");
 }
 
 // manual country and city
@@ -204,6 +205,7 @@ function autoManualData() {
 }
 
 function autoManualDisplay() {
+    // change background color button if checked or not
     if ($("#searchManual").is(":checked")) {
         $("input:text").css("display", "block");
         $("#send").css("display", "block");
