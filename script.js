@@ -170,7 +170,7 @@ function tempColor(tmaxC,tminC,tmaxF,tminF) {
             }
             indexComp=index+120;
             $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
-            $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%,50%)");
+            $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%,75%)");
             $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%,35%)");
             $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%,35%)");
 }
