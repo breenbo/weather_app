@@ -3,6 +3,8 @@
     var maLongitude=2.208;
     var apiKey="b8bcc556b7a1fd8c";
     var wundergroundUrl="";
+    var actualTemp_c=0;
+    var actualTemp_f=32;
 
 function showPosition (position) {
         maLatitude=position.coords.latitude;
@@ -22,14 +24,14 @@ function getAndDisplay (wundergroundUrl) {
             }
         // if loop for celsius or fahrenheit
             if ($("#celsius").is(":checked")) {
-                var actualTemp_c=json.current_observation.temp_c;
+                actualTemp_c=json.current_observation.temp_c;
                 $("#actualTemp").html(" " + actualTemp_c + "°");
                 var wind=json.current_observation.wind_kph;
                 $("#wind").html(" " + wind + " kph");
                 var pressureMb=json.current_observation.pressure_mb;
                 $("#pressureMb").html(" " + pressureMb + " mb");
             } else {
-                var actualTemp_f=json.current_observation.temp_f;
+                actualTemp_f=json.current_observation.temp_f;
                 $("#actualTemp").html(" " + actualTemp_f + "°");
                 var wind=json.current_observation.wind_mph;
                 $("#wind").html(" " + wind + " mph");
@@ -150,26 +152,26 @@ function getAndDisplay (wundergroundUrl) {
                 }
             }
         // display background color depend on temperature
+            tempColor(35,0,95,32);
+        })
+}
+
+function tempColor(tmaxC,tminC,tmaxF,tminF) {
+    // tmax and tmin define the range for the color palette
             // if loop for metric or imperial units
             var hot=0;
             var cold=250;
-            var temp=20;
             var index=0;
-            var indexComp=180;
+            var indexComp=120;
             if ($("#celsius").is(":checked")) {
-                var tmax=35;
-                var tmin=0;
-                index=1/(tmax-tmin)*((actualTemp_c-tmin)*hot - (actualTemp_c-tmax)*cold);
-            } else {
-                var tmax=95;
-                var tmin=32;
-                index=1/(tmax-tmin)*((actualTemp_f-tmin)*hot - (actualTemp_f-tmax)*cold);
+                index=1/(tmaxC-tminC)*((actualTemp_c-tminC)*hot - (actualTemp_c-tmaxC)*cold);
+            } else if ($("#fahrenheit").is(":checked")) {
+                index=1/(tmaxF-tminF)*((actualTemp_f-tminF)*hot - (actualTemp_f-tmaxF)*cold);
             }
             indexComp=index+120;
             $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
             $("#controlBarFront").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
             $("#controlBarBack").css("backgroundColor", "hsl(" + indexComp + ",100%,60%)");
-        })
 }
 
 // manual country and city
@@ -185,24 +187,14 @@ function manual() {
 }
 
 // use manual or auto mode
-function autoManual() {
+function autoManualData() {
     if ($("#searchManual").is(":checked")) {
-        $("input:text").css("display", "block");
-        $("#send").css("display", "block");
-        $("#formulaire").css("display", "block");
-        $("#manual").removeClass("shadow");
-        $("#auto").addClass("shadow");
         $("#send").click(function() {
             $(".carte2").toggleClass("flipped");
             manual();
             getAndDisplay(wundergroundUrl);
         });
     } else if ($("#searchAuto").is(":checked")) {
-        $("input:text").css("display", "none");
-        $("#send").css("display", "none");
-        $("#formulaire").css("display", "none");
-        $("#auto").removeClass("shadow");
-        $("#manual").addClass("shadow");
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -211,7 +203,29 @@ function autoManual() {
     }
 }
 
-function celsiusFahrenheit() {
+function autoManualDisplay() {
+    if ($("#searchManual").is(":checked")) {
+        $("input:text").css("display", "block");
+        $("#send").css("display", "block");
+        $("#formulaire").css("display", "block");
+    } else if ($("#searchAuto").is(":checked")) {
+        $("input:text").css("display", "none");
+        $("#send").css("display", "none");
+        $("#formulaire").css("display", "none");
+    }
+}
+
+function autoManualShadow() {
+    if ($("#searchManual").is(":checked")) {
+        $("#manual").removeClass("shadow");
+        $("#auto").addClass("shadow");
+    } else if ($("#searchAuto").is(":checked")) {
+        $("#auto").removeClass("shadow");
+        $("#manual").addClass("shadow");
+    }
+}
+
+function celsiusFahrenheitShadow() {
     if ($("#celsius").is(":checked")) {
         $("#celsiusButton").removeClass("shadow");
         $("#fahrenheitButton").addClass("shadow");
@@ -220,9 +234,12 @@ function celsiusFahrenheit() {
         $("#fahrenheitButton").removeClass("shadow");
     }
 }
+
 // display select auto or manual mode with shadow on button
 $("input[name=search]").click(function() {
-    autoManual();
+    autoManualData();
+    autoManualShadow();
+    autoManualDisplay();
 });
 
 // card flip on click
@@ -237,9 +254,10 @@ $("#menu").click(function() {
 // select metric or imperial units
 $("input[name=degre]").click(function(){
     $(".carte2").toggleClass("flipped");
-    celsiusFahrenheit();
+    celsiusFahrenheitShadow();
     getAndDisplay(wundergroundUrl);
 });
 
 // mode on refresh : depend of the radio checked, so call autoManual fct
-autoManual();
+autoManualData();
+autoManualDisplay();
