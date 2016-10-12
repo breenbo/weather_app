@@ -40,9 +40,6 @@
                                        <label for="fahrenheit" id="fahrenheitButton" class="button shadow">°F
                                            <input id="fahrenheit" type="radio" name="degre" />
                                        </label>
-                                       <label for="animatedIcon" id="animatedIcon" class="button shadow">I
-                                           <input id="animatedIcon" type="radio" />
-                                       </label>
                                    </div>
                                    <div id="formulaire" class="containerRow">
                                        <div id="send" class="button shadow">S</div>
@@ -61,7 +58,7 @@
                <div class="f1_container">
                    <div id="today" class="carte">
                    <!-- front -->
-                       <div class="card front face">
+                       <div id="faceToday" class="card front face">
                           <h3>Today <span class="more">...</span></h3>
                           <h4>Current</h4>
                           <div class="alignCenter containerRow">
@@ -125,7 +122,7 @@
                        </div>
                    <!-- back -->
                        <div class="card back face">
-                          <div id="detail" class="containerColumn">
+                          <div id="backToday" class="containerColumn">
                               <h4>Current</h4>
                               <div class="blockDatas containerRow">
                                   <div class="containerColumn">
@@ -210,10 +207,10 @@
 
            <!-- tomorrow flip card -->
            <div id="future" class="containerColumn">
-               <div class="f2_container">
-                   <div class="carte">
+               <div id="tomorrowContainer" class="f2_container">
+                   <div id="tomorrow" class="carte">
                    <!-- front -->
-                       <div class="front face card">
+                       <div id="faceTomorrow" class="front face card">
                        <h3>Tomorrow<span class="more">...</span></h3>
                            <div class="subCarte containerRow">
                                 <div class="picture">
@@ -230,39 +227,41 @@
                        </div>
                    <!-- back -->
                        <div class="back face card">
-                           <h4>Forecast</h4>
-                            <div class="boite">
-                                <div class="boxBack containerRow">
-                                    <div class="containerColumn">
-                                        <h5>Day</h5>
-                                        <p id="text2" class="text"></p>
+                           <div id="backTomorrow">
+                               <h4>Forecast</h4>
+                                <div class="boite">
+                                    <div class="boxBack containerRow">
+                                        <div class="containerColumn">
+                                            <h5>Day</h5>
+                                            <p id="text2" class="text"></p>
+                                        </div>
+                                        <div class="containerColumn">
+                                            <h5>Night</h5>
+                                            <p id="text3" class="text"></p>
+                                        </div>
                                     </div>
-                                    <div class="containerColumn">
-                                        <h5>Night</h5>
-                                        <p id="text3" class="text"></p>
+                                    <div class="boxBack blockDatas containerRow">
+                                        <div class="containerColumn">
+                                            <p id="windDir1" class="text wi wi-wind-direction"></p>
+                                            <p id="wind1" class="text wi wi-strong-wind"></p>
+                                        </div>
+                                        <div class="containerColumn">
+                                            <p id="humidity1" class="text wi wi-humidity"></p>
+                                            <p id="precip1" class="text wi wi-umbrella"></p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="boxBack blockDatas containerRow">
-                                    <div class="containerColumn">
-                                        <p id="windDir1" class="text wi wi-wind-direction"></p>
-                                        <p id="wind1" class="text wi wi-strong-wind"></p>
-                                    </div>
-                                    <div class="containerColumn">
-                                        <p id="humidity1" class="text wi wi-humidity"></p>
-                                        <p id="precip1" class="text wi wi-umbrella"></p>
-                                    </div>
-                                </div>
-                            </div>
+                           </div>
                        </div>
                     </div>
                </div>
            <!-- end tomorrow flip card -->
 
            <!-- after-tomorrow flip card -->
-               <div class="f2_container">
-                   <div class="carte">
+               <div id="nextContainer" class="f2_container">
+                   <div id="next" class="carte">
                    <!-- front -->
-                       <div class="front face card">
+                       <div id="faceNext" class="front face card">
                            <h3 id="day2" class="title">day2</h3>
                            <div class="subCarte containerRow">
                                 <div class="picture">
@@ -279,29 +278,31 @@
                        </div>
                    <!-- back -->
                        <div class="back face card">
-                           <h4>Forecast</h4>
-                            <div class="boite">
-                                <div class="boxBack containerRow">
-                                    <div class="containerColumn">
-                                        <h5>Day</h5>
-                                        <p id="text4" class="text"></p>
+                           <div id="backNext">
+                               <h4>Forecast</h4>
+                                <div class="boite">
+                                    <div class="boxBack containerRow">
+                                        <div class="containerColumn">
+                                            <h5>Day</h5>
+                                            <p id="text4" class="text"></p>
+                                        </div>
+                                        <div class="containerColumn">
+                                            <h5>Night</h5>
+                                            <p id="text5" class="text"></p>
+                                        </div>
                                     </div>
-                                    <div class="containerColumn">
-                                        <h5>Night</h5>
-                                        <p id="text5" class="text"></p>
+                                    <div class="boxBack blockDatas containerRow">
+                                        <div class="containerColumn">
+                                            <p id="windDir2" class="text wi wi-wind-direction"></p>
+                                            <p id="wind2" class="text wi wi-strong-wind"></p>
+                                        </div>
+                                        <div class="containerColumn">
+                                            <p id="humidity2" class="text wi wi-humidity"></p>
+                                            <p id="precip2" class="text wi wi-umbrella"></p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="boxBack blockDatas containerRow">
-                                    <div class="containerColumn">
-                                        <p id="windDir2" class="text wi wi-wind-direction"></p>
-                                        <p id="wind2" class="text wi wi-strong-wind"></p>
-                                    </div>
-                                    <div class="containerColumn">
-                                        <p id="humidity2" class="text wi wi-humidity"></p>
-                                        <p id="precip2" class="text wi wi-umbrella"></p>
-                                    </div>
-                                </div>
-                            </div>
+                           </div>
                        </div>
                    </div>
                </div>

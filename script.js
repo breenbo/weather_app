@@ -5,6 +5,12 @@
     var wundergroundUrl="";
     var actualTemp_c=0;
     var actualTemp_f=32;
+    var heightBackToday=0;
+    var heightFaceToday=0;
+    var heightBackTomorrow=0;
+    var heightFaceTomorrow=0;
+    var heightBackNext=0;
+    var heightFaceNext=0;
 
 function showPosition (position) {
         maLatitude=position.coords.latitude;
@@ -50,6 +56,9 @@ function getAndDisplay (wundergroundUrl) {
                     "leaf" : "green"
                 }
             });
+
+                // skycons.play();
+
             var d = new Date();
             var h = d.getHours();
             if (h >= 7 && h <= 20) {
@@ -152,6 +161,13 @@ function getAndDisplay (wundergroundUrl) {
             }
         // display background color depend on temperature
             tempColor(35,0,95,32);
+        // get height of the cards for flip
+            heightBackToday = $("#backToday").height();
+            heightFaceToday = $("#faceToday").height();
+            heightBackTomorrow = $("#backTomorrow").height();
+            heightFaceTomorrow = $("#faceTomorrow").height();
+            heightBackNext = $("#backNext").height();
+            heightFaceNext = $("#faceNext").height();
         })
 }
 
@@ -170,8 +186,8 @@ function tempColor(tmaxC,tminC,tmaxF,tminF) {
             indexComp=index+120;
             $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
             $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%,75%)");
-            $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%,35%)");
-            $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%,35%)");
+            $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%,40%)");
+            $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%,40%)");
 }
 
 // manual country and city
@@ -241,11 +257,6 @@ function celsiusFahrenheitShadow() {
     }
 }
 
-function animatedIcon() {
-    if ($("#animatedIcon").is(":checked")) {
-        skycons.play();
-    } else { skycons.pause(); }
-}
 // display select auto or manual mode with shadow on button
 $("input[name=search]").click(function() {
     autoManualData();
@@ -253,9 +264,32 @@ $("input[name=search]").click(function() {
     autoManualDisplay();
 });
 
-// card flip on click
-$(".carte").click(function() {
-    $(this).toggleClass("flipped");
+// card flip on click, with adaptative size
+$("#faceToday").click(function() {
+    $("#today").toggleClass("flipped");
+    $(".f1_container").css("height",heightBackToday);
+});
+$("#backToday").click(function() {
+    $("#today").toggleClass("flipped");
+    $(".f1_container").css("height",heightFaceToday);
+});
+
+$("#faceTomorrow").click(function() {
+    $("#tomorrow").toggleClass("flipped");
+    $("#tomorrowContainer").css("height",heightBackTomorrow);
+});
+$("#backTomorrow").click(function() {
+    $("#tomorrow").toggleClass("flipped");
+    $("#tomorrowContainer").css("height",heightFaceTomorrow);
+});
+
+$("#faceNext").click(function() {
+    $("#next").toggleClass("flipped");
+    $("#nextContainer").css("height",heightBackNext);
+});
+$("#backNext").click(function() {
+    $("#next").toggleClass("flipped");
+    $("#nextContainer").css("height",heightFaceNext);
 });
 
 // open option menu
@@ -273,12 +307,6 @@ $("#close").click(function() {
 $("input[name=degre]").click(function(){
     celsiusFahrenheitShadow();
     getAndDisplay(wundergroundUrl);
-});
-
-// choose animated icons or not
-$("#animatedIcon").click(function() {
-    $("#animatedIcon").toggleClass("shadow");
-    animatedIcon();
 });
 
 // mode on refresh : depend of the radio checked, so call autoManual fct
