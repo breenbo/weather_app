@@ -116,7 +116,6 @@ function getAndDisplay (wundergroundUrl) {
                 text[i]=text[i].replace(/\./gi, ".<br>")
                 $("#text"+[i]).html(text[i]);
             }
-            // skycons.play();
           //
           // display sunset and sunrise
             var sunriseHour=json.moon_phase.sunrise.hour;
@@ -187,13 +186,19 @@ function manual() {
     }
 }
 
+//close, flip and get normal size
+function close() {
+    $(".carte2").toggleClass("flipped");
+    $(".f3_container").css("height","30vw");
+}
+
 // use manual or auto mode
 function autoManualData() {
     if ($("#searchManual").is(":checked")) {
         $("#send").click(function() {
-            $(".carte2").toggleClass("flipped");
             manual();
             getAndDisplay(wundergroundUrl);
+            close();
         });
     } else if ($("#searchAuto").is(":checked")) {
         if (navigator.geolocation) {
@@ -205,15 +210,14 @@ function autoManualData() {
 }
 
 function autoManualDisplay() {
-    // change background color button if checked or not
     if ($("#searchManual").is(":checked")) {
         $("input:text").css("display", "block");
         $("#send").css("display", "block");
-        $("#formulaire").css("display", "block");
+        $(".f3_container").css("height","45vw");
     } else if ($("#searchAuto").is(":checked")) {
         $("input:text").css("display", "none");
         $("#send").css("display", "none");
-        $("#formulaire").css("display", "none");
+        $(".f3_container").css("height","30vw");
     }
 }
 
@@ -237,6 +241,11 @@ function celsiusFahrenheitShadow() {
     }
 }
 
+function animatedIcon() {
+    if ($("#animatedIcon").is(":checked")) {
+        skycons.play();
+    } else { skycons.pause(); }
+}
 // display select auto or manual mode with shadow on button
 $("input[name=search]").click(function() {
     autoManualData();
@@ -249,17 +258,30 @@ $(".carte").click(function() {
     $(this).toggleClass("flipped");
 });
 
+// open option menu
 $("#menu").click(function() {
     $(".carte2").toggleClass("flipped");
+    autoManualDisplay();
+});
+
+// close option menu
+$("#close").click(function() {
+    close();
 });
 
 // select metric or imperial units
 $("input[name=degre]").click(function(){
-    $(".carte2").toggleClass("flipped");
     celsiusFahrenheitShadow();
     getAndDisplay(wundergroundUrl);
+});
+
+// choose animated icons or not
+$("#animatedIcon").click(function() {
+    $("#animatedIcon").toggleClass("shadow");
+    animatedIcon();
 });
 
 // mode on refresh : depend of the radio checked, so call autoManual fct
 autoManualData();
 autoManualDisplay();
+$(".f3_container").css("height","30vw");
