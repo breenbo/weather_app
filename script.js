@@ -11,6 +11,7 @@
     var heightFaceTomorrow=0;
     var heightBackNext=0;
     var heightFaceNext=0;
+    var locaTime="";
 
 function showPosition (position) {
         maLatitude=position.coords.latitude;
@@ -28,8 +29,12 @@ function getAndDisplay (wundergroundUrl) {
                 var city=json.current_observation.display_location.city;
                 $("#city").html(city);
             }
+
+        // get local time of observation
+        localTime=json.current_observation.observation_time;
+        $("#localTime").html(localTime);
+
         // if loop for celsius or fahrenheit
-        
             if ($("#celsius").is(":checked")) {
                 actualTemp_c=json.current_observation.temp_c;
                 $("#actualTemp").html(" " + actualTemp_c + "°");
