@@ -193,7 +193,7 @@ p {
     text-align:left;
     margin:0;
     padding-left:5vw;
-    font-size:8vw;
+    font-size:7vw;
 }
 #close {
     font-size:5vw;
@@ -242,11 +242,11 @@ p {
 /* flip card */
 .f1_container {
     position: relative;
-    height: 160vw;
+    height: 140vw;
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;
-    transition: all 0.5s linear;
+    transition: all 0.2s linear;
 }
 .f2_container {
     position: relative;
@@ -254,7 +254,7 @@ p {
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;
-    transition: all 0.5s linear;
+    transition: all 0.2s linear;
 }
 .f3_container {
     position: relative;

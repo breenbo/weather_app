@@ -29,6 +29,7 @@ function getAndDisplay (wundergroundUrl) {
                 $("#city").html(city);
             }
         // if loop for celsius or fahrenheit
+        
             if ($("#celsius").is(":checked")) {
                 actualTemp_c=json.current_observation.temp_c;
                 $("#actualTemp").html(" " + actualTemp_c + "°");
@@ -162,12 +163,12 @@ function getAndDisplay (wundergroundUrl) {
         // display background color depend on temperature
             tempColor(35,0,95,32);
         // get height of the cards for flip
-            heightBackToday = $("#backToday").height();
-            heightFaceToday = $("#faceToday").height();
-            heightBackTomorrow = $("#backTomorrow").height();
-            heightFaceTomorrow = $("#faceTomorrow").height();
-            heightBackNext = $("#backNext").height();
-            heightFaceNext = $("#faceNext").height();
+            heightBackToday = $("#backToday").height()+10;
+            heightFaceToday = $("#faceToday").height()+10;
+            heightBackTomorrow = $("#backTomorrow").height()+10;
+            heightFaceTomorrow = $("#faceTomorrow").height()+10;
+            heightBackNext = $("#backNext").height()+10;
+            heightFaceNext = $("#faceNext").height()+10;
         })
 }
 
@@ -257,39 +258,42 @@ function celsiusFahrenheitShadow() {
     }
 }
 
+// function for adaptative card size
+function adaptativeCard(cardId, containerId, heightId) {
+    $(cardId).toggleClass("flipped");
+    $(containerId).css("height",heightId);
+}
+
 // display select auto or manual mode with shadow on button
 $("input[name=search]").click(function() {
     autoManualData();
     autoManualShadow();
     autoManualDisplay();
 });
-
+$("#searchAuto").click(function() {
+    autoManualData();
+    autoManualShadow();
+    autoManualDisplay();
+    close();
+});
 // card flip on click, with adaptative size
 $("#faceToday").click(function() {
-    $("#today").toggleClass("flipped");
-    $(".f1_container").css("height",heightBackToday);
+    adaptativeCard("#today", ".f1_container", heightBackToday);
 });
 $("#backToday").click(function() {
-    $("#today").toggleClass("flipped");
-    $(".f1_container").css("height",heightFaceToday);
+    adaptativeCard("#today", ".f1_container", heightFaceToday);
 });
-
 $("#faceTomorrow").click(function() {
-    $("#tomorrow").toggleClass("flipped");
-    $("#tomorrowContainer").css("height",heightBackTomorrow);
+    adaptativeCard("#tomorrow", "#tomorrowContainer", heightBackTomorrow);
 });
 $("#backTomorrow").click(function() {
-    $("#tomorrow").toggleClass("flipped");
-    $("#tomorrowContainer").css("height",heightFaceTomorrow);
+    adaptativeCard("#tomorrow", "#tomorrowContainer", heightFaceTomorrow);
 });
-
 $("#faceNext").click(function() {
-    $("#next").toggleClass("flipped");
-    $("#nextContainer").css("height",heightBackNext);
+    adaptativeCard("#next", "#nextContainer", heightBackNext);
 });
 $("#backNext").click(function() {
-    $("#next").toggleClass("flipped");
-    $("#nextContainer").css("height",heightFaceNext);
+    adaptativeCard("#next", "#nextContainer", heightFaceNext);
 });
 
 // open option menu
@@ -307,6 +311,7 @@ $("#close").click(function() {
 $("input[name=degre]").click(function(){
     celsiusFahrenheitShadow();
     getAndDisplay(wundergroundUrl);
+    close();
 });
 
 // mode on refresh : depend of the radio checked, so call autoManual fct
