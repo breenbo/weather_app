@@ -42,7 +42,7 @@ input[type=text], #send {
 }
 input[type=text] {
     width:33vw;
-    height:5vw;
+    height:7vw;
     margin:5vw 0 0 2vw;
 }
 input[type=radio] {
@@ -213,6 +213,7 @@ p {
 #endWeek {
     margin:4vw 2vw;
     padding-left:0;
+    opacity:0;
 }
 #fond {
     min-height:90vh;
@@ -252,6 +253,7 @@ p {
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;
+    opacity:0;
     transition: all 0.2s linear;
 }
 .f2_container {
@@ -260,6 +262,7 @@ p {
     margin:4vw 2vw 0vw 2vw;
     z-index: 1;
     perspective: 2000px;
+    opacity:0;
     transition: all 0.2s linear;
 }
 .f3_container {

@@ -169,11 +169,15 @@ function getAndDisplay (wundergroundUrl) {
             tempColor(35,0,95,32);
         // get height of the cards for flip
             heightBackToday = $("#backToday").height()+10;
-            heightFaceToday = $("#faceToday").height()+10;
+            heightFaceToday = $("#faceToday").height()+15;
             heightBackTomorrow = $("#backTomorrow").height()+10;
             heightFaceTomorrow = $("#faceTomorrow").height()+10;
             heightBackNext = $("#backNext").height()+10;
             heightFaceNext = $("#faceNext").height()+10;
+            
+            $(".f1_container").css("opacity","1");
+            $(".f2_container").css("opacity","1");
+            $("#endWeek").css("opacity","1");
         })
 }
 
