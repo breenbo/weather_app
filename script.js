@@ -12,6 +12,8 @@
     var heightBackNext=0;
     var heightFaceNext=0;
     var locaTime="";
+    var date=0;
+    var h=0;
 
 function showPosition (position) {
         maLatitude=position.coords.latitude;
@@ -34,6 +36,9 @@ function getAndDisplay (wundergroundUrl) {
         localTime=json.current_observation.observation_time;
         $("#localTime").html(localTime);
 
+        // display current time and theme
+        currentTime();
+
         // if loop for celsius or fahrenheit
             if ($("#celsius").is(":checked")) {
                 actualTemp_c=json.current_observation.temp_c;
@@ -51,25 +56,18 @@ function getAndDisplay (wundergroundUrl) {
                 $("#pressureMb").html(" " + pressureIn + " in");
             }
         // end if loop
+        // set current icon
             var icon=json.current_observation.icon;
-        // skycons : change for pastel colors !!!!!!!!!!!!!
-            var skycons = new Skycons({
-                "monochrome":false,
-                "colors" : {
-                    "cloud" : "lightgray",
-                    "sun" : "orange",
-                    "rain" : "blue",
-                    "leaf" : "green"
-                }
-            });
-
-                // skycons.play();
-
-            var d = new Date();
-            var h = d.getHours();
+            
+            // d = new Date();
+            // h = d.getHours();
             if (h >= 7 && h <= 20) {
-                skycons.add("actualIcon", Skycons[icon]);
-            } skycons.add("actualIcon", Skycons["nt_" + icon]);
+                $("#actualIcon").removeClass();
+                $("#actualIcon").addClass("bigPicture wi wi-wu-" + icon);;
+            } else {
+                $("#actualIcon").removeClass();
+                $("#actualIcon").addClass("bigPicture wi wi-wu-nt_" + icon);;
+            }
         //
             var relativeHumidity=json.current_observation.relative_humidity;
             $("#relativeHumidity").html(" " + relativeHumidity);
@@ -89,15 +87,15 @@ function getAndDisplay (wundergroundUrl) {
             var text=[];
             for (var i=0; i<8; i++) {
                 day[i]=json.forecast.simpleforecast.forecastday[i].date.weekday;
-                $("#day" + [i]).html(day[i] + '<span class="more">...</span>');
+                $("#day" + [i]).html(day[i] + '<span class="more">+</span>');
         // if loop for metric or imperial units
             if ($("#celsius").is(":checked")) {
                 high[i]=json.forecast.simpleforecast.forecastday[i].high.celsius;
                 $("#max"+[i]).html(" " + high[i] + "°");
-                $("#max"+[i]).css("color", "red");
+                $("#max"+[i]).css("color", "hsl(0,70%,50%)");
                 low[i]=json.forecast.simpleforecast.forecastday[i].low.celsius;
                 $("#min"+[i]).html(" " + low[i] + "°");
-                $("#min"+[i]).css("color", "blue");
+                $("#min"+[i]).css("color", "hsl(250,70%,50%)");
                 wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
                 $("#wind"+[i]).html(" " + wind[i] + " kph");
                 precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.mm;
@@ -105,10 +103,10 @@ function getAndDisplay (wundergroundUrl) {
             } else {
                 high[i]=json.forecast.simpleforecast.forecastday[i].high.fahrenheit;
                 $("#max"+[i]).html(" " + high[i] + "°");
-                $("#max"+[i]).css("color", "red");
+                $("#max"+[i]).css("color", "hsl(0,70%,50%)");
                 low[i]=json.forecast.simpleforecast.forecastday[i].low.fahrenheit;
                 $("#min"+[i]).html(" " + low[i] + "°");
-                $("#min"+[i]).css("color", "blue");
+                $("#min"+[i]).css("color", "hsl(250,70%,50%)");
                 wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.mph;
                 $("#wind"+[i]).html(" " + wind[i] + " mph");
                 precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.in;
@@ -119,9 +117,25 @@ function getAndDisplay (wundergroundUrl) {
                 humidity[i]=json.forecast.simpleforecast.forecastday[i].avehumidity;
                 $("#humidity"+[i]).html(" " + humidity[i] + " %");
             }
-            for (i=0; i<16; i++) {
+        // display big weather icons
+            for (i=0; i<6; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
-                skycons.add("picDay" + [i], Skycons[icon[i]]);
+                $("#picDay" + [i]).removeClass();
+                $("#picDay" + [i]).addClass("bigPicture wi wi-wu-" + icon[i]);;
+            // if loop for metric or imperial units
+                if ($("#celsius").is(":checked")) {
+                    text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
+                } else {
+                    text[i]=json.forecast.txt_forecast.forecastday[i].fcttext;
+                }
+                text[i]=text[i].replace(/\./gi, ".<br>")
+                $("#text"+[i]).html(text[i]);
+            }
+        // display medium weather icons
+            for (i=6; i<16; i++) {
+                icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
+                $("#picDay" + [i]).removeClass();
+                $("#picDay" + [i]).addClass("smallPicture wi wi-wu-" + icon[i]);;
             // if loop for metric or imperial units
                 if ($("#celsius").is(":checked")) {
                     text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
@@ -157,12 +171,15 @@ function getAndDisplay (wundergroundUrl) {
                     hourTemp[i]=json.hourly_forecast[i].temp.english;
                 }
                 $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
+            // display weather icons
                 hourIcon[i]=json.hourly_forecast[i].icon;
                 hourFr[i]=json.hourly_forecast[i].FCTTIME.hour;
                 if (hourFr[i] >= 7 && hourFr[i] <= 20) {
-                    skycons.add("hourlyPic" + [i], Skycons[hourIcon[i]]);
+                    $("#hourlyPic" + [i]).removeClass();
+                    $("#hourlyPic" + [i]).addClass("tinyPicture wi wi-wu-" + hourIcon[i]);;
                 } else {
-                    skycons.add("hourlyPic" + [i], Skycons["nt_" + hourIcon[i]]);
+                    $("#hourlyPic" + [i]).removeClass();
+                    $("#hourlyPic" + [i]).addClass("tinyPicture wi wi-wu-nt_" + hourIcon[i]);;
                 }
             }
         // display background color depend on temperature
@@ -178,7 +195,28 @@ function getAndDisplay (wundergroundUrl) {
             $(".f1_container").css("opacity","1");
             $(".f2_container").css("opacity","1");
             $("#endWeek").css("opacity","1");
+            
+            // display day or night theme
+            dayAndNight();
         })
+}
+
+function currentTime() {
+    date = new Date;
+    h = date.getHours();
+    var m = date.getMinutes();
+    $("#currentTitle").html("Current - " + h + ":" + m);
+}
+
+function dayAndNight() {
+    if (h >= 7 && h <= 20) {
+        $("body").css("backgroundColor","lightgray");
+    } else {
+        $("body").css("backgroundColor","hsl(30,12%,40%)");
+        $(".card").css("backgroundColor","hsl(30,12%,60%)");
+        $(".hourly").css("color","black");
+        $(".more").css("color","hsl(30,12%,60%)");
+    }
 }
 
 function tempColor(tmaxC,tminC,tmaxF,tminF) {
@@ -194,7 +232,7 @@ function tempColor(tmaxC,tminC,tmaxF,tminF) {
                 index=1/(tmaxF-tminF)*((actualTemp_f-tminF)*hot - (actualTemp_f-tmaxF)*cold);
             }
             indexComp=index+120;
-            $("h3").css("backgroundColor", "hsl(" + index + ",100%,60%)");
+            $("h3").css("backgroundColor", "hsl(" + index + ",100%,50%)");
             $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%,75%)");
             $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%,40%)");
             $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%,40%)");

@@ -3,6 +3,7 @@ body {
     padding:0;
     font-size:100%;
     font-family: 'Roboto', sans-serif;
+    color:black;
     background-color: lightgray;
 }
 footer {
@@ -29,7 +30,6 @@ h4 {
 h5 {
     font-size:5vw;
     margin:0;
-    /* margin:0 0 2vw 0; */
     padding-left:2vw;
 }
 h6 {
@@ -59,8 +59,8 @@ p {
     align-items:center;
 }
 .bigPicture {
-    width:25vw;
-    height:25vw;
+    font-size:20vw;
+    text-align:center;
 }
 .bigScreen {
     display:none;
@@ -164,8 +164,7 @@ p {
     font-size:6vw;
 }
 .smallPicture {
-    width:20vw;
-    height:20vw;
+    font-size:15vw;
 }
 .smallTemp {
     margin:1vw 0;
@@ -188,8 +187,7 @@ p {
     font-size:4.5vw;
 }
 .tinyPicture {
-    width:13vw;
-    height:13vw;
+    font-size:10vw;
 }
 .wi {
     margin-top:2vw;

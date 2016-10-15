@@ -59,21 +59,22 @@
                    <div id="today" class="carte">
                    <!-- front -->
                        <div id="faceToday" class="card front face">
-                          <h3>Today <span class="more">...</span></h3>
-                          <h4>Current</h4>
+                          <h3>Today <span class="more">+</span></h3>
+                          <h4 id="currentTitle">Current</h4>
                           <div class="alignCenter containerRow">
+                              <!-- <div class="bigTemp wi wi-wu-chancerain"></div> -->
                               <div class="picture">
-                                  <canvas id="actualIcon" class="bigPicture" width="128" height="128"></canvas>
+                                  <div id="actualIcon" class="bigPicture"></div>
                               </div>
                                   <p id="actualTemp" class="bigTemp wi wi-thermometer"></p>
                           </div>
                           <h4>Forecast</h4>
                           <div class="alignCenter containerRow">
                               <div class="picture">
-                                   <canvas id="picDay0" class="bigPicture" width="128" height="128"></canvas>
+                                   <div id="picDay0" class="bigPicture"></div>
                               </div>
                               <div class="picture">
-                                   <canvas id="picDay1" class="bigPicture" width="128" height="128"></canvas>
+                                   <div id="picDay1" class="bigPicture"></div>
                               </div>
                               <div class="containerColumn">
                                   <p id="min0" class="bigTemp wi wi-thermometer-exterior"></p>
@@ -84,37 +85,37 @@
                           <div class="containerRow">
                               <div class="containerColumn"><span id="hourly0" class=""></span>
                                   <div class="picture">
-                                       <canvas id="hourlyPic0" class="tinyPicture" width="128" height="128"></canvas>
+                                       <div id="hourlyPic0" class="tinyPicture"></div>
                                   </div>
                                   <div id="hourlyTemp0" class="box smallTemp"></div> 
                               </div>
                               <div class="containerColumn"><span id="hourly2" class=""></span>
                                   <div class="picture">
-                                       <canvas id="hourlyPic2" class="tinyPicture" width="128" height="128"></canvas>
+                                       <div id="hourlyPic2" class="tinyPicture"></div>
                                   </div>
                                   <div id="hourlyTemp2" class="box smallTemp"></div> 
                               </div>
                               <div class="containerColumn"><span id="hourly4" class=""></span>
                                   <div class="picture">
-                                       <canvas id="hourlyPic4" class="tinyPicture" width="128" height="128"></canvas>
+                                       <div id="hourlyPic4" class="tinyPicture"></div>
                                   </div>
                                   <div id="hourlyTemp4" class="box smallTemp"></div> 
                               </div>
                               <div class="containerColumn"><span id="hourly6" class=""></span>
                                   <div class="picture">
-                                       <canvas id="hourlyPic6" class="tinyPicture" width="128" height="128"></canvas>
+                                       <div id="hourlyPic6" class="tinyPicture"></div>
                                   </div>
                                   <div id="hourlyTemp6" class="box smallTemp"></div> 
                               </div>
                               <div class="containerColumn"><span id="hourly8" class=""></span>
                                   <div class="picture">
-                                       <canvas id="hourlyPic8" class="tinyPicture" width="128" height="128"></canvas>
+                                       <div id="hourlyPic8" class="tinyPicture"></div>
                                   </div>
                                   <div id="hourlyTemp8" class="box smallTemp"></div> 
                               </div>
                               <div class="containerColumn"><span id="hourly10" class=""></span>
                                   <div class="picture">
-                                       <canvas id="hourlyPic10" class="tinyPicture" width="128" height="128"></canvas>
+                                       <div id="hourlyPic10" class="tinyPicture"></div>
                                   </div>
                                   <div id="hourlyTemp10" class="box smallTemp"></div> 
                               </div>
@@ -164,37 +165,37 @@
                               <div class="containerRow">
                                   <div class="containerColumn"><span id="hourly12" class=""></span>
                                       <div class="picture">
-                                           <canvas id="hourlyPic12" class="tinyPicture" width="128" height="128"></canvas>
+                                           <div id="hourlyPic12" class="tinyPicture"></div>
                                       </div>
                                       <div id="hourlyTemp12" class="box smallTemp"></div> 
                                   </div>
                                   <div class="containerColumn"><span id="hourly14" class=""></span>
                                       <div class="picture">
-                                           <canvas id="hourlyPic14" class="tinyPicture" width="128" height="128"></canvas>
+                                           <div id="hourlyPic14" class="tinyPicture"></div>
                                       </div>
                                       <div id="hourlyTemp14" class="box smallTemp"></div> 
                                   </div>
                                   <div class="containerColumn"><span id="hourly16" class=""></span>
                                       <div class="picture">
-                                           <canvas id="hourlyPic16" class="tinyPicture" width="128" height="128"></canvas>
+                                           <div id="hourlyPic16" class="tinyPicture"></div>
                                       </div>
                                       <div id="hourlyTemp16" class="box smallTemp"></div> 
                                   </div>
                                   <div class="containerColumn"><span id="hourly18" class=""></span>
                                       <div class="picture">
-                                           <canvas id="hourlyPic18" class="tinyPicture" width="128" height="128"></canvas>
+                                           <div id="hourlyPic18" class="tinyPicture"></div>
                                       </div>
                                       <div id="hourlyTemp18" class="box smallTemp"></div> 
                                   </div>
                                   <div class="containerColumn"><span id="hourly20" class=""></span>
                                       <div class="picture">
-                                           <canvas id="hourlyPic20" class="tinyPicture" width="128" height="128"></canvas>
+                                           <div id="hourlyPic20" class="tinyPicture"></div>
                                       </div>
                                       <div id="hourlyTemp20" class="box smallTemp"></div> 
                                   </div>
                                   <div class="containerColumn"><span id="hourly22" class=""></span>
                                       <div class="picture">
-                                           <canvas id="hourlyPic22" class="tinyPicture" width="128" height="128"></canvas>
+                                           <div id="hourlyPic22" class="tinyPicture"></div>
                                       </div>
                                       <div id="hourlyTemp22" class="box smallTemp"></div> 
                                   </div>
@@ -212,13 +213,13 @@
                    <div id="tomorrow" class="carte">
                    <!-- front -->
                        <div id="faceTomorrow" class="front face card">
-                       <h3>Tomorrow<span class="more">...</span></h3>
+                       <h3>Tomorrow<span class="more">+</span></h3>
                            <div class="subCarte containerRow">
                                 <div class="picture">
-                                    <canvas id="picDay2" class="bigPicture" width="128" height="128"></canvas>
+                                    <div id="picDay2" class="bigPicture"></div>
                                 </div>
                                 <div class="picture">
-                                    <canvas id="picDay3" class="bigPicture" width="128" height="128"></canvas>
+                                    <div id="picDay3" class="bigPicture"></div>
                                 </div>
                                 <div class="containerColumn">
                                     <p id="min1" class="bigTemp wi wi-thermometer-exterior"></p>
@@ -266,10 +267,10 @@
                            <h3 id="day2" class="title">day2</h3>
                            <div class="subCarte containerRow">
                                 <div class="picture">
-                                    <canvas id="picDay4" class="bigPicture" width="128" height="128"></canvas>
+                                    <div id="picDay4" class="bigPicture"></div>
                                 </div>
                                 <div class="picture">
-                                    <canvas id="picDay5" class="bigPicture" width="128" height="128"></canvas>
+                                    <div id="picDay5" class="bigPicture"></div>
                                 </div>
                                 <div class="containerColumn">
                                     <p id="min2" class="bigTemp wi wi-thermometer-exterior"></p>
@@ -314,40 +315,50 @@
                   <div id="afterThree" class="endWeek containerColumn">
                       <div id="three" class="alignCenter containerRow"><span id="day3" class="day smallText">day3</span>
                           <div class="containerRow">
-                                <canvas id="picDay6" class="smallPicture" width="128" height="128"></canvas>
-                                <canvas id="picDay7" class="smallPicture bigScreen" width="128" height="128"></canvas>
+                                <div id="picDay6" class=""></div>
+                                <div class="bigScreen">
+                                    <div id="picDay7" class=""></div>
+                                </div>
                           </div>
                           <div class="box"><span id="min3" class="cold smallText"></span></div>
                           <div class="box"><span id="max3" class="smallText"></span></div> 
                       </div>
                       <div id="four" class="subDay containerRow"><span id="day4" class="day smallText">day4</span>
                           <div class="containerRow">
-                                <canvas id="picDay8" class="smallPicture" width="128" height="128"></canvas>
-                                <canvas id="picDay9" class="smallPicture bigScreen" width="128" height="128"></canvas>
+                                <div id="picDay8" class=""></div>
+                                <div class="bigScreen">
+                                    <div id="picDay9" class=""></div>
+                                </div>
                           </div>
                           <div class="box"><span id="min4" class="cold smallText"></span></div>
                           <div class="box"><span id="max4" class="smallText"></span></div> 
                       </div>
                       <div id="five" class="subDay containerRow"><span id="day5" class="day smallText">day5</span>
                           <div class="containerRow">
-                                <canvas id="picDay10" class="smallPicture" width="128" height="128"></canvas>
-                                <canvas id="picDay11" class="smallPicture bigScreen" width="128" height="128"></canvas>
+                                <div id="picDay10" class=""></div>
+                                <div class="bigScreen">
+                                    <div id="picDay11" class=""></div>
+                                </div>
                           </div>
                           <div class="box"><span id="min5" class="cold smallText"></span></div>
                           <div class="box"><span id="max5" class="smallText"></span></div> 
                       </div>
                       <div id="six" class="subDay containerRow"><span id="day6" class="day smallText">day6</span>
                           <div class="containerRow">
-                                <canvas id="picDay12" class="smallPicture" width="128" height="128"></canvas>
-                                <canvas id="picDay13" class="smallPicture bigScreen" width="128" height="128"></canvas>
+                                <div id="picDay12" class=""></div>
+                                <div class="bigScreen">
+                                    <div id="picDay13" class=""></div>
+                                </div>
                           </div>
                           <div class="box"><span id="min6" class="cold smallText"></span></div>
                           <div class="box"><span id="max6" class="smallText"></span></div> 
                       </div>
                       <div id="seven" class="subDay containerRow"><span id="day7" class="day smallText">day7</span>
                           <div class="containerRow">
-                                <canvas id="picDay14" class="smallPicture" width="128" height="128"></canvas>
-                                <canvas id="picDay15" class="smallPicture bigScreen" width="128" height="128"></canvas>
+                                <div id="picDay14" class=""></div>
+                                <div class="bigScreen">
+                                    <div id="picDay15" class=""></div>
+                                </div>
                           </div>
                           <div class="box"><span id="min7" class="cold smallText"></span></div>
                           <div class="box"><span id="max7" class="smallText"></span></div> 
@@ -356,7 +367,7 @@
               </div>
            </div>
        </div>
-       <footer><small>Designed and coded by <em>Bruno Berrehuel</em></small>
+       <footer><small>Designed and coded by <em>Bruno Berrehuel</em>. <br>All right reserved.<br>Powered by wunderground.</small>
             <div id="footSocial">
                 <a href="https://www.freecodecamp.com/breenbo" target="_blank"><img id="fcc" class="logo" src="img/fcc.svg" alt="freecodecamp logo"></a>
                 <a href="https://bitbucket.org/breenbo" target="_blank"><img class="logo" src="img/bitbucket.svg" alt="bitbucket logo"></a>
