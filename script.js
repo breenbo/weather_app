@@ -57,16 +57,17 @@ function getAndDisplay (wundergroundUrl) {
             }
         // end if loop
         // set current icon
-            var icon=json.current_observation.icon;
+            var actualIcon=json.current_observation.icon;
+            console.log(actualIcon);
             
             // d = new Date();
             // h = d.getHours();
             if (h >= 7 && h <= 20) {
                 $("#actualIcon").removeClass();
-                $("#actualIcon").addClass("bigPicture wi wi-wu-" + icon);;
+                $("#actualIcon").addClass("bigPicture wi wi-wu-" + actualIcon);;
             } else {
                 $("#actualIcon").removeClass();
-                $("#actualIcon").addClass("bigPicture wi wi-wu-nt_" + icon);;
+                $("#actualIcon").addClass("bigPicture wi wi-wu-nt_" + actualIcon);;
             }
         //
             var relativeHumidity=json.current_observation.relative_humidity;
@@ -182,8 +183,6 @@ function getAndDisplay (wundergroundUrl) {
                     $("#hourlyPic" + [i]).addClass("tinyPicture wi wi-wu-nt_" + hourIcon[i]);;
                 }
             }
-        // display background color depend on temperature
-            tempColor(35,0,95,32);
         // get height of the cards for flip
             heightBackToday = $("#backToday").height()+10;
             heightFaceToday = $("#faceToday").height()+15;
@@ -196,7 +195,7 @@ function getAndDisplay (wundergroundUrl) {
             $(".f2_container").css("opacity","1");
             $("#endWeek").css("opacity","1");
             
-            // display day or night theme
+            // display day or night theme - background color depend of temperature
             dayAndNight();
         })
 }
@@ -210,32 +209,45 @@ function currentTime() {
 
 function dayAndNight() {
     if (h >= 7 && h <= 20) {
-        $("body").css("backgroundColor","lightgray");
+        tempColor("day");
     } else {
-        $("body").css("backgroundColor","hsl(30,12%,40%)");
-        $(".card").css("backgroundColor","hsl(30,12%,60%)");
+        tempColor("night");
+        $("body").css("backgroundColor","hsl(30,0%,40%)");
+        $(".card").css("backgroundColor","hsl(30,0%,60%)");
         $(".hourly").css("color","black");
         $(".more").css("color","hsl(30,12%,60%)");
     }
 }
 
-function tempColor(tmaxC,tminC,tmaxF,tminF) {
+function tempColor(val) {
     // tmax and tmin define the range for the color palette
             // if loop for metric or imperial units
             var hot=0;
             var cold=250;
             var index=0;
             var indexComp=120;
+            var tmaxC=35;
+            var tminC=0;
+            var tmaxF=95;
+            var tminF=32;
+
+            if (val==="day") {
+                var light=40;
+                var darkLight=30;
+            } else if (val==="night") {
+                var light=30;
+                var darkLight=20;
+            }
             if ($("#celsius").is(":checked")) {
                 index=1/(tmaxC-tminC)*((actualTemp_c-tminC)*hot - (actualTemp_c-tmaxC)*cold);
             } else if ($("#fahrenheit").is(":checked")) {
                 index=1/(tmaxF-tminF)*((actualTemp_f-tminF)*hot - (actualTemp_f-tmaxF)*cold);
             }
             indexComp=index+120;
-            $("h3").css("backgroundColor", "hsl(" + index + ",100%,50%)");
+            $("h3").css("backgroundColor", "hsl(" + index + ",100%," + light + "%)");
             $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%,75%)");
-            $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%,40%)");
-            $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%,40%)");
+            $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%," + darkLight + "%)");
+            $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%," + darkLight + "%)");
 }
 
 // manual country and city

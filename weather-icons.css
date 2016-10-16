@@ -139,69 +139,6 @@
 .wi-time-12:before {
   content: "\f089";
 }
-.wi-direction-up:before {
-  content: "\f058";
-}
-.wi-direction-up-right:before {
-  content: "\f057";
-}
-.wi-direction-right:before {
-  content: "\f04d";
-}
-.wi-direction-down-right:before {
-  content: "\f088";
-}
-.wi-direction-down:before {
-  content: "\f044";
-}
-.wi-direction-down-left:before {
-  content: "\f043";
-}
-.wi-direction-left:before {
-  content: "\f048";
-}
-.wi-direction-up-left:before {
-  content: "\f087";
-}
-.wi-wind-beaufort-0:before {
-  content: "\f0b7";
-}
-.wi-wind-beaufort-1:before {
-  content: "\f0b8";
-}
-.wi-wind-beaufort-2:before {
-  content: "\f0b9";
-}
-.wi-wind-beaufort-3:before {
-  content: "\f0ba";
-}
-.wi-wind-beaufort-4:before {
-  content: "\f0bb";
-}
-.wi-wind-beaufort-5:before {
-  content: "\f0bc";
-}
-.wi-wind-beaufort-6:before {
-  content: "\f0bd";
-}
-.wi-wind-beaufort-7:before {
-  content: "\f0be";
-}
-.wi-wind-beaufort-8:before {
-  content: "\f0bf";
-}
-.wi-wind-beaufort-9:before {
-  content: "\f0c0";
-}
-.wi-wind-beaufort-10:before {
-  content: "\f0c1";
-}
-.wi-wind-beaufort-11:before {
-  content: "\f0c2";
-}
-.wi-wind-beaufort-12:before {
-  content: "\f0c3";
-}
 .wi-wind-direction:before {
   content: "\f0b1";
 }
@@ -252,6 +189,12 @@
 }
 .wi-wu-nt_flurries:before {
   content: "\f064";
+}
+.wi-wu-fog:before {
+    content: "\f003";
+}
+.wi-wu-nt_fog:before {
+    content: "\f04a";
 }
 .wi-wu-hazy:before {
   content: "\f0b6";

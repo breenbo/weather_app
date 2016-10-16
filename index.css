@@ -22,7 +22,7 @@ h3 {
 }
 h4 {
     font-size:6vw;
-    margin:0;
+    margin:0 0 -1vw 0;
     padding:2vw;
     color:black;
     border-top:solid 1px lightgray;
@@ -69,7 +69,7 @@ p {
     flex:1;
     font-size:7vw;
     padding:0;
-    margin-bottom:6vw;
+    margin-bottom:5vw;
 }
 .blockDatas {
     padding-bottom:2vw;
@@ -188,6 +188,7 @@ p {
 }
 .tinyPicture {
     font-size:10vw;
+    margin-bottom:1vw;
 }
 .wi {
     margin-top:2vw;
