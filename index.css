@@ -17,14 +17,12 @@ h3 {
     padding:2vw;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
-    color:black;
     background-color:gray;
 }
 h4 {
     font-size:6vw;
     margin:0 0 -1vw 0;
     padding:2vw;
-    color:black;
     border-top:solid 1px lightgray;
 }
 h5 {
@@ -123,6 +121,10 @@ p {
 .day {
     margin-left:5vw;
 }
+.degre {
+    font-size:11.5vw;
+    margin-top:1vw;
+}
 .endWeek {
     margin:5vw 0;
 }
@@ -143,9 +145,8 @@ p {
    color:gray;
 }
 .logo {
-    width:15vmin;
+    width:15vw;
     margin:0 5vw;
-    border-radius:5%;
 }
 .more {
     text-align:right;
@@ -194,6 +195,9 @@ p {
     margin-top:2vw;
     margin-right:1vw;
 }
+.wi-refresh {
+    margin:0.5vw 0 0vw 1vw;
+}
 #city {
     text-align:left;
     margin:0;
@@ -202,6 +206,7 @@ p {
 }
 #close {
     font-size:5vw;
+    font-weight:bold;
     text-align:right;
     padding-right:5vw;
 }
@@ -214,12 +219,23 @@ p {
     padding-left:0;
     opacity:0;
 }
+#foot {
+    font-size:4vw;
+}
+#footSocial {
+    margin-top:2vw;
+    justify-content:space-around;
+}
 #fond {
     min-height:90vh;
 }
 #formulaire {
     justify-content:center;
     align-content:center;
+}
+#glass {
+    width:8vw;
+    height:8vw;
 }
 #menu {
     margin:5vw;
@@ -233,6 +249,10 @@ p {
     flex-direction:row;
     justify-content:space-around;
     align-items:center;
+}
+#plus {
+    margin-top:1vw;
+    margin-left:0.5vw;
 }
 #title {
     text-align:left;
@@ -296,58 +316,4 @@ p {
 
 @media all and (min-device-width:500px) {
     
-    #title {
-        flex:2;
-        font-size:3vw;
-    }	
-		
-    #fond {
-        flex-direction:row;
-        justify-content:space-around;
-    }
-    
-    .card {
-        border-radius: 5px;
-        /* margin:1vw; */
-        box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.2), 4px 4px 3px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .bigscreen {
-        display:block;
-    }
-
-    .text {
-        display:block;
-    }
-
-    #afterThree {
-        flex:1;
-        display:flex;
-        flex-direction:row;
-        justify-content:center;
-    }
-
-    #three, #four, #five, #six, #seven {
-        flex:1;
-        display: flex;
-        flex-direction:column;
-    }
-    
-.bigPicture {
-    width:5vw;
-}
-
-.smallText {
-    width:5vw;
-    font-size:6vw;
-    margin-left:5vw;
-}
-
-.smallPicture {
-    width:2vw;
-}
-    
-.tinyPicture {
-    width:5vw;
-}
 }

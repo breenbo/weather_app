@@ -58,10 +58,7 @@ function getAndDisplay (wundergroundUrl) {
         // end if loop
         // set current icon
             var actualIcon=json.current_observation.icon;
-            console.log(actualIcon);
             
-            // d = new Date();
-            // h = d.getHours();
             if (h >= 7 && h <= 20) {
                 $("#actualIcon").removeClass();
                 $("#actualIcon").addClass("bigPicture wi wi-wu-" + actualIcon);;
@@ -204,6 +201,12 @@ function currentTime() {
     date = new Date;
     h = date.getHours();
     var m = date.getMinutes();
+    if (h<10) {
+        h = "0" + h;
+    }
+    if (m<10) {
+        m = "0" + m;
+    }
     $("#currentTitle").html("Current - " + h + ":" + m);
 }
 
@@ -215,7 +218,8 @@ function dayAndNight() {
         $("body").css("backgroundColor","hsl(30,0%,40%)");
         $(".card").css("backgroundColor","hsl(30,0%,60%)");
         $(".hourly").css("color","black");
-        $(".more").css("color","hsl(30,12%,60%)");
+        $(".more").css("color","hsl(30,0%,60%)");
+        $("input[type=text]").css("backgroundColor","hsl(30,0%,60%)");
     }
 }
 
@@ -232,8 +236,8 @@ function tempColor(val) {
             var tminF=32;
 
             if (val==="day") {
-                var light=40;
-                var darkLight=30;
+                var light=50;
+                var darkLight=40;
             } else if (val==="night") {
                 var light=30;
                 var darkLight=20;
@@ -245,7 +249,7 @@ function tempColor(val) {
             }
             indexComp=index+120;
             $("h3").css("backgroundColor", "hsl(" + index + ",100%," + light + "%)");
-            $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%,75%)");
+            $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%," + light + "%)");
             $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%," + darkLight + "%)");
             $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%," + darkLight + "%)");
 }

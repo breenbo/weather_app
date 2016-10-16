@@ -16,9 +16,11 @@
                            <div id="titleBox" class="containerRow">
                                <div class="containerColumn">
                                    <h1 id="title" class="box">Weather Station App</h1>
-                                   <h2 id="city" class="box"></h2>
+                                   <h2 id="city" class="box">City</h2>
                                </div>
-                               <div id="menu" class="button">+</div>
+                               <div id="menu" class="button">
+                                   <div id="plus">+</div>
+                               </div>
                            </div>
                        </header>
                    </div>
@@ -28,21 +30,27 @@
                                <div class="containerColumn">
                                    <div id="close" class="">X</div>
                                    <div class="alignButton containerRow">
-                                       <label id="auto" for="searchAuto" class="button">A
+                                       <label id="auto" for="searchAuto" class="button">
+                                           <img id="gps" src="img/gps.svg" alt="gps icon">
                                            <input id="searchAuto" type="radio" name="search" value="auto" checked="checked" >
                                        </label>
-                                       <label id="manual" for="searchManual" class="button shadow">M
+                                       <label id="manual" for="searchManual" class="button shadow">
+                                           <img id="glass" src="img/glass.svg" alt="glass icon">
                                            <input id="searchManual" type="radio" name="search" value="manual" >
                                        </label>
-                                       <label for="celsius" id="celsiusButton" class="button">°C
+                                       <label for="celsius" id="celsiusButton" class="button">
+                                           <span class="degre">°C</span>
                                            <input id="celsius" type="radio" name="degre" checked="checked"/>
                                        </label>
-                                       <label for="fahrenheit" id="fahrenheitButton" class="button shadow">°F
+                                       <label for="fahrenheit" id="fahrenheitButton" class="button shadow">
+                                           <span class="degre">°F</span>
                                            <input id="fahrenheit" type="radio" name="degre" />
                                        </label>
                                    </div>
                                    <div id="formulaire" class="containerRow">
-                                       <div id="send" class="button shadow">S</div>
+                                       <div id="send" class="button shadow">
+                                           <div class="wi wi-refresh"></div>
+                                       </div>
                                        <input id="country" class="" type="text" name="country" placeholder="country or US state">
                                        <input id="ville" class="" type="text" name="city" placeholder="city">
                                    </div>
@@ -124,7 +132,7 @@
                        <div class="card back face">
                           <div  id="backToday" class="containerColumn">
                               <h4>Current</h4>
-                              <h6 id="localTime"></h6>
+                              <h6 id="localTime">time</h6>
                               <div class="blockDatas containerRow">
                                   <div class="containerColumn">
                                       <p id="windDir" class="text wi wi-wind-direction"></p> 
@@ -366,12 +374,23 @@
               </div>
            </div>
        </div>
-       <footer><small>Designed and coded by <em>Bruno Berrehuel</em>. <br>All right reserved.<br>Powered by wunderground.</small>
-            <div id="footSocial">
+       <footer><div id="foot">Designed and coded by <em>Bruno Berrehuel</em>. <br>All right reserved.<br>Powered by 
+               <a href="https://www.wunderground.com/">Wunderground</a> 
+               and 
+               <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.</div>
+           <div id="footSocial" class="containerRow">
                 <a href="https://www.freecodecamp.com/breenbo" target="_blank"><img id="fcc" class="logo" src="img/fcc.svg" alt="freecodecamp logo"></a>
                 <a href="https://bitbucket.org/breenbo" target="_blank"><img class="logo" src="img/bitbucket.svg" alt="bitbucket logo"></a>
+                <a href="https://github.com/breenbo" target="_blank"><img class="logo" src="img/github.svg" alt="github logo"></a>
                 <a href="https://fr.linkedin.com/in/brunoberrehuel" target="_blank"><img class="logo" src="img/in.svg" alt="linkedin logo"></a>
             </div>
+            <p>
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                <img style="border:0;width:88px;height:31px"
+                    src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                    alt="CSS Valide !" />
+                </a>
+            </p>
         </footer>
         <!-- ========================================  -->
         <script src="https://code.jquery.com/jquery.min.js"></script>
