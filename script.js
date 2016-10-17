@@ -191,8 +191,7 @@ function getAndDisplay (wundergroundUrl) {
             $(".f1_container").css("opacity","1");
             $(".f2_container").css("opacity","1");
             $("#endWeek").css("opacity","1");
-            
-            // display day or night theme - background color depend of temperature
+
             dayAndNight();
         })
 }
