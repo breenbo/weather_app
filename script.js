@@ -196,6 +196,13 @@ function getAndDisplay (wundergroundUrl) {
         })
 }
 
+function controlBarSize() {
+    if (window.matchMedia("(min-width:500px)").matches) {
+        $(".f3_container").css("height","10vw");
+    } else {
+        $(".f3_container").css("height","30vw");
+    }
+}
 function currentTime() {
     date = new Date;
     h = date.getHours();
@@ -216,6 +223,7 @@ function dayAndNight() {
         tempColor("night");
         $("body").css("backgroundColor","hsl(30,0%,40%)");
         $(".card").css("backgroundColor","hsl(30,0%,60%)");
+        $("h4").css("border-top-color","hsl(30,0%,40%)");
         $(".hourly").css("color","black");
         $(".more").css("color","hsl(30,0%,60%)");
         $("input[type=text]").css("backgroundColor","hsl(30,0%,60%)");
@@ -272,7 +280,7 @@ function manual() {
 //close, flip and get normal size
 function close() {
     $(".carte2").toggleClass("flipped");
-    $(".f3_container").css("height","30vw");
+    controlBarSize();
 }
 
 // use manual or auto mode
@@ -296,11 +304,13 @@ function autoManualDisplay() {
     if ($("#searchManual").is(":checked")) {
         $("input:text").css("display", "block");
         $("#send").css("display", "block");
-        $(".f3_container").css("height","45vw");
+        controlBarSize();
+        // $(".f3_container").css("height","45vw");
     } else if ($("#searchAuto").is(":checked")) {
         $("input:text").css("display", "none");
         $("#send").css("display", "none");
-        $(".f3_container").css("height","30vw");
+        controlBarSize();
+        // $(".f3_container").css("height","30vw");
     }
 }
 
@@ -330,6 +340,17 @@ function adaptativeCard(cardId, containerId, heightId) {
     $(containerId).css("height",heightId);
 }
 
+// check resize windows for controlBarSize and card size
+$(window).resize(function() {
+    heightBackToday = $("#backToday").height()+10;
+    heightFaceToday = $("#faceToday").height()+15;
+    heightBackTomorrow = $("#backTomorrow").height()+10;
+    heightFaceTomorrow = $("#faceTomorrow").height()+10;
+    heightBackNext = $("#backNext").height()+10;
+    heightFaceNext = $("#faceNext").height()+10;
+    controlBarSize();
+});
+
 // display select auto or manual mode with shadow on button
 $("input[name=search]").click(function() {
     autoManualData();
@@ -342,6 +363,7 @@ $("#searchAuto").click(function() {
     autoManualDisplay();
     close();
 });
+
 // card flip on click, with adaptative size
 $("#faceToday").click(function() {
     adaptativeCard("#today", ".f1_container", heightBackToday);
@@ -383,4 +405,4 @@ $("input[name=degre]").click(function(){
 // mode on refresh : depend of the radio checked, so call autoManual fct
 autoManualData();
 autoManualDisplay();
-$(".f3_container").css("height","30vw");
+controlBarSize();
