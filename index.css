@@ -292,7 +292,7 @@ p {
 }
 .f3_container {
     position: relative;
-    height : 30vw;
+    /* height : 30vw; */
     z-index: 1;
     perspective: 2000px;
     transition: all 0.2s linear;
@@ -331,9 +331,16 @@ p {
     }
     .f1_container {
         width:30vw;
-        height:90vw;
+        height:60vw;
         margin:0;
     }
+.f3_container {
+    position: relative;
+    height : 10vw;
+    z-index: 1;
+    perspective: 2000px;
+    transition: all 0.2s linear;
+}
 #future {
     display:block;
 }
@@ -361,6 +368,12 @@ h6 {
 .box {
     border:solid 1px;
 }
+#city {
+    text-align:left;
+    margin:0;
+    padding-left:5vw;
+    font-size:2vw;
+}
 .cold {
     margin-left:1vw;
 }
@@ -379,6 +392,13 @@ h6 {
 .smallText {
     width:10vw;
     font-size:2vw;
+}
+#title {
+    text-align:left;
+    margin:5vw 0;
+    padding-left:5vw;
+    font-size:2vw;
+    border-bottom:solid 1px;
 }
 .weekday {
     width:10vw;

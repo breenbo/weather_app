@@ -235,10 +235,14 @@ function tempColor(val) {
             var tminF=32;
 
             if (val==="day") {
+                var lightSat=80;
                 var light=50;
-                var darkLight=40;
+                var darkLightSat=80;
+                var darkLight=30;
             } else if (val==="night") {
+                var lightSat=80;
                 var light=30;
+                var darkLightSat=80;
                 var darkLight=20;
             }
             if ($("#celsius").is(":checked")) {
@@ -247,10 +251,10 @@ function tempColor(val) {
                 index=1/(tmaxF-tminF)*((actualTemp_f-tminF)*hot - (actualTemp_f-tmaxF)*cold);
             }
             indexComp=index+120;
-            $("h3").css("backgroundColor", "hsl(" + index + ",100%," + light + "%)");
+            $("h3").css("backgroundColor", "hsl(" + index + "," + lightSat + "%," + light + "%)");
             $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%," + light + "%)");
-            $("#controlBarFront").css("backgroundColor", "hsl(" + index + ",100%," + darkLight + "%)");
-            $("#controlBarBack").css("backgroundColor", "hsl(" + index + ",100%," + darkLight + "%)");
+            $("#controlBarFront").css("backgroundColor", "hsl(" + index + "," + darkLightSat + "%," + darkLight + "%)");
+            $("#controlBarBack").css("backgroundColor", "hsl(" + index + "," + darkLightSat + "%," + darkLight + "%)");
 }
 
 // manual country and city
