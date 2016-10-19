@@ -196,13 +196,21 @@ function getAndDisplay (wundergroundUrl) {
         })
 }
 
-function controlBarSize() {
+function controlBarSize(val) {
+    if (val==="manuel") {
+        var mobile="38vw";
+        var laptop="20vw";
+    } else if (val==="auto") {
+        var mobile="30vw";
+        var laptop="11vw";
+    }
     if (window.matchMedia("(min-width:500px)").matches) {
-        $(".f3_container").css("height","10vw");
+        $(".f3_container").css("height",laptop);
     } else {
-        $(".f3_container").css("height","30vw");
+        $(".f3_container").css("height",mobile);
     }
 }
+
 function currentTime() {
     date = new Date;
     h = date.getHours();
@@ -260,7 +268,7 @@ function tempColor(val) {
             }
             indexComp=index+120;
             $("h3").css("backgroundColor", "hsl(" + index + "," + lightSat + "%," + light + "%)");
-            $(".button").css("backgroundColor", "hsl(" + indexComp + ",100%," + light + "%)");
+            $(".button").css("backgroundColor", "hsl(" + indexComp + ",90%," + light + "%)");
             $("#controlBarFront").css("backgroundColor", "hsl(" + index + "," + darkLightSat + "%," + darkLight + "%)");
             $("#controlBarBack").css("backgroundColor", "hsl(" + index + "," + darkLightSat + "%," + darkLight + "%)");
 }
@@ -280,7 +288,7 @@ function manual() {
 //close, flip and get normal size
 function close() {
     $(".carte2").toggleClass("flipped");
-    controlBarSize();
+    controlBarSize("auto");
 }
 
 // use manual or auto mode
@@ -300,17 +308,41 @@ function autoManualData() {
     }
 }
 
+// move options buttons depending of manual or auto search, and screen size
+function controlButton(val) {
+    if (val==="manuel") {
+        var display="block";
+        var buttonMarginMobile="1vw 0";
+        var menuMarginMobile="5vw";
+        var buttonMarginLaptop="1vw 0"; // valeurs à caler
+        var menuMarginLaptop="1.5vw 3vw";
+    } else if (val==="auto") {
+        var display="none";
+        var buttonMarginMobile="6vw 0";
+        var menuMarginMobile="5vw";
+        var buttonMarginLaptop="1vw 0"; // valeurs à caler 
+        var menuMarginLaptop="1.5vw 3vw";
+    }
+    if (window.matchMedia("(min-width:500px)").matches) {
+        $("input:text").css("display",display);
+        $("#send").css("display",display);
+        $(".button").css("margin",buttonMarginLaptop);
+        $("#menu").css("margin",menuMarginLaptop);
+    } else {
+        $("input:text").css("display",display);
+        $("#send").css("display",display);
+        $(".button").css("margin",buttonMarginMobile);
+        $("#menu").css("margin",menuMarginMobile);
+    }
+}
+
 function autoManualDisplay() {
     if ($("#searchManual").is(":checked")) {
-        $("input:text").css("display", "block");
-        $("#send").css("display", "block");
-        controlBarSize();
-        // $(".f3_container").css("height","45vw");
+        controlBarSize("manuel");
+        controlButton("manuel");
     } else if ($("#searchAuto").is(":checked")) {
-        $("input:text").css("display", "none");
-        $("#send").css("display", "none");
-        controlBarSize();
-        // $(".f3_container").css("height","30vw");
+        controlBarSize("auto");
+        controlButton("auto");
     }
 }
 
@@ -348,7 +380,8 @@ $(window).resize(function() {
     heightFaceTomorrow = $("#faceTomorrow").height()+10;
     heightBackNext = $("#backNext").height()+10;
     heightFaceNext = $("#faceNext").height()+10;
-    controlBarSize();
+    controlBarSize("auto");
+    controlButton("auto");
 });
 
 // display select auto or manual mode with shadow on button
@@ -405,4 +438,5 @@ $("input[name=degre]").click(function(){
 // mode on refresh : depend of the radio checked, so call autoManual fct
 autoManualData();
 autoManualDisplay();
-controlBarSize();
+controlBarSize("auto");
+controlButton("auto");
