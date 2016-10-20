@@ -14,6 +14,8 @@
     var locaTime="";
     var date=0;
     var h=0;
+    var index=0;
+    var indexComp=120;
 
 function showPosition (position) {
         maLatitude=position.coords.latitude;
@@ -243,8 +245,6 @@ function tempColor(val) {
             // if loop for metric or imperial units
             var hot=0;
             var cold=250;
-            var index=0;
-            var indexComp=120;
             var tmaxC=35;
             var tminC=0;
             var tmaxF=95;
@@ -315,24 +315,24 @@ function controlButton(val) {
         var buttonMarginMobile="1vw 0";
         var menuMarginMobile="5vw";
         var buttonMarginLaptop="1vw 0"; // valeurs à caler
-        var menuMarginLaptop="1.5vw 3vw";
+        // var menuMarginLaptop="1.5vw 3vw";
     } else if (val==="auto") {
         var display="none";
         var buttonMarginMobile="6vw 0";
         var menuMarginMobile="5vw";
         var buttonMarginLaptop="1vw 0"; // valeurs à caler 
-        var menuMarginLaptop="1.5vw 3vw";
+        // var menuMarginLaptop="1.5vw 3vw";
     }
     if (window.matchMedia("(min-width:500px)").matches) {
         $("input:text").css("display",display);
         $("#send").css("display",display);
-        $(".button").css("margin",buttonMarginLaptop);
-        $("#menu").css("margin",menuMarginLaptop);
+        $("#boxButton").css("margin",buttonMarginLaptop);
+        // $("#menu").css("margin",menuMarginLaptop);
     } else {
         $("input:text").css("display",display);
         $("#send").css("display",display);
-        $(".button").css("margin",buttonMarginMobile);
-        $("#menu").css("margin",menuMarginMobile);
+        $("#boxButton").css("margin",buttonMarginMobile);
+        // $("#menu").css("margin",menuMarginMobile);
     }
 }
 
@@ -349,20 +349,28 @@ function autoManualDisplay() {
 function autoManualShadow() {
     if ($("#searchManual").is(":checked")) {
         $("#manual").removeClass("shadow");
+        $("#manual").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
         $("#auto").addClass("shadow");
+        $("#auto").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
     } else if ($("#searchAuto").is(":checked")) {
         $("#auto").removeClass("shadow");
+        $("#auto").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
         $("#manual").addClass("shadow");
+        $("#manual").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
     }
 }
 
 function celsiusFahrenheitShadow() {
     if ($("#celsius").is(":checked")) {
         $("#celsiusButton").removeClass("shadow");
+        $("#celsiusButton").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
         $("#fahrenheitButton").addClass("shadow");
+        $("#fahrenheitButton").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
     } else if ($("#fahrenheit").is(":checked")) {
         $("#celsiusButton").addClass("shadow");
+        $("#celsiusButton").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
         $("#fahrenheitButton").removeClass("shadow");
+        $("#fahrenheitButton").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
     }
 }
 
