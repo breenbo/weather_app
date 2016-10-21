@@ -319,7 +319,7 @@ function controlButton(val) {
         var display="none";
         var buttonMarginMobile="6vw 0";
         var menuMarginMobile="5vw";
-        var buttonMarginLaptop="1vw 0"; // valeurs à caler 
+        var buttonMarginLaptop="1.5vw 0"; // valeurs à caler 
     }
     if (window.matchMedia("(min-width:500px)").matches) {
         $("input:text").css("display",display);
@@ -384,8 +384,7 @@ $(window).resize(function() {
     heightFaceTomorrow = $("#faceTomorrow").height()+10;
     heightBackNext = $("#backNext").height()+10;
     heightFaceNext = $("#faceNext").height()+10;
-    // controlBarSize("auto");
-    // controlButton("auto");
+
 });
 
 // display select auto or manual mode with shadow on button
@@ -429,6 +428,7 @@ $("#menu").click(function() {
 
 // close option menu
 $("#close").click(function() {
+    controlButton("auto");
     close();
 });
 
@@ -442,5 +442,3 @@ $("input[name=degre]").click(function(){
 // mode on refresh : depend of the radio checked, so call autoManual fct
 autoManualData();
 autoManualDisplay();
-controlBarSize("auto");
-controlButton("auto");

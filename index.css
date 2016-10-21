@@ -329,10 +329,10 @@ p {
 
 @media all and (min-device-width:500px) {
     h3 {
-        font-size:2vw;
+        font-size:3vw;
     }
     h4 {
-        font-size:2vw;
+        font-size:3vw;
     }
     h5 {
         font-size:2vw;
@@ -340,18 +340,30 @@ p {
     h6 {
         font-size:2vw;
     }
+    input[type=text] {
+        width:33vw;
+        height:5vw;
+        margin:1vw 0 0 2vw;
+    }
     .f1_container {
-        width:30vw;
-        height:60vw;
+        width:35vw;
+        height:70vw;
         margin:0;
     }
-    .f2_container, #endWeek {
+    .f2_container {
         width:30vw;
+        height:30vw;
         margin:0;
+        /* margin:1vw 1vw 1vw 0; */
+    }
+    #endWeek {
+        width:33vw;
+        height:60vw;
+        margin:0;
+        /* margin:1vw 1vw 1vw 0; */
     }
     .f3_container {
         position: relative;
-        /* height : 10vw; */
         z-index: 1;
         perspective: 2000px;
         transition: all 0.2s linear;
@@ -360,13 +372,13 @@ p {
         display:block;
     }
     .bigPicture {
-        font-size:2vw;
+        font-size:7vw;
     }
     .bigTemp {
-        font-size:2vw;
+        font-size:3vw;
     }
     .button {
-        font-size:6vw;
+        font-size:5vw;
         width:7vw;
         height:7vw;
     }
@@ -377,11 +389,10 @@ p {
         margin-left:1vw;
     }
     .degre {
-        /* margin-top:5vw; */
-        font-size:20vw;
+        margin-top:0.7vw;
     }
     .hourly {
-        font-size:2vw;
+        font-size:5vw;
     }
     .hot {
         margin-right:2vw;
@@ -391,10 +402,10 @@ p {
         /* margin:0 5vw; */
     }
     .smallPicture {
-        font-size:2vw;
+        font-size:4vw;
     }
     .smallTemp {
-        font-size:2vw;
+        font-size:3vw;
     }
     .smallText {
         width:10vw;
@@ -404,11 +415,17 @@ p {
         font-size:2vw;
     }
     .tinyPicture {
-        font-size:2vw;
+        font-size:4vw;
     }
     .weekday {
-        width:10vw;
-        font-size:2vw;
+        width:14vw;
+        font-size:2.5vw;
+    }
+    .wi {
+        margin:1vw 0;
+    }
+    #boxButton {
+        transition: all 0.2s linear;
     }
     #city {
         text-align:left;
@@ -417,18 +434,24 @@ p {
         font-size:3.5vw;
     }
     #close {
-        font-size:3vw;
-        padding-right:3vw;
+        font-size:5vw;
+        /* padding-right:3vw; */
     }
     #fond {
         display:flex;
         flex-direction:row;
+        justify-content:space-around;
     }
     #foot {
         font-size:2vw;
     }
     #future {
-        display:block;
+        display:flex;
+    }
+    #glass {
+        margin-top:1vw;
+        width:5vw;
+        height:5vw;
     }
     #title {
         text-align:left;
