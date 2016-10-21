@@ -385,7 +385,7 @@ $(window).resize(function() {
     heightBackNext = $("#backNext").height()+10;
     heightFaceNext = $("#faceNext").height()+10;
     controlBarSize("auto");
-    controlButton("auto");
+    // controlButton("auto");
 });
 
 // display select auto or manual mode with shadow on button
