@@ -384,7 +384,7 @@ $(window).resize(function() {
     heightFaceTomorrow = $("#faceTomorrow").height()+10;
     heightBackNext = $("#backNext").height()+10;
     heightFaceNext = $("#faceNext").height()+10;
-    controlBarSize("auto");
+    // controlBarSize("auto");
     // controlButton("auto");
 });
 
