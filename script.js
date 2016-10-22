@@ -23,6 +23,9 @@ function showPosition (position) {
 }
 
 function getAndDisplay (wundergroundUrl) {
+    // waiting message
+    $("#city").css("color","white");
+    $("#city").html("Setting outside weather, please wait...")
         // display current conditions
         $.getJSON(wundergroundUrl, function (json) {
             if (typeof json.current_observation === "undefined") {
@@ -193,7 +196,17 @@ function getAndDisplay (wundergroundUrl) {
             $("#endWeek").css("opacity","1");
 
             dayAndNight();
+            $("#city").css("color", "black");
         })
+}
+
+// setting footer depending of screen size
+function footerSize() {
+    if (window.matchMedia("(min-width:500px)").matches) {
+        $("#foot").html('Designed and coded by <em>Bruno Berrehuel</em>. All right reserved. Powered by <a href="https://www.wunderground.com/">Wunderground</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.');
+    } else {
+        $("#foot").html('Designed and coded by <em>Bruno Berrehuel</em>. <br>All right reserved.<br>Powered by <a href="https://www.wunderground.com/">Wunderground</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.');
+    }
 }
 
 function controlBarSize(val) {
@@ -384,6 +397,7 @@ $(window).resize(function() {
     heightFaceTomorrow = $("#faceTomorrow").height()+10;
     heightBackNext = $("#backNext").height()+10;
     heightFaceNext = $("#faceNext").height()+10;
+    footerSize();
 
 });
 
@@ -442,3 +456,4 @@ $("input[name=degre]").click(function(){
 // mode on refresh : depend of the radio checked, so call autoManual fct
 autoManualData();
 autoManualDisplay();
+footerSize();
