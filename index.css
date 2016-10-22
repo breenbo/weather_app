@@ -60,9 +60,6 @@ p {
     font-size:20vw;
     text-align:center;
 }
-.bigScreen {
-    display:none;
-}
 .bigTemp {
     flex:1;
     font-size:7vw;
@@ -80,8 +77,9 @@ p {
     min-height:80%;
 }
 .box {
-    /* flex:1; */
+    margin-top:5vw;
 }
+
 .boxBack {
     flex:1;
     display:flex;
@@ -117,9 +115,6 @@ p {
 .containerRow {
     flex:1;
     display:flex;
-}
-.day {
-    margin-left:5vw;
 }
 .degre {
     /* font-size:11.5vw; */
@@ -163,11 +158,14 @@ p {
 }
 .smallText {
     width:35vw;
-    font-size:6vw;
+    font-size:7vw;
     text-align:right;
 }
 .smallPicture {
+    flex:1;
     font-size:15vw;
+    text-align:center;
+    /* padding:3vw 0; */
 }
 .smallTemp {
     margin:1vw 0;
@@ -180,8 +178,7 @@ p {
     height:80%;
 }
 .subDay {
-    margin-top:2vw;
-    align-items:center;
+    margin:3vw 0;
 }
 .text {
     flex:1;
@@ -197,6 +194,7 @@ p {
     width:35vw;
     font-size:6vw;
     text-align:left;
+    margin-left:5vw;
 }
 .wi {
     margin-top:2vw;
@@ -239,7 +237,7 @@ p {
     justify-content:space-around;
 }
 #fond {
-    min-height:90vh;
+    /* min-height:90vh; */
 }
 #formulaire {
     margin-top:1vw;
@@ -333,7 +331,7 @@ p {
         font-size:3vw;
     }
     h4 {
-        font-size:3vw;
+        font-size:2.5vw;
     }
     h5 {
         font-size:2vw;
@@ -354,14 +352,12 @@ p {
     .f2_container {
         width:30vw;
         height:30vw;
-        margin:0;
-        /* margin:1vw 1vw 1vw 0; */
+        margin:1vw 0 0 0;
     }
     #endWeek {
         width:33vw;
         height:60vw;
-        margin:0;
-        /* margin:1vw 1vw 1vw 0; */
+        margin:1vw 0 0 1vw;
     }
     .f3_container {
         position: relative;
@@ -369,14 +365,14 @@ p {
         perspective: 2000px;
         transition: all 0.2s linear;
     }
-    .bigScreen {
-        display:block;
-    }
     .bigPicture {
         font-size:7vw;
     }
     .bigTemp {
-        font-size:3vw;
+        font-size:2.5vw;
+    }
+    .box {
+        margin-top:1.5vw;
     }
     .button {
         font-size:5vw;
@@ -386,12 +382,12 @@ p {
     .cold {
         margin-left:1vw;
     }
-    .day {
-        margin-left:1vw;
-    }
     .degre {
         margin-top:0.7vw;
     }
+.endWeek {
+    margin:2vw 0;
+}
     .hourly {
         font-size:5vw;
     }
@@ -402,14 +398,17 @@ p {
         width:7vw;
     }
     .smallPicture {
-        font-size:4vw;
+        font-size:5vw;
     }
     .smallTemp {
         font-size:3vw;
     }
     .smallText {
         width:10vw;
-        font-size:2vw;
+        font-size:2.5vw;
+    }
+    .subDay {
+        margin:1vw 0;
     }
     .text {
         font-size:2vw;
@@ -420,6 +419,7 @@ p {
     .weekday {
         width:14vw;
         font-size:2.5vw;
+        margin-left:1vw;
     }
     .wi {
         margin:1vw 0;
@@ -437,6 +437,10 @@ p {
     #close {
         font-size:5vw;
         /* padding-right:3vw; */
+    }
+    #current {
+        margin:1vw 1vw 0 0;
+        transition: all 0.5s linear;
     }
     #fond {
         display:flex;

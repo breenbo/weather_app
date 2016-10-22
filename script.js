@@ -14,6 +14,7 @@
     var locaTime="";
     var date=0;
     var h=0;
+    var search="auto";
 
 function showPosition (position) {
         maLatitude=position.coords.latitude;
@@ -25,7 +26,7 @@ function showPosition (position) {
 function getAndDisplay (wundergroundUrl) {
     // waiting message
     $("#city").css("color","white");
-    $("#city").html("Setting outside weather, please wait...")
+    $("#city").html("Looking through the window...")
         // display current conditions
         $.getJSON(wundergroundUrl, function (json) {
             if (typeof json.current_observation === "undefined") {
@@ -197,7 +198,21 @@ function getAndDisplay (wundergroundUrl) {
 
             dayAndNight();
             $("#city").css("color", "black");
+            $("#endWeek").css("min-height",heightFaceToday);
+            $("#current").css("height",heightFaceToday);
+            $(".f1_container").css("height",heightFaceToday);
         })
+}
+
+// checking manual or auto search and setting var search
+function autoManualSearch() {
+    if (search==="auto") {
+        alert("Auto mode by default, you can choose manual mode too");
+    } else if ($("#searchAuto").is(":checked")) {
+        search="auto";
+    } else if ($("#searchManual").is(":checked")) {
+        search="manual";
+    }
 }
 
 // setting footer depending of screen size
@@ -210,7 +225,7 @@ function footerSize() {
 }
 
 function controlBarSize(val) {
-    if (val==="manuel") {
+    if (val==="manual") {
         var mobile="38vw";
         var laptop="20vw";
     } else if (val==="auto") {
@@ -305,14 +320,14 @@ function close() {
 }
 
 // use manual or auto mode
-function autoManualData() {
-    if ($("#searchManual").is(":checked")) {
+function autoManualData(val) {
+    if (val==="manual") {
         $("#send").click(function() {
             manual();
             getAndDisplay(wundergroundUrl);
             close();
         });
-    } else if ($("#searchAuto").is(":checked")) {
+    } else if (val==="auto") {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -323,7 +338,7 @@ function autoManualData() {
 
 // move options buttons depending of manual or auto search, and screen size
 function controlButton(val) {
-    if (val==="manuel") {
+    if (val==="manual") {
         var display="block";
         var buttonMarginMobile="1vw 0";
         var menuMarginMobile="5vw";
@@ -345,28 +360,24 @@ function controlButton(val) {
     }
 }
 
-function autoManualDisplay() {
-    if ($("#searchManual").is(":checked")) {
-        controlBarSize("manuel");
-        controlButton("manuel");
-    } else if ($("#searchAuto").is(":checked")) {
-        controlBarSize("auto");
-        controlButton("auto");
-    }
-}
-
-function autoManualShadow() {
-    if ($("#searchManual").is(":checked")) {
+function autoManualShadow(val) {
+    if (val==="manual") {
         $("#manual").removeClass("shadow");
         // $("#manual").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
         $("#auto").addClass("shadow");
         // $("#auto").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
-    } else if ($("#searchAuto").is(":checked")) {
+    } else if (val==="auto") {
         $("#auto").removeClass("shadow");
         // $("#auto").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
         $("#manual").addClass("shadow");
         // $("#manual").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
     }
+}
+
+function autoManualDisplay(val) {
+    controlBarSize(val);
+    controlButton(val);
+    autoManualShadow(val);
 }
 
 function celsiusFahrenheitShadow() {
@@ -389,37 +400,31 @@ function adaptativeCard(cardId, containerId, heightId) {
     $(containerId).css("height",heightId);
 }
 
-// check resize windows for controlBarSize and card size
-$(window).resize(function() {
-    heightBackToday = $("#backToday").height()+10;
-    heightFaceToday = $("#faceToday").height()+15;
-    heightBackTomorrow = $("#backTomorrow").height()+10;
-    heightFaceTomorrow = $("#faceTomorrow").height()+10;
-    heightBackNext = $("#backNext").height()+10;
-    heightFaceNext = $("#faceNext").height()+10;
-    footerSize();
-
-});
-
 // display select auto or manual mode with shadow on button
+$("#auto").click(function() {
+    search="auto";
+});
+$("#manual").click(function() {
+    search="manual";
+});
 $("input[name=search]").click(function() {
-    autoManualData();
-    autoManualShadow();
-    autoManualDisplay();
+    autoManualData(search);
+    autoManualDisplay(search);
 });
 $("#searchAuto").click(function() {
-    autoManualData();
-    autoManualShadow();
-    autoManualDisplay();
+    autoManualData(search);
+    autoManualDisplay(search);
     close();
 });
 
 // card flip on click, with adaptative size
 $("#faceToday").click(function() {
     adaptativeCard("#today", ".f1_container", heightBackToday);
+    $('#current').css("height",heightBackToday);
 });
 $("#backToday").click(function() {
     adaptativeCard("#today", ".f1_container", heightFaceToday);
+    $("#current").css("height",heightFaceToday);
 });
 $("#faceTomorrow").click(function() {
     adaptativeCard("#tomorrow", "#tomorrowContainer", heightBackTomorrow);
@@ -437,7 +442,7 @@ $("#backNext").click(function() {
 // open option menu
 $("#menu").click(function() {
     $(".carte2").toggleClass("flipped");
-    autoManualDisplay();
+    autoManualDisplay(search);
 });
 
 // close option menu
@@ -454,6 +459,7 @@ $("input[name=degre]").click(function(){
 });
 
 // mode on refresh : depend of the radio checked, so call autoManual fct
-autoManualData();
-autoManualDisplay();
+autoManualSearch();
+autoManualData(search);
+autoManualDisplay(search);
 footerSize();
