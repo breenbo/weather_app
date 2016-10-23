@@ -79,7 +79,6 @@ p {
 .box {
     margin-top:5vw;
 }
-
 .boxBack {
     flex:1;
     display:flex;
@@ -240,6 +239,7 @@ p {
     /* min-height:90vh; */
 }
 #formulaire {
+    display:none;
     margin-top:1vw;
     justify-content:center;
     align-content:center;
@@ -326,7 +326,7 @@ p {
 }
 /* ============================================================ */
 
-@media all and (min-device-width:500px) {
+@media all and (min-device-width:500px) and (max-device-width:850px){
     h3 {
         font-size:3vw;
     }
@@ -337,7 +337,7 @@ p {
         font-size:2vw;
     }
     h6 {
-        font-size:2vw;
+        font-size:1.4vw;
     }
     input[type=text] {
         width:33vw;
@@ -370,6 +370,11 @@ p {
     }
     .bigTemp {
         font-size:2.5vw;
+    }
+    .blockDatas {
+        padding-bottom:0vw;
+        margin-left:1vw;
+        margin-bottom:0vw;
     }
     .box {
         margin-top:1.5vw;
@@ -412,6 +417,7 @@ p {
     }
     .text {
         font-size:2vw;
+        padding:0 0.5vw;
     }
     .tinyPicture {
         font-size:4vw;
@@ -423,6 +429,10 @@ p {
     }
     .wi {
         margin:1vw 0;
+    }
+    .wi-refresh {
+        margin-left:2vw;
+        margin-top:1vw;
     }
     #boxButton {
         transition: all 0.2s linear;
@@ -455,6 +465,9 @@ p {
         margin-top:1vw;
         justify-content:space-around;
     }
+    #formulaire {
+        margin-top:0;
+    }
     #future {
         display:flex;
     }
@@ -471,13 +484,186 @@ p {
         border-bottom:solid 1px;
     }
     #menu {
-        margin:1.5vw 3vw;
+        margin:1.2vw 3vw;
     }
     #menu:active {
         box-shadow:none;
     }
     #plus {
-        margin-top:0vw;
+        margin-top:0.3vw;
+        margin-left:0.3vw;
+    }
+}
+/* ============================================================ */
+
+@media all and (min-device-width:850px) {
+    #fond {
+        margin:0 13vw;
+    }
+    h3 {
+        font-size:2vw;
+        padding:1vw;
+    }
+    h4 {
+        font-size:1.5vw;
+        padding:1vw;
+    }
+    h5 {
+        font-size:2vw;
+    }
+    h6 {
+        font-size:2vw;
+    }
+    input[type=text] {
+        width:33vw;
+        height:5vw;
+        margin:1vw 0 0 2vw;
+    }
+    .f1_container {
+        width:100%;
+        height:40vw;
+        margin:0;
+    }
+    .f2_container {
+        width:100%;
+        height:15vw;
+        margin:0 0 1vw 0;
+    }
+    #endWeek {
+        width:25vw;
+        height:40vw;
+        margin:1vw 0 0 0;
+    }
+    .f3_container {
+        position: relative;
+        z-index: 1;
+        perspective: 2000px;
+        transition: all 0.2s linear;
+    }
+    .bigPicture {
+        font-size:3.5vw;
+    }
+    .bigTemp {
+        font-size:1.5vw;
+    }
+    .box {
+        margin-top:1vw;
+    }
+    .button {
+        font-size:4vw;
+        width:6vw;
+        height:6vw;
+    }
+    .cold {
+        margin-left:1vw;
+    }
+    .degre {
+        margin-top:0.7vw;
+    }
+.endWeek {
+    margin:1vw 0;
+}
+    .hourly {
+        font-size:3vw;
+    }
+    .hot {
+        margin-right:2vw;
+    }
+    .logo {
+        width:5vw;
+        margin:0;
+    }
+    .smallPicture {
+        font-size:3vw;
+        margin:0;
+    }
+    .smallTemp {
+        font-size:1.5vw;
+    }
+    .smallText {
+        width:10vw;
+        font-size:2vw;
+    }
+    .subDay {
+        margin:0;
+    }
+    .text {
+        font-size:1vw;
+        padding:0 0.5vw;
+    }
+    .tinyPicture {
+        font-size:2.5vw;
+    }
+    .weekday {
+        /* width:14vw; */
+        font-size:2vw;
+        margin-left:1vw;
+    }
+    .wi {
+        margin:0.5vw 0;
+    }
+    .wi-refresh {
+        margin-left:2vw;
+        margin-top:1vw;
+    }
+    #boxButton {
+        transition: all 0.2s linear;
+    }
+    #city {
+        color:white;
+        text-align:left;
+        margin:0;
+        padding-left:3vw;
+        font-size:3vw;
+    }
+    #close {
+        font-size:4vw;
+        /* padding-right:3vw; */
+    }
+    #current {
+        margin:1vw 0 0 0;
+        transition: all 0.5s linear;
+    }
+    #fond {
+        display:flex;
+        flex-direction:row;
+        justify-content:space-around;
+    }
+    #foot {
+        margin:1vw 15vw;
+        font-size:1.2vw;
+    }
+    #footSocial {
+        margin:1vw 13vw;
+        justify-content:space-around;
+    }
+    #formulaire {
+        margin-top:0;
+    }
+    #future {
+        margin-top:1vw;
+        padding:0 1vw;
+    }
+    #glass {
+        margin-top:1vw;
+        width:4vw;
+        height:4vw;
+    }
+    #title {
+        text-align:left;
+        margin:1vw 0 1vw 3vw;
+        /* padding-left:3vw; */
+        font-size:2.5vw;
+        border-bottom:solid 1px;
+    }
+    #menu {
+        margin:1vw 3vw;
+    }
+    #menu:active {
+        box-shadow:none;
+    }
+    #plus {
+        margin-top:0.5vw;
         margin-left:0.3vw;
     }
 }

@@ -137,7 +137,7 @@ function getAndDisplay (wundergroundUrl) {
             for (i=6; i<16; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
                 $("#picDay" + [i]).removeClass();
-                $("#picDay" + [i]).addClass("smallPicture wi wi-wu-" + icon[i]);;
+                $("#picDay" + [i]).addClass("wi wi-wu-" + icon[i] + " smallPicture");;
             // if loop for metric or imperial units
                 if ($("#celsius").is(":checked")) {
                     text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
@@ -206,9 +206,7 @@ function getAndDisplay (wundergroundUrl) {
 
 // checking manual or auto search and setting var search
 function autoManualSearch() {
-    if (search==="auto") {
-        alert("Auto mode by default, you can choose manual mode too");
-    } else if ($("#searchAuto").is(":checked")) {
+    if ($("#searchAuto").is(":checked")) {
         search="auto";
     } else if ($("#searchManual").is(":checked")) {
         search="manual";
@@ -227,13 +225,17 @@ function footerSize() {
 function controlBarSize(val) {
     if (val==="manual") {
         var mobile="38vw";
-        var laptop="20vw";
+        var tablet="18vw";
+        var laptop="14vw";
     } else if (val==="auto") {
         var mobile="30vw";
-        var laptop="11vw";
+        var tablet="11vw";
+        var laptop="9vw";
     }
-    if (window.matchMedia("(min-width:500px)").matches) {
+    if (window.matchMedia("(min-width:850px)").matches) {
         $(".f3_container").css("height",laptop);
+    } else if (window.matchMedia("(min-width:500px)").matches) {
+        $(".f3_container").css("height",tablet);
     } else {
         $(".f3_container").css("height",mobile);
     }
@@ -316,6 +318,7 @@ function manual() {
 //close, flip and get normal size
 function close() {
     $(".carte2").toggleClass("flipped");
+    $("#formulaire").css("display","none");
     controlBarSize("auto");
 }
 
@@ -339,23 +342,32 @@ function autoManualData(val) {
 // move options buttons depending of manual or auto search, and screen size
 function controlButton(val) {
     if (val==="manual") {
-        var display="block";
+        var display="flex";
         var buttonMarginMobile="1vw 0";
         var menuMarginMobile="5vw";
-        var buttonMarginLaptop="1vw 0"; // valeurs à caler
+        var buttonMarginTablet="1vw 0";
+        var buttonMarginLaptop="0.5vw 0"; // valeurs à caler
     } else if (val==="auto") {
         var display="none";
         var buttonMarginMobile="6vw 0";
         var menuMarginMobile="5vw";
-        var buttonMarginLaptop="1.5vw 0"; // valeurs à caler 
+        var buttonMarginTablet="2vw 0";
+        var buttonMarginLaptop="1vw 0"; // valeurs à caler 
     }
-    if (window.matchMedia("(min-width:500px)").matches) {
+    if (window.matchMedia("(min-width:850px)").matches) {
         $("input:text").css("display",display);
         $("#send").css("display",display);
+        $("#formulaire").css("display",display);
         $("#boxButton").css("margin",buttonMarginLaptop);
+    } else if (window.matchMedia("(min-width:500px)").matches) {
+        $("input:text").css("display",display);
+        $("#send").css("display",display);
+        $("#formulaire").css("display",display);
+        $("#boxButton").css("margin",buttonMarginTablet);
     } else {
         $("input:text").css("display",display);
         $("#send").css("display",display);
+        $("#formulaire").css("display",display);
         $("#boxButton").css("margin",buttonMarginMobile);
     }
 }
