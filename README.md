@@ -1,12 +1,22 @@
-## Function of the app :
-1. mobile first design, then tablet. Not very designed for full screen laptop
-1. choose between auto or manual localisation
-1. auto mode enabled by default
-1. pick any city in the world
-1. choose between english or international units
-1. 7 days weather forecast, detailed view for 3 days
-1. click on cards to have detailed weather forecast
-1. auto-adaptative flip card height (you have to refresh the window after resizing)
-2. background color of the titles depend of the temperature (red for hot, blue for cold)
-1. auto day and night theme
+# About the app :
 
+## Functions :
+. 7 days weather forecast, detailed view for 3 days
+. Choose between auto or manual localisation, pick any country and city in the world
+. Auto mode enabled by default, use geolocation to find your place.
+. Choose between english or international units
+. Click on cards to have detailed weather forecast
+. Auto night and day theme
+
+## Design :
+. Mobile first design, then tablet, then desktop.
+. Auto-adaptative flip card height, depends off the weather prediction.
+. Responsive design, but you have to refresh because of the adaptative flip card to have the proper sizes
+. Titles and buttons color depends of the temperature (red for hot, blue for cold)
+
+## Coding :
+. use datas from wunderground api and fonts from the Weather Icons
+. use 2 media queries for tablet and desktop design. Mobile design is the default one.
+. use javascript matchMedia function to set some dimensions
+. use jQuery, but I'll recode the app in pure Javascript soon, because I don't like to load heavy library...
+. No Bootstrap.

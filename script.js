@@ -26,7 +26,8 @@ function showPosition (position) {
 function getAndDisplay (wundergroundUrl) {
     // waiting message
     $("#city").css("color","white");
-    $("#city").html("Looking through the window...")
+    $("#city").css("font-size", "5vw");
+    $("#city").html("Looking through the window, please wait...")
         // display current conditions
         $.getJSON(wundergroundUrl, function (json) {
             if (typeof json.current_observation === "undefined") {
@@ -185,7 +186,7 @@ function getAndDisplay (wundergroundUrl) {
                 }
             }
         // get height of the cards for flip
-            heightBackToday = $("#backToday").height()+10;
+            heightBackToday = $("#backToday").height()+5;
             heightFaceToday = $("#faceToday").height()+15;
             heightBackTomorrow = $("#backTomorrow").height()+10;
             heightFaceTomorrow = $("#faceTomorrow").height()+10;
@@ -198,6 +199,7 @@ function getAndDisplay (wundergroundUrl) {
 
             dayAndNight();
             $("#city").css("color", "black");
+            $("#city").css("font-size", "7vw");
             $("#endWeek").css("min-height",heightFaceToday);
             $("#current").css("height",heightFaceToday);
             $(".f1_container").css("height",heightFaceToday);
@@ -226,7 +228,7 @@ function controlBarSize(val) {
     if (val==="manual") {
         var mobile="38vw";
         var tablet="18vw";
-        var laptop="14vw";
+        var laptop="14.5vw";
     } else if (val==="auto") {
         var mobile="30vw";
         var tablet="11vw";
@@ -273,9 +275,9 @@ function tempColor(val) {
             // if loop for metric or imperial units
             var hot=0;
             var cold=250;
-            var tmaxC=35;
+            var tmaxC=40;
             var tminC=0;
-            var tmaxF=95;
+            var tmaxF=104;
             var tminF=32;
             var index=0;
             var indexComp=120;
