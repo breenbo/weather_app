@@ -18,5 +18,5 @@
 . use datas from wunderground api and fonts from the Weather Icons
 . use 2 media queries for tablet and desktop design. Mobile design is the default one.
 . use javascript matchMedia function to set some dimensions
-. use jQuery, but I'll recode the app in pure Javascript soon, because I don't like to load heavy library...
+. pure javascript, no jQuery (for speed and no library download)
 . No Bootstrap.

@@ -15,6 +15,7 @@
     var date=0;
     var h=0;
     var search="auto";
+    var temp="celsius";
 
 function showPosition (position) {
         maLatitude=position.coords.latitude;
@@ -47,7 +48,8 @@ function getAndDisplay (wundergroundUrl) {
         currentTime();
 
         // if loop for celsius or fahrenheit
-            if (document.getElementById("fahrenheit").checked) {
+            if (temp==="fahrenheit") {
+            // if (document.getElementById("fahrenheit").checked) {
                 actualTemp_f=json.current_observation.temp_f;
                 document.getElementById("actualTemp").innerHTML = " " + actualTemp_f + "°";
                 var wind=json.current_observation.wind_mph;
@@ -65,15 +67,10 @@ function getAndDisplay (wundergroundUrl) {
         // end if loop
         // set current icon
             var actualIcon=json.current_observation.icon;
-            
             if (h >= 7 && h <= 20) {
-                document.getElementById("actualIcon").className = "";
-                // $("#actualIcon").removeClass();
-                $("#actualIcon").addClass("bigPicture wi wi-wu-" + actualIcon);;
+                document.getElementById("actualIcon").className = "bigPicture wi wi-wu-" + actualIcon;
             } else {
-                document.getElementById("actualIcon").className = "";
-                // $("#actualIcon").removeClass();
-                $("#actualIcon").addClass("bigPicture wi wi-wu-nt_" + actualIcon);;
+                document.getElementById("actualIcon").className = "bigPicture wi wi-wu-" + actualIcon;
             }
         //
             var relativeHumidity=json.current_observation.relative_humidity;
@@ -92,65 +89,73 @@ function getAndDisplay (wundergroundUrl) {
             var icon=[];
             var precip=[];
             var text=[];
-            for (var i=0; i<8; i++) {
+            for (var i=2; i<8; i++) {
                 day[i]=json.forecast.simpleforecast.forecastday[i].date.weekday;
-                $("#day" + [i]).html(day[i] + '<span class="more">+</span>');
-        // if loop for metric or imperial units
-            if ($("#celsius").is(":checked")) {
-                high[i]=json.forecast.simpleforecast.forecastday[i].high.celsius;
-                $("#max"+[i]).html(" " + high[i] + "°");
-                $("#max"+[i]).css("color", "hsl(0,70%,50%)");
-                low[i]=json.forecast.simpleforecast.forecastday[i].low.celsius;
-                $("#min"+[i]).html(" " + low[i] + "°");
-                $("#min"+[i]).css("color", "hsl(250,70%,50%)");
-                wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
-                $("#wind"+[i]).html(" " + wind[i] + " kph");
-                precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.mm;
-                $("#precip"+[i]).html(" " + precip[i] + " mm");
-            } else {
-                high[i]=json.forecast.simpleforecast.forecastday[i].high.fahrenheit;
-                $("#max"+[i]).html(" " + high[i] + "°");
-                $("#max"+[i]).css("color", "hsl(0,70%,50%)");
-                low[i]=json.forecast.simpleforecast.forecastday[i].low.fahrenheit;
-                $("#min"+[i]).html(" " + low[i] + "°");
-                $("#min"+[i]).css("color", "hsl(250,70%,50%)");
-                wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.mph;
-                $("#wind"+[i]).html(" " + wind[i] + " mph");
-                precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.in;
-                $("#precip"+[i]).html(" " + precip[i] + " in");
+                document.getElementById("day" + i).innerHTML = day[i] + '<span class="more">+</span>';
             }
+            for (var i=0; i<3; i++) {
+                if (temp==="celsius") {
+                // if (document.getElementById("celsius").checked) {
+                    wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.kph;
+                    document.getElementById("wind" + i).innerHTML = " " + wind[i] + " kph";
+                    precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.mm;
+                    document.getElementById("precip" + i).innerHTML = " " + precip[i] + " mm";
+                } else {
+                    wind[i]=json.forecast.simpleforecast.forecastday[i].avewind.mph;
+                    document.getElementById("wind" + i).innerHTML = " " + wind[i] + " mph";
+                    precip[i]=json.forecast.simpleforecast.forecastday[i].qpf_allday.in;
+                    document.getElementById("precip" + i).innerHTML = " " + precip[i] + " in";
+                }
                 windDir[i]=json.forecast.simpleforecast.forecastday[i].avewind.dir;
-                $("#windDir" + [i]).html(" " + windDir[i]);
+                document.getElementById("windDir" + i).innerHTML = " " + windDir[i];
                 humidity[i]=json.forecast.simpleforecast.forecastday[i].avehumidity;
-                $("#humidity"+[i]).html(" " + humidity[i] + " %");
+                document.getElementById("humidity" + i).innerHTML = " " + humidity[i] + " %";
             }
-        // display big weather icons
+            for (var i=0; i<8; i++) {
+        // if loop for metric or imperial units
+                if (temp==="celsius") {
+                // if (document.getElementById("celsius").checked) {
+                    high[i]=json.forecast.simpleforecast.forecastday[i].high.celsius;
+                    document.getElementById("max" + i).innerHTML = " " + high[i] + "°";
+                    document.getElementById("max" + i).style.color = "hsl(0,70%,50%)";
+                    low[i]=json.forecast.simpleforecast.forecastday[i].low.celsius;
+                    document.getElementById("min" + i).innerHTML = " " + low[i] + "°";
+                    document.getElementById("min" + i).style.color = "hsl(250,70%,50%)";
+                } else {
+                    high[i]=json.forecast.simpleforecast.forecastday[i].high.fahrenheit;
+                    document.getElementById("max" + i).innerHTML = " " + high[i] + "°";
+                    document.getElementById("max" + i).style.color = "hsl(0,70%,50%)";
+                    low[i]=json.forecast.simpleforecast.forecastday[i].low.fahrenheit;
+                    document.getElementById("min" + i).innerHTML = " " + low[i] + "°";
+                    document.getElementById("min" + i).style.color = "hsl(250,70%,50%)";
+                }
+            }
+        // display big weather icons and text for 3 next days
             for (i=0; i<6; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
-                $("#picDay" + [i]).removeClass();
-                $("#picDay" + [i]).addClass("bigPicture wi wi-wu-" + icon[i]);;
+                document.getElementById("picDay" + i).className = "bigPicture wi wi-wu-" + icon[i];
             // if loop for metric or imperial units
-                if ($("#celsius").is(":checked")) {
+                if (temp==="celsius") {
+                // if (document.getElementById("celsius").checked) {
                     text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
                 } else {
                     text[i]=json.forecast.txt_forecast.forecastday[i].fcttext;
                 }
                 text[i]=text[i].replace(/\./gi, ".<br>")
-                $("#text"+[i]).html(text[i]);
+                document.getElementById("text" + i).innerHTML = text[i];
             }
-        // display medium weather icons
+        // display medium weather icons for 5 next days
             for (i=6; i<16; i++) {
                 icon[i]=json.forecast.txt_forecast.forecastday[i].icon;
-                $("#picDay" + [i]).removeClass();
-                $("#picDay" + [i]).addClass("wi wi-wu-" + icon[i] + " smallPicture");;
+                document.getElementById("picDay" + i).className = "smallPicture wi wi-wu-" + icon[i];
             // if loop for metric or imperial units
-                if ($("#celsius").is(":checked")) {
-                    text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
-                } else {
-                    text[i]=json.forecast.txt_forecast.forecastday[i].fcttext;
-                }
-                text[i]=text[i].replace(/\./gi, ".<br>")
-                $("#text"+[i]).html(text[i]);
+                // if (document.getElementById("celsius").checked) {
+                    // text[i]=json.forecast.txt_forecast.forecastday[i].fcttext_metric;
+                // } else {
+                    // text[i]=json.forecast.txt_forecast.forecastday[i].fcttext;
+                // }
+                // text[i]=text[i].replace(/\./gi, ".<br>")
+                // document.getElementById("text" + i).innerHTML = text[i];
             }
           //
           // display sunset and sunrise
@@ -169,33 +174,31 @@ function getAndDisplay (wundergroundUrl) {
             for (i=0; i<24; i+=2) {
                 hour[i]=json.hourly_forecast[i].FCTTIME.civil;
                 hour[i]=hour[i].split(/\b/)[0];
-                $("#hourly" + [i]).removeClass(); // remove former class to avoid interference
-                $("#hourly" + [i]).addClass("hourly wi wi-time-" + hour[i]);
+                document.getElementById("hourly" + i).className = "hourly wi wi-time-" + hour[i];
             // if loop for metric or imperial units
-                if ($("#celsius").is(":checked")) {
+                if (temp==="celsius") {
+                // if (document.getElementById("celsius").checked) {
                     hourTemp[i]=json.hourly_forecast[i].temp.metric;
                 } else {
                     hourTemp[i]=json.hourly_forecast[i].temp.english;
                 }
-                $("#hourlyTemp" + [i]).html(hourTemp[i] + "°");
+                document.getElementById("hourlyTemp" + i).innerHTML = hourTemp[i] + "°";
             // display weather icons
                 hourIcon[i]=json.hourly_forecast[i].icon;
                 hourFr[i]=json.hourly_forecast[i].FCTTIME.hour;
                 if (hourFr[i] >= 7 && hourFr[i] <= 20) {
-                    $("#hourlyPic" + [i]).removeClass();
-                    $("#hourlyPic" + [i]).addClass("tinyPicture wi wi-wu-" + hourIcon[i]);;
+                    document.getElementById("hourlyPic" + i).className = "tinyPicture wi wi-wu-" + hourIcon[i];
                 } else {
-                    $("#hourlyPic" + [i]).removeClass();
-                    $("#hourlyPic" + [i]).addClass("tinyPicture wi wi-wu-nt_" + hourIcon[i]);;
+                    document.getElementById("hourlyPic" + i).className = "tinyPicture wi wi-wu-nt_" + hourIcon[i];
                 }
             }
         // get height of the cards for flip
-            heightBackToday = $("#backToday").height()+5;
-            heightFaceToday = $("#faceToday").height()+15;
-            heightBackTomorrow = $("#backTomorrow").height()+10;
-            heightFaceTomorrow = $("#faceTomorrow").height()+10;
-            heightBackNext = $("#backNext").height()+10;
-            heightFaceNext = $("#faceNext").height()+10;
+            heightBackToday = document.getElementById("backToday").clientHeight + "px"; 
+            heightFaceToday = document.getElementById("faceToday").clientHeight + "px";
+            heightBackTomorrow = document.getElementById("backTomorrow").clientHeight + "px";
+            heightFaceTomorrow = document.getElementById("faceTomorrow").clientHeight + "px";
+            heightBackNext = document.getElementById("backNext").clientHeight + "px";
+            heightFaceNext = document.getElementById("faceNext").clientHeight + "px";
             
             document.getElementById("f1_container").style.opacity = "1";
             var f2_container=document.getElementsByClassName("f2_container");
@@ -207,9 +210,9 @@ function getAndDisplay (wundergroundUrl) {
 
             dayAndNight();
             document.getElementById("city").style.color = "black";
-            document.getElementById("endWeek").style.minHeight = heightFaceToday + "px";
-            document.getElementById("current").style.height = heightFaceToday + "px";
-            document.getElementById("f1_container").style.height = heightFaceToday + "px";
+            document.getElementById("endWeek").style.minHeight = heightFaceToday;
+            document.getElementById("current").style.height = heightFaceToday;
+            document.getElementById("f1_container").style.height = heightFaceToday;
             if (window.matchMedia("(max-width:500px)").matches) {
                 document.getElementById("city").style.fontSize = "7vw";
             }
@@ -218,10 +221,33 @@ function getAndDisplay (wundergroundUrl) {
 
 // checking manual or auto search and setting var search
 function autoManualSearch() {
-    if ($("#searchAuto").is(":checked")) {
+    if (document.getElementById("searchAuto").checked) {
         search="auto";
-    } else if ($("#searchManual").is(":checked")) {
+    } else if (document.getElementById("searchManual").checked) {
         search="manual";
+    }
+}
+
+// checking imperial or metrics units
+function isCelsius() {
+    if (document.getElementById("celsius").checked) {
+        temp = "celsius";
+    } else if (document.getElementById("fahrenheit").checked) {
+        temp = "fahrenheit";
+    }
+}
+
+function isCelsiusShadow(val) {
+    if (val==="celsius") {
+        document.getElementById("celsiusButton").classList.remove("shadow");
+        document.getElementById("fahrenheitButton").classList.add("shadow");
+        // $("#celsiusButton").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
+        // $("#fahrenheitButton").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
+    } else if (val==="fahrenheit") {
+        document.getElementById("fahrenheitButton").classList.remove("shadow");
+        document.getElementById("celsiusButton").classList.add("shadow");
+        // $("#celsiusButton").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
+        // $("#fahrenheitButton").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
     }
 }
 
@@ -271,54 +297,84 @@ function dayAndNight() {
         tempColor("day");
     } else {
         tempColor("night");
-        $("body").css("backgroundColor","hsl(30,0%,40%)");
-        $(".card").css("backgroundColor","hsl(30,0%,60%)");
-        $("h4").css("border-top-color","hsl(30,0%,40%)");
-        $(".hourly").css("color","black");
-        $(".more").css("color","hsl(30,0%,60%)");
-        $("input[type=text]").css("backgroundColor","hsl(30,0%,60%)");
+        document.body.style.backgroundColor =  "hsl(30,0%,40%)";
+        var card=document.getElementsByClassName("card");
+            var l=card.length;
+            for (var i=0; i<l; i++) {
+                card[i].style.backgroundColor = "hsl(30,0%,60%)";
+            }
+        var h4=document.getElementsByTagName("h4");
+            l=h4.length;
+            for (i=0; i<l; i++) {
+                h4[i].style.borderTopColor = "hsl(30,0%,40%)";
+            }
+        var hourly=document.getElementsByClassName("hourly");
+            l=hourly.length;
+            for (i=0; i<l; i++) {
+                hourly[i].style.color = "black";
+            }
+        var more=document.getElementsByClassName("more");
+            l=more.length;
+            for (i=0; i<l; i++) {
+                more[i].style.color = "hsl(30,0%,60%)";
+            }
+        var input=document.getElementsByTagName("input");
+        l=input.length;
+        for (i=0; i<l; i++) {
+            if (input[i].type === "text") {
+                input[i].style.backgroundColor = "hsl(30,0%,60%)";
+            }
+        }
     }
 }
 
 function tempColor(val) {
     // tmax and tmin define the range for the color palette
-            // if loop for metric or imperial units
-            var hot=0;
-            var cold=250;
-            var tmaxC=40;
-            var tminC=0;
-            var tmaxF=104;
-            var tminF=32;
-            var index=0;
-            var indexComp=120;
+    // if loop for metric or imperial units
+    var hot=0;
+    var cold=250;
+    var tmaxC=40;
+    var tminC=0;
+    var tmaxF=104;
+    var tminF=32;
+    var index=0;
+    var indexComp=120;
 
-            if (val==="day") {
-                var lightSat=80;
-                var light=50;
-                var darkLightSat=80;
-                var darkLight=30;
-            } else if (val==="night") {
-                var lightSat=80;
-                var light=30;
-                var darkLightSat=80;
-                var darkLight=20;
-            }
-            if ($("#celsius").is(":checked")) {
-                index=1/(tmaxC-tminC)*((actualTemp_c-tminC)*hot - (actualTemp_c-tmaxC)*cold);
-            } else if ($("#fahrenheit").is(":checked")) {
-                index=1/(tmaxF-tminF)*((actualTemp_f-tminF)*hot - (actualTemp_f-tmaxF)*cold);
-            }
-            indexComp=index+120;
-            $("h3").css("backgroundColor", "hsl(" + index + "," + lightSat + "%," + light + "%)");
-            $(".button").css("backgroundColor", "hsl(" + indexComp + ",90%," + light + "%)");
-            $("#controlBarFront").css("backgroundColor", "hsl(" + index + "," + darkLightSat + "%," + darkLight + "%)");
-            $("#controlBarBack").css("backgroundColor", "hsl(" + index + "," + darkLightSat + "%," + darkLight + "%)");
+    if (val==="day") {
+        var lightSat=80;
+        var light=50;
+        var darkLightSat=80;
+        var darkLight=30;
+    } else if (val==="night") {
+        var lightSat=80;
+        var light=30;
+        var darkLightSat=80;
+        var darkLight=20;
+    }
+    if (temp==="celsius") {
+        index=1/(tmaxC-tminC)*((actualTemp_c-tminC)*hot - (actualTemp_c-tmaxC)*cold);
+    } else if (temp==="fahrenheit") {
+        index=1/(tmaxF-tminF)*((actualTemp_f-tminF)*hot - (actualTemp_f-tmaxF)*cold);
+    }
+    indexComp=index+120;
+    var button = document.getElementsByClassName("button");
+        var l=button.length;
+        for (var i=0; i<l; i++) {
+            button[i].style.backgroundColor = "hsl(" + indexComp + ",90%," + light + "%)";
+        }
+    var h3 = document.getElementsByTagName("h3");
+        l=h3.length;
+        for (var i=0; i<l; i++) {
+            h3[i].style.backgroundColor = "hsl(" + index + "," + lightSat + "%," + light + "%)";
+        }
+    document.getElementById("controlBarFront").style.backgroundColor = "hsl(" + index + "," + darkLightSat + "%," + darkLight + "%)";
+    document.getElementById("controlBarBack").style.backgroundColor = "hsl(" + index + "," + darkLightSat + "%," + darkLight + "%)";
 }
 
 // manual country and city
 function manual() {
-    var country=$("#country").val();
-    var city=$("#ville").val();
+    var country=document.getElementById("country").value;
+    var city=document.getElementById("ville").value;
     wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + country + "/" + city + ".json";
     if (country=="") {
         alert("Please enter a country or an US state, or use auto mode");
@@ -329,20 +385,19 @@ function manual() {
 
 //close, flip and get normal size
 function close() {
-    $(".carte2").toggleClass("flipped");
-    $("#formulaire").css("display","none");
+    document.getElementById("carte2").classList.toggle("flipped");
+    document.getElementById("formulaire").style.display = "none";
     controlBarSize("auto");
 }
 
 // use manual or auto mode
 function autoManualData(val) {
-    if (val==="manual") {
-        $("#send").click(function() {
-            manual();
-            getAndDisplay(wundergroundUrl);
-            close();
-        });
-    } else if (val==="auto") {
+    document.getElementById("send").addEventListener("click", function() {
+        manual();
+        getAndDisplay(wundergroundUrl);
+        close();
+    }, false);
+    if (val==="auto") {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -353,6 +408,8 @@ function autoManualData(val) {
 
 // move options buttons depending of manual or auto search, and screen size
 function controlButton(val) {
+    var input=document.getElementsByTagName("input");
+    var l=input.length;
     if (val==="manual") {
         var display="flex";
         var buttonMarginMobile="1vw 0";
@@ -363,37 +420,49 @@ function controlButton(val) {
         var display="none";
         var buttonMarginMobile="6vw 0";
         var menuMarginMobile="5vw";
-        var buttonMarginTablet="2vw 0";
+        var buttonMarginTablet="1.9vw 0";
         var buttonMarginLaptop="1vw 0"; // valeurs à caler 
     }
     if (window.matchMedia("(min-width:850px)").matches) {
-        $("input:text").css("display",display);
-        $("#send").css("display",display);
-        $("#formulaire").css("display",display);
-        $("#boxButton").css("margin",buttonMarginLaptop);
+        for (var i=0; i<l; i++) {
+            if (input[i].type === "text") {
+                input[i].style.display = display;
+            }
+        }
+        document.getElementById("send").style.display = display;
+        document.getElementById("formulaire").style.display = display;
+        document.getElementById("boxButton").style.margin = buttonMarginLaptop;
     } else if (window.matchMedia("(min-width:500px)").matches) {
-        $("input:text").css("display",display);
-        $("#send").css("display",display);
-        $("#formulaire").css("display",display);
-        $("#boxButton").css("margin",buttonMarginTablet);
+        for (var i=0; i<l; i++) {
+            if (input[i].type === "text") {
+                input[i].style.display = display;
+            }
+        }
+        document.getElementById("send").style.display = display;
+        document.getElementById("formulaire").style.display = display;
+        document.getElementById("boxButton").style.margin = buttonMarginTablet;
     } else {
-        $("input:text").css("display",display);
-        $("#send").css("display",display);
-        $("#formulaire").css("display",display);
-        $("#boxButton").css("margin",buttonMarginMobile);
+        for (var i=0; i<l; i++) {
+            if (input[i].type === "text") {
+                input[i].style.display = display;
+            }
+        }
+        document.getElementById("send").style.display = display;
+        document.getElementById("formulaire").style.display = display;
+        document.getElementById("boxButton").style.margin = buttonMarginMobile;
     }
 }
 
 function autoManualShadow(val) {
     if (val==="manual") {
-        $("#manual").removeClass("shadow");
+        document.getElementById("manual").classList.remove("shadow");
+        document.getElementById("auto").classList.add("shadow");
         // $("#manual").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
-        $("#auto").addClass("shadow");
         // $("#auto").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
     } else if (val==="auto") {
-        $("#auto").removeClass("shadow");
+        document.getElementById("auto").classList.remove("shadow");
+        document.getElementById("manual").classList.add("shadow");
         // $("#auto").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
-        $("#manual").addClass("shadow");
         // $("#manual").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
     }
 }
@@ -404,68 +473,50 @@ function autoManualDisplay(val) {
     autoManualShadow(val);
 }
 
-function celsiusFahrenheitShadow() {
-    if ($("#celsius").is(":checked")) {
-        $("#celsiusButton").removeClass("shadow");
-        // $("#celsiusButton").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
-        $("#fahrenheitButton").addClass("shadow");
-        // $("#fahrenheitButton").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
-    } else if ($("#fahrenheit").is(":checked")) {
-        $("#celsiusButton").addClass("shadow");
-        // $("#celsiusButton").css("backgroundColor", "hsl(" + indexComp + ",90%,30%)");
-        $("#fahrenheitButton").removeClass("shadow");
-        // $("#fahrenheitButton").css("backgroundColor", "hsl(" + indexComp + ",90%,50%)");
-    }
-}
-
 // function for adaptative card size
 function adaptativeCard(cardId, containerId, heightId) {
-    $(cardId).toggleClass("flipped");
-    $(containerId).css("height",heightId);
+    document.getElementById(cardId).classList.toggle("flipped");
+    document.getElementById(containerId).style.height = heightId;
 }
 
 // display select auto or manual mode with shadow on button
-$("#auto").click(function() {
-    search="auto";
-});
-$("#manual").click(function() {
+document.getElementById("manual").addEventListener("click", function () {
     search="manual";
-});
-$("input[name=search]").click(function() {
     autoManualData(search);
     autoManualDisplay(search);
-});
-$("#searchAuto").click(function() {
+}, false);
+document.getElementById("searchAuto").addEventListener("click", function() {
+    search="auto";
     autoManualData(search);
     autoManualDisplay(search);
     close();
-});
+}, false);
 
 // card flip on click, with adaptative size
 $("#faceToday").click(function() {
-    adaptativeCard("#today", ".f1_container", heightBackToday);
+    adaptativeCard("today", "f1_container", heightBackToday);
     $('#current').css("height",heightBackToday);
 });
 $("#backToday").click(function() {
-    adaptativeCard("#today", ".f1_container", heightFaceToday);
+    adaptativeCard("today", "f1_container", heightFaceToday);
     $("#current").css("height",heightFaceToday);
 });
 $("#faceTomorrow").click(function() {
-    adaptativeCard("#tomorrow", "#tomorrowContainer", heightBackTomorrow);
+    adaptativeCard("tomorrow", "tomorrowContainer", heightBackTomorrow);
 });
 $("#backTomorrow").click(function() {
-    adaptativeCard("#tomorrow", "#tomorrowContainer", heightFaceTomorrow);
+    adaptativeCard("tomorrow", "tomorrowContainer", heightFaceTomorrow);
 });
 $("#faceNext").click(function() {
-    adaptativeCard("#next", "#nextContainer", heightBackNext);
+    adaptativeCard("next", "nextContainer", heightBackNext);
 });
 $("#backNext").click(function() {
-    adaptativeCard("#next", "#nextContainer", heightFaceNext);
+    adaptativeCard("next", "nextContainer", heightFaceNext);
 });
 
 // open option menu
 $("#menu").click(function() {
-    $(".carte2").toggleClass("flipped");
+    $("#carte2").toggleClass("flipped");
     autoManualDisplay(search);
 });
 
@@ -477,13 +528,16 @@ $("#close").click(function() {
 
 // select metric or imperial units
 $("input[name=degre]").click(function(){
-    celsiusFahrenheitShadow();
+    isCelsius();
+    isCelsiusShadow(temp);
     getAndDisplay(wundergroundUrl);
     close();
 });
 
 // mode on refresh : depend of the radio checked, so call autoManual fct
-autoManualSearch();
+// autoManualSearch();
+// isCelsius();
+isCelsiusShadow(temp);
 autoManualData(search);
 autoManualDisplay(search);
 footerSize();
