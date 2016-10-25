@@ -25,57 +25,61 @@ function showPosition (position) {
 
 function getAndDisplay (wundergroundUrl) {
     // waiting message
-    $("#city").css("color","white");
-    $("#city").css("font-size", "5vw");
-    $("#city").html("Looking through the window, please wait...")
+    if (window.matchMedia("(max-width:500px)").matches) {
+        document.getElementById("city").style.color = "white";
+        document.getElementById("city").style.fontSize = "5vw";
+    }
+    document.getElementById("city").innerHTML = "Looking through the window, please wait...";
         // display current conditions
         $.getJSON(wundergroundUrl, function (json) {
             if (typeof json.current_observation === "undefined") {
                 alert("Sorry, unable to find the city...");
             } else {
                 var city=json.current_observation.display_location.city;
-                $("#city").html(city);
+                document.getElementById("city").innerHTML = city;
             }
 
         // get local time of observation
         localTime=json.current_observation.observation_time;
-        $("#localTime").html(localTime);
+        document.getElementById("localTime").innerHTML = localTime;
 
         // display current time and theme
         currentTime();
 
         // if loop for celsius or fahrenheit
-            if ($("#celsius").is(":checked")) {
-                actualTemp_c=json.current_observation.temp_c;
-                $("#actualTemp").html(" " + actualTemp_c + "°");
-                var wind=json.current_observation.wind_kph;
-                $("#wind").html(" " + wind + " kph");
-                var pressureMb=json.current_observation.pressure_mb;
-                $("#pressureMb").html(" " + pressureMb + " mb");
-            } else {
+            if (document.getElementById("fahrenheit").checked) {
                 actualTemp_f=json.current_observation.temp_f;
-                $("#actualTemp").html(" " + actualTemp_f + "°");
+                document.getElementById("actualTemp").innerHTML = " " + actualTemp_f + "°";
                 var wind=json.current_observation.wind_mph;
-                $("#wind").html(" " + wind + " mph");
+                document.getElementById("wind").innerHTML = " " + wind + " mph";
                 var pressureIn=json.current_observation.pressure_in;
-                $("#pressureMb").html(" " + pressureIn + " in");
+                document.getElementById("pressureMb").innerHTML = " " + pressureIn + " in";
+            } else {
+                actualTemp_c=json.current_observation.temp_c;
+                document.getElementById("actualTemp").innerHTML = " " + actualTemp_c + "°";
+                var wind=json.current_observation.wind_kph;
+                document.getElementById("wind").innerHTML = " " + wind + " kph";
+                var pressureMb=json.current_observation.pressure_mb;
+                document.getElementById("pressureMb").innerHTML = " " + pressureMb + " mb";
             }
         // end if loop
         // set current icon
             var actualIcon=json.current_observation.icon;
             
             if (h >= 7 && h <= 20) {
-                $("#actualIcon").removeClass();
+                document.getElementById("actualIcon").className = "";
+                // $("#actualIcon").removeClass();
                 $("#actualIcon").addClass("bigPicture wi wi-wu-" + actualIcon);;
             } else {
-                $("#actualIcon").removeClass();
+                document.getElementById("actualIcon").className = "";
+                // $("#actualIcon").removeClass();
                 $("#actualIcon").addClass("bigPicture wi wi-wu-nt_" + actualIcon);;
             }
         //
             var relativeHumidity=json.current_observation.relative_humidity;
-            $("#relativeHumidity").html(" " + relativeHumidity);
+            document.getElementById("relativeHumidity").innerHTML = " " + relativeHumidity;
             var windDir=json.current_observation.wind_dir;
-            $("#windDir").html(" " + windDir);
+            document.getElementById("windDir").innerHTML = " " + windDir;
         //
         // display forecast
             var day=[];
@@ -154,8 +158,8 @@ function getAndDisplay (wundergroundUrl) {
             var sunriseMinute=json.moon_phase.sunrise.minute;
             var sunsetHour=json.moon_phase.sunset.hour;
             var sunsetMinute=json.moon_phase.sunset.minute;
-            $("#sunrise").html(" " + "0" + sunriseHour + ":" + sunriseMinute);
-            $("#sunset").html(" " + sunsetHour + ":" + sunsetMinute);
+            document.getElementById("sunrise").innerHTML = " " + "0" + sunriseHour + ":" + sunriseMinute;
+            document.getElementById("sunset").innerHTML = " " + sunsetHour + ":" + sunsetMinute;
           //
           // display hourly evolution for today
             var hour=[];
@@ -193,16 +197,22 @@ function getAndDisplay (wundergroundUrl) {
             heightBackNext = $("#backNext").height()+10;
             heightFaceNext = $("#faceNext").height()+10;
             
-            $(".f1_container").css("opacity","1");
-            $(".f2_container").css("opacity","1");
-            $("#endWeek").css("opacity","1");
+            document.getElementById("f1_container").style.opacity = "1";
+            var f2_container=document.getElementsByClassName("f2_container");
+            var len=f2_container.length;
+            for (var j=0; j<len; j++) {
+                f2_container[j].style.opacity = "1";
+            }
+            document.getElementById("endWeek").style.opacity = "1";
 
             dayAndNight();
-            $("#city").css("color", "black");
-            $("#city").css("font-size", "7vw");
-            $("#endWeek").css("min-height",heightFaceToday);
-            $("#current").css("height",heightFaceToday);
-            $(".f1_container").css("height",heightFaceToday);
+            document.getElementById("city").style.color = "black";
+            document.getElementById("endWeek").style.minHeight = heightFaceToday + "px";
+            document.getElementById("current").style.height = heightFaceToday + "px";
+            document.getElementById("f1_container").style.height = heightFaceToday + "px";
+            if (window.matchMedia("(max-width:500px)").matches) {
+                document.getElementById("city").style.fontSize = "7vw";
+            }
         })
 }
 
@@ -218,9 +228,9 @@ function autoManualSearch() {
 // setting footer depending of screen size
 function footerSize() {
     if (window.matchMedia("(min-width:500px)").matches) {
-        $("#foot").html('Designed and coded by <em>Bruno Berrehuel</em>. All right reserved. Powered by <a href="https://www.wunderground.com/">Wunderground</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.');
+        document.getElementById("foot").innerHTML = 'Designed and coded by <em>Bruno Berrehuel</em>. All right reserved. Powered by <a href="https://www.wunderground.com/">Wunderground</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.';
     } else {
-        $("#foot").html('Designed and coded by <em>Bruno Berrehuel</em>. <br>All right reserved.<br>Powered by <a href="https://www.wunderground.com/">Wunderground</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.');
+        document.getElementById("foot").innerHTML = 'Designed and coded by <em>Bruno Berrehuel</em>. <br>All right reserved.<br>Powered by <a href="https://www.wunderground.com/">Wunderground</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.';
     }
 }
 
@@ -235,11 +245,11 @@ function controlBarSize(val) {
         var laptop="9vw";
     }
     if (window.matchMedia("(min-width:850px)").matches) {
-        $(".f3_container").css("height",laptop);
+        document.getElementById("f3_container").style.height = laptop;
     } else if (window.matchMedia("(min-width:500px)").matches) {
-        $(".f3_container").css("height",tablet);
+        document.getElementById("f3_container").style.height = tablet;
     } else {
-        $(".f3_container").css("height",mobile);
+        document.getElementById("f3_container").style.height = mobile;
     }
 }
 
@@ -253,7 +263,7 @@ function currentTime() {
     if (m<10) {
         m = "0" + m;
     }
-    $("#currentTitle").html("Current - " + h + ":" + m);
+    document.getElementById("currentTitle").innerHTML = "Current - " + h + ":" + m;
 }
 
 function dayAndNight() {
