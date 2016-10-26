@@ -189,7 +189,7 @@ p {
 }
 .weekday {
     width:35vw;
-    font-size:6vw;
+    font-size:8vw;
     text-align:left;
     margin-left:5vw;
 }
@@ -414,7 +414,7 @@ p {
         font-size:2.5vw;
     }
     .subDay {
-        margin:1vw 0;
+        margin:0 0 1vw 0;
     }
     .text {
         font-size:2vw;
@@ -425,7 +425,7 @@ p {
     }
     .weekday {
         width:14vw;
-        font-size:2.5vw;
+        font-size:3vw;
         margin-left:1vw;
     }
     .wi {
@@ -550,7 +550,7 @@ p {
         font-size:3.5vw;
     }
     .bigTemp {
-        font-size:1.5vw;
+        font-size:1.7vw;
     }
     .blockDatas {
         padding-bottom:0vw;
@@ -595,7 +595,7 @@ p {
     }
     .smallText {
         width:10vw;
-        font-size:2vw;
+        font-size:1.7vw;
     }
     .subDay {
         margin:0;
