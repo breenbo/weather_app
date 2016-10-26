@@ -2,7 +2,7 @@
     var maLatitude=48.847;
     var maLongitude=2.208;
     var apiKey="b8bcc556b7a1fd8c";
-    var wundergroundUrl="https://api.wunderground.com/api/b8bcc556b7a1fd8c/conditions/q/canada/montreal.json";
+    var wundergroundUrl="";
     var actualTemp_c=0;
     var actualTemp_f=32;
     var heightBackToday=0;
