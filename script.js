@@ -26,6 +26,30 @@ function showPosition (position) {
         getAndDisplay(wundergroundUrl);
 }
 
+// function getJSON(url, callback) {
+// var getJSON = function(url, callback) {
+    // var xhr = new XMLHttpRequest();
+    // xhr.open = ("get", url, true);
+    // xhr.responseType = "json";
+    // xhr.onload = function () {
+        // if (xhr.status == 200) {
+            // callback(null, xhr.response);
+        // } else {
+            // callback(status);
+        // }
+    // };
+    // xhr.send();
+// }
+
+
+    // getJSON(wundergroundUrl, function (err, json) {
+        // if (err != null) {
+            // alert("Something went wrong : " + err);
+        // } else {
+            // console.log(json);
+        // }
+    // });
+
 function getAndDisplay (wundergroundUrl) {
 // waiting message
     if (window.matchMedia("(max-width:500px)").matches) {
@@ -33,6 +57,7 @@ function getAndDisplay (wundergroundUrl) {
         document.getElementById("city").style.fontSize = "5vw";
     }
     document.getElementById("city").innerHTML = "Looking through the window, please wait...";
+    
 // get data from wunderground JSON
     $.getJSON(wundergroundUrl, function (json) {
         if (typeof json.current_observation === "undefined") {
@@ -44,8 +69,6 @@ function getAndDisplay (wundergroundUrl) {
 
     // get local time of observation
         localTime=json.current_observation.observation_time;
-        document.getElementById("localTime").innerHTML = localTime;
-
     // display current time and theme
         currentTime();
 
