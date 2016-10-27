@@ -87,9 +87,9 @@ function controlBarSize(val) {
         var tablet="11vw";
         var laptop="9vw";
     }
-    if (window.matchMedia("(min-width:850px)").matches) {
+    if (window.matchMedia("(min-device-width:850px)").matches) {
         document.getElementById("f3_container").style.height = laptop;
-    } else if (window.matchMedia("(min-width:500px)").matches) {
+    } else if (window.matchMedia("(min-device-width:500px)").matches) {
         document.getElementById("f3_container").style.height = tablet;
     } else {
         document.getElementById("f3_container").style.height = mobile;
@@ -111,7 +111,7 @@ function controlButton(val) {
         var buttonMarginTablet="1.9vw 0";
         var buttonMarginLaptop="1vw 0";
     }
-    if (window.matchMedia("(min-width:850px)").matches) {
+    if (window.matchMedia("(min-device-width:850px)").matches) {
         for (var i=0; i<lInput; i++) {
             if (input[i].type === "text") {
                 input[i].style.display = display;
@@ -120,7 +120,7 @@ function controlButton(val) {
         document.getElementById("send").style.display = display;
         document.getElementById("formulaire").style.display = display;
         document.getElementById("boxButton").style.margin = buttonMarginLaptop;
-    } else if (window.matchMedia("(min-width:500px)").matches) {
+    } else if (window.matchMedia("(min-device-width:500px)").matches) {
         for (var i=0; i<lInput; i++) {
             if (input[i].type === "text") {
                 input[i].style.display = display;
@@ -190,7 +190,7 @@ function dayAndNight() {
 
 // setting footer depending of screen size
 function footerSize() {
-    if (window.matchMedia("(min-width:500px)").matches) {
+    if (window.matchMedia("(min-device-width:500px)").matches) {
         document.getElementById("foot").innerHTML = 'Designed and coded by <em>Bruno Berrehuel</em>. All right reserved. Powered by <a href="https://www.wunderground.com/">Wunderground</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.';
     } else {
         document.getElementById("foot").innerHTML = 'Designed and coded by <em>Bruno Berrehuel</em>. <br>All right reserved.<br>Powered by <a href="https://www.wunderground.com/">Wunderground</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a>.';
@@ -199,7 +199,7 @@ function footerSize() {
 
 function getAndDisplay (wundergroundUrl) {
 // waiting message
-    if (window.matchMedia("(max-width:500px)").matches) {
+    if (window.matchMedia("(max-device-width:500px)").matches) {
         document.getElementById("city").style.color = "white";
         document.getElementById("city").style.fontSize = "5vw";
     }
@@ -380,7 +380,7 @@ function getJSON(url) {
             document.getElementById("endWeek").style.minHeight = heightFaceToday;
             document.getElementById("current").style.height = heightFaceToday;
             document.getElementById("f1_container").style.height = heightFaceToday;
-            if (window.matchMedia("(max-width:500px)").matches) {
+            if (window.matchMedia("(max-device-width:500px)").matches) {
                 document.getElementById("city").style.fontSize = "7vw";
             }
         }
@@ -493,7 +493,7 @@ document.getElementById("faceToday").addEventListener("click", function() {
     document.getElementById("current").style.height = heightBackToday;
 }, false);
 document.getElementById("backToday").addEventListener("click", function() {
-    adaptativeCard("today", "f1_container", heightBackToday);
+    adaptativeCard("today", "f1_container", heightFaceToday);
     document.getElementById("current").style.height = heightFaceToday;
 }, false);
 document.getElementById("faceTomorrow").addEventListener("click", function() {
