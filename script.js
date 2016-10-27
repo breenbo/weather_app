@@ -35,7 +35,6 @@ function autoManualData(val) {
     if (val==="auto") {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
->>>>>>> c87a4feeb0f941d8951b3799f3f68e0c0346fe5a
         } else {
             alert("webbrowser incompatible with html5 geolocation");
         }
@@ -198,6 +197,7 @@ function footerSize() {
     }
 }
 
+// get datas and display them
 function getAndDisplay (wundergroundUrl) {
 // waiting message
     if (window.matchMedia("(max-device-width:500px)").matches) {
@@ -361,12 +361,12 @@ function getJSON(url) {
                 }
             }
         // get height of the cards for flip
-            heightBackToday = document.getElementById("backToday").clientHeight + "px"; 
-            heightFaceToday = document.getElementById("faceToday").clientHeight + "px";
-            heightBackTomorrow = document.getElementById("backTomorrow").clientHeight + "px";
-            heightFaceTomorrow = document.getElementById("faceTomorrow").clientHeight + "px";
-            heightBackNext = document.getElementById("backNext").clientHeight + "px";
-            heightFaceNext = document.getElementById("faceNext").clientHeight + "px";
+            heightBackToday = document.getElementById("backToday").offsetHeight + "px"; 
+            heightFaceToday = document.getElementById("faceToday").offsetHeight + "px";
+            heightBackTomorrow = document.getElementById("backTomorrow").offsetHeight + "px";
+            heightFaceTomorrow = document.getElementById("faceTomorrow").offsetHeight + "px";
+            heightBackNext = document.getElementById("backNext").offsetHeight + "px";
+            heightFaceNext = document.getElementById("faceNext").offsetHeight + "px";
         //    
             document.getElementById("f1_container").style.opacity = "1";
             var f2_container=document.getElementsByClassName("f2_container");
