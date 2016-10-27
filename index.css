@@ -223,6 +223,7 @@ p {
 }
 #current {
     margin-top:4vw;
+    transition: all 0.2s linear;
 }
 #endWeek {
     margin:4vw 2vw;
@@ -327,7 +328,8 @@ p {
 }
 /* ============================================================ */
 
-@media all and (min-device-width:500px) and (max-device-width:850px){
+/* @media all and (min-device-width:500px) and (max-device-width:850px) { */
+@media all and (min-width:500px) and (max-width:850px), all and (min-device-width:500px) and (max-device-width:850px) {
     h3 {
         font-size:3vw;
     }
@@ -503,7 +505,8 @@ p {
 }
 /* ============================================================ */
 
-@media all and (min-device-width:850px) {
+/* @media all and (min-device-width:850px) { */
+@media all and (min-width:850px) {
     #fond {
         margin:0 13vw;
     }
