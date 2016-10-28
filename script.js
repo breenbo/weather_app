@@ -207,8 +207,8 @@ function getCardsHeight () {
         heightFaceNext = "15vw";
     } else if (window.matchMedia("(min-width:500px)").matches) {
         heightFaceToday = "70vw";
-        heightFaceTomorrow = "30vw";
-        heightFaceNext = "30vw";
+        heightFaceTomorrow = "25vw";
+        heightFaceNext = "25vw";
     } else {
         heightFaceToday = "145vw";
         heightFaceTomorrow = "60vw";
