@@ -216,6 +216,7 @@ function getCardsHeight () {
     }
 }
 
+// get datas and display them
 function getAndDisplay (wundergroundUrl) {
 // waiting message
     if (window.matchMedia("(max-width:500px)").matches) {
@@ -379,7 +380,16 @@ function getJSON(url) {
                 }
             }
         // get height of the cards for flip
+<<<<<<< HEAD
             getCardsHeight();
+=======
+            heightBackToday = document.getElementById("backToday").offsetHeight + "px"; 
+            heightFaceToday = document.getElementById("faceToday").offsetHeight + "px";
+            heightBackTomorrow = document.getElementById("backTomorrow").offsetHeight + "px";
+            heightFaceTomorrow = document.getElementById("faceTomorrow").offsetHeight + "px";
+            heightBackNext = document.getElementById("backNext").offsetHeight + "px";
+            heightFaceNext = document.getElementById("faceNext").offsetHeight + "px";
+>>>>>>> 9d041494a07440ca85898823d31db88038702401
         //    
             document.getElementById("f1_container").style.opacity = "1";
             var f2_container=document.getElementsByClassName("f2_container");
