@@ -377,6 +377,7 @@ p {
     }
     .blockDatas {
         padding-bottom:0vw;
+        margin: 1vw 0 0.5vw 1vw;
         margin-left:1vw;
         margin-bottom:0vw;
     }
@@ -561,8 +562,9 @@ p {
     }
     .blockDatas {
         padding-bottom:0vw;
-        margin-left:1vw;
-        margin-bottom:1vw;
+        margin: 0.7vw 0 0.5vw 1vw;
+        /* margin-left:1vw; */
+        /* margin-bottom:1vw; */
     }
     .box {
         margin-top:1vw;

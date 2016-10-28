@@ -3,7 +3,7 @@
 **Main concern : user experience !**
 
 ## Functions :
-* 7 days weather forecast, detailed view for 3 days
+* 7 days weather forecast, detailed views for 3 days
 * Choose between auto or manual localisation, pick any country and city in the world
     * for manual mode, please enter the country or the US state, then the city
 * Auto mode and metrics units enabled by default, uses geolocation to find your place.
