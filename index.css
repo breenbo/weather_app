@@ -39,10 +39,10 @@ input[type=text], #send {
     display:none;
 }
 input[type=text] {
-    font-size:6vw;
+    font-size:4.4vw;
     width:33vw;
-    height:7vw;
-    margin:5vw 0 0 2vw;
+    height:10vw;
+    margin:3vw 0 0 2vw;
 }
 input[type=radio] {
     display:none;
@@ -344,7 +344,7 @@ p {
     }
     input[type=text] {
         font-size:4vw;
-        width:33vw;
+        width:40vw;
         height:5vw;
         margin:1vw 0 0 2vw;
     }
@@ -527,7 +527,7 @@ p {
     }
     input[type=text] {
         font-size:4vw;
-        width:33vw;
+        width:40vw;
         height:5vw;
         margin:1vw 0 0 2vw;
     }

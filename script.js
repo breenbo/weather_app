@@ -20,8 +20,7 @@
     var lInput=input.length;
 
 // function for adaptative card size
-function adaptativeCard(cardId, containerId, heightId) {
-    document.getElementById(cardId).classList.toggle("flipped");
+function adaptativeCard(containerId, heightId) {
     document.getElementById(containerId).style.height = heightId;
 }
 
@@ -200,11 +199,21 @@ function footerSize() {
 // get cards height
 function getCardsHeight () {
     heightBackToday = document.getElementById("backToday").clientHeight + "px"; 
-    heightFaceToday = document.getElementById("faceToday").clientHeight + "px";
     heightBackTomorrow = document.getElementById("backTomorrow").clientHeight + "px";
-    heightFaceTomorrow = document.getElementById("faceTomorrow").clientHeight + "px";
     heightBackNext = document.getElementById("backNext").clientHeight + "px";
-    heightFaceNext = document.getElementById("faceNext").clientHeight + "px";
+    if (window.matchMedia("(min-width:850px)").matches) {
+        heightFaceToday = "40vw";
+        heightFaceTomorrow = "15vw";
+        heightFaceNext = "15vw";
+    } else if (window.matchMedia("(min-width:500px)").matches) {
+        heightFaceToday = "70vw";
+        heightFaceTomorrow = "30vw";
+        heightFaceNext = "30vw";
+    } else {
+        heightFaceToday = "145vw";
+        heightFaceTomorrow = "60vw";
+        heightFaceNext = "60vw";
+    }
 }
 
 function getAndDisplay (wundergroundUrl) {
@@ -494,24 +503,30 @@ document.getElementById("searchAuto").addEventListener("click", function() {
 
 // card flip on click, with adaptative size
 document.getElementById("faceToday").addEventListener("click", function() {
-    adaptativeCard("today", "f1_container", heightBackToday);
+    adaptativeCard("f1_container", heightBackToday);
     document.getElementById("current").style.height = heightBackToday;
+    document.getElementById("today").classList.toggle("flipped");
 }, false);
 document.getElementById("backToday").addEventListener("click", function() {
-    adaptativeCard("today", "f1_container", heightFaceToday);
+    adaptativeCard("f1_container", heightFaceToday);
     document.getElementById("current").style.height = heightFaceToday;
+    document.getElementById("today").classList.toggle("flipped");
 }, false);
 document.getElementById("faceTomorrow").addEventListener("click", function() {
-    adaptativeCard("tomorrow", "tomorrowContainer", heightBackTomorrow);
+    adaptativeCard("tomorrowContainer", heightBackTomorrow);
+    document.getElementById("tomorrow").classList.toggle("flipped");
 }, false);
 document.getElementById("backTomorrow").addEventListener("click", function() {
-    adaptativeCard("tomorrow", "tomorrowContainer", heightFaceTomorrow);
+    adaptativeCard("tomorrowContainer", heightFaceTomorrow);
+    document.getElementById("tomorrow").classList.toggle("flipped");
 }, false);
 document.getElementById("faceNext").addEventListener("click", function() {
-    adaptativeCard("next", "nextContainer", heightBackNext);
+    adaptativeCard("nextContainer", heightBackNext);
+    document.getElementById("next").classList.toggle("flipped");
 }, false);
 document.getElementById("backNext").addEventListener("click", function() {
-    adaptativeCard("next", "nextContainer", heightFaceNext);
+    adaptativeCard("nextContainer", heightFaceNext);
+    document.getElementById("next").classList.toggle("flipped");
 }, false);
 
 // open option menu
@@ -544,6 +559,18 @@ window.addEventListener("resize", function() {
     controlBarSize(search);
     footerSize();
     getCardsHeight();
+    adaptativeCard("f1_container", heightFaceToday);
+    document.getElementById("current").style.height = heightFaceToday;
+    document.getElementById("endWeek").style.minHeight = heightFaceToday;
+    adaptativeCard("tomorrowContainer", heightFaceTomorrow);
+    adaptativeCard("nextContainer", heightFaceNext);
+    if (window.matchMedia("(min-width:850px)").matches) {
+        document.getElementById("city").style.fontSize = "3vw";
+    } else if (window.matchMedia("(min-width:500px)").matches) {
+        document.getElementById("city").style.fontSize = "3.5vw";
+    } else {
+        document.getElementById("city").style.fontSize = "7vw";
+    }
 });
 //
 // mode on refresh : depend of the radio checked, so call autoManual fct
