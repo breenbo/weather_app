@@ -26,12 +26,12 @@ function adaptativeCard(containerId, heightId) {
 
 // use manual or auto mode
 function autoManualData(val) {
-    document.getElementById("send").addEventListener("click", function() {
-        manual();
+    if (val==="error") {
+        alert("there was a fucking problem");
+    } else if (val==="manual") {
         getAndDisplay(wundergroundUrl);
         close();
-    }, false);
-    if (val==="auto") {
+    } else if (val==="auto") {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
@@ -431,11 +431,11 @@ function isCelsiusShadow(val) {
 function manual() {
     var country=document.getElementById("country").value;
     var city=document.getElementById("ville").value;
-    wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + country + "/" + city + ".json";
-    if (country=="") {
-        alert("Please enter a country or an US state, or use auto mode");
-    } else if (city=="") {
-        alert("Please enter a city or use auto mode");
+    if (country=="" || city=="") {
+        search="error";
+    } else {
+        search="manual";
+        wundergroundUrl="https://api.wunderground.com/api/" + apiKey + "/conditions/forecast10day/astronomy/hourly/q/" + country + "/" + city + ".json";
     }
 }
 
@@ -554,6 +554,16 @@ for (var i=0; i<lInput; i++) {
     }
 }
 
+// set manual send with error message if form is empty
+document.getElementById("send").addEventListener("click", function() {
+    manual();
+    if (search==="error") {
+        alert("Please enter a country or an US state, and a city, or use auto mode");
+    } else {
+        autoManualData(search);
+    }
+}, false);
+
 // change display on resize
 window.addEventListener("resize", function() {
     controlButton(search);
@@ -576,6 +586,6 @@ window.addEventListener("resize", function() {
 //
 // mode on refresh : depend of the radio checked, so call autoManual fct
 isCelsiusShadow(temp);
+footerSize();
 autoManualData(search);
 autoManualDisplay(search);
-footerSize();
