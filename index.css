@@ -188,7 +188,7 @@ p {
     margin-bottom:1vw;
 }
 .weekday {
-    width:35vw;
+    width:45vw;
     font-size:8vw;
     text-align:left;
     margin-left:5vw;
@@ -431,7 +431,7 @@ p {
         font-size:4vw;
     }
     .weekday {
-        width:14vw;
+        width:24vw;
         font-size:3vw;
         margin-left:1vw;
     }
@@ -618,6 +618,7 @@ p {
         font-size:2.5vw;
     }
     .weekday {
+        width:20vw;
         font-size:2vw;
         margin-left:1vw;
     }
