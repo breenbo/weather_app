@@ -25,5 +25,9 @@
 * Pure Javascript, no Bootstrap
 * Tested on Firefox and Chrome, both on laptop and mobile (linux and android)
 
+## To-Dos
+. Choose languages
+. Load minimal visual while wunderground queries
+
 
 *They didn't know it was impossible, so they did it.* Mark Twain.
