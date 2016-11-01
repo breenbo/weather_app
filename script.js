@@ -398,10 +398,6 @@ function getJSON(url) {
             if (window.matchMedia("(max-width:500px)").matches) {
                 document.getElementById("city").style.fontSize = "7vw";
             }
-        } else {
-            search="error";
-            // alert("Sorry, Wunderground is not recheable, please try again later...");
-            document.getElementById("city").innerHTML = "Sorry, something's broken :-(";
         }
     }
     weather.open("GET",url, true);
