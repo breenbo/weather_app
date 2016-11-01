@@ -382,13 +382,13 @@ function getJSON(url) {
         // get height of the cards for flip
             getCardsHeight();
         //    
-            document.getElementById("f1_container").style.opacity = "1";
-            var f2_container=document.getElementsByClassName("f2_container");
-            var len=f2_container.length;
-            for (var j=0; j<len; j++) {
-                f2_container[j].style.opacity = "1";
-            }
-            document.getElementById("endWeek").style.opacity = "1";
+            // document.getElementById("f1_container").style.opacity = "1";
+            // var f2_container=document.getElementsByClassName("f2_container");
+            // var len=f2_container.length;
+            // for (var j=0; j<len; j++) {
+                // f2_container[j].style.opacity = "1";
+            // }
+            // document.getElementById("endWeek").style.opacity = "1";
 
             dayAndNight();
             document.getElementById("city").style.color = "black";
