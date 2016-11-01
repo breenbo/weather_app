@@ -27,7 +27,7 @@ function adaptativeCard(containerId, heightId) {
 // use manual or auto mode
 function autoManualData(val) {
     if (val==="error") {
-        alert("there was a fucking problem");
+        alert("something's broken :-(");
     } else if (val==="manual") {
         getAndDisplay(wundergroundUrl);
         close();
@@ -398,6 +398,10 @@ function getJSON(url) {
             if (window.matchMedia("(max-width:500px)").matches) {
                 document.getElementById("city").style.fontSize = "7vw";
             }
+        } else {
+            search="error";
+            // alert("Sorry, Wunderground is not recheable, please try again later...");
+            document.getElementById("city").innerHTML = "Sorry, something's broken :-(";
         }
     }
     weather.open("GET",url, true);
@@ -492,7 +496,7 @@ function tempColor(val) {
 // display select auto or manual mode with shadow on buttons
 document.getElementById("manual").addEventListener("click", function() {
     search="manual";
-    autoManualData(search);
+    // autoManualData(search);
     autoManualDisplay(search);
 }, false);
 document.getElementById("searchAuto").addEventListener("click", function() {
